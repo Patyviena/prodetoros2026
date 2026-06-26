@@ -1,0 +1,2130 @@
+{
+  "last_updated": "26/06/2026 18:09",
+  "players": [
+    "Epe Roth",
+    "Kovacic",
+    "Patru Maqui",
+    "Lucas Tkacz",
+    "Nico Conti",
+    "Fran Garoby",
+    "Tomi Marchiano",
+    "JZ",
+    "Alejo Di Fiori",
+    "Nico Gianola",
+    "Tomi Samitier",
+    "Juan Leoni",
+    "Conrado",
+    "Pulpo",
+    "Fede Lacal",
+    "Gian Luttini"
+  ],
+  "matches_played": [
+    "México vs Sudáfrica",
+    "Rep. de Corea vs Rep. Checa",
+    "Canadá vs Bosnia y Herz.",
+    "Estados Unidos vs Paraguay",
+    "Brasil vs Marruecos",
+    "Haití vs Escocia",
+    "Australia vs Turquía",
+    "Alemania vs Curazao",
+    "Países Bajos vs Japón",
+    "Costa de Marfil vs Ecuador",
+    "Suecia vs Túnez",
+    "Bélgica vs Egipto",
+    "Arabia Saudí vs Uruguay",
+    "RI de Irán vs Nueva Zelanda",
+    "Francia vs Senegal",
+    "Irak vs Noruega",
+    "Argentina vs Argelia",
+    "Austria vs Jordania",
+    "Inglaterra vs Croacia",
+    "Ghana vs Panamá",
+    "Uzbekistán vs Colombia",
+    "Rep. Checa vs Sudáfrica",
+    "Suiza vs Bosnia y Herz.",
+    "Canadá vs Catar",
+    "México vs Rep. de Corea",
+    "Estados Unidos vs Australia",
+    "Escocia vs Marruecos",
+    "Brasil vs Haití",
+    "Turquía vs Paraguay",
+    "Países Bajos vs Suecia",
+    "Alemania vs Costa de Marfil",
+    "Túnez vs Japón",
+    "España vs Arabia Saudí",
+    "Bélgica vs Irán",
+    "Nueva Zelanda vs Egipto",
+    "Argentina vs Austria",
+    "Francia vs Irak",
+    "Noruega vs Senegal",
+    "Jordania vs Argelia",
+    "Portugal vs Uzbekistán",
+    "Inglaterra vs Ghana",
+    "Panamá vs Croacia",
+    "Colombia vs RD Congo",
+    "Suiza vs Canadá",
+    "Bosnia y Herz. vs Catar",
+    "Escocia vs Brasil",
+    "Marruecos vs Haití",
+    "Rep. Checa vs México",
+    "Ecuador vs Alemania",
+    "Curazao vs Costa de Marfil",
+    "Japón vs Suecia",
+    "Túnez vs Países Bajos",
+    "Turquía vs Estados Unidos",
+    "Paraguay vs Australia"
+  ],
+  "history": {
+    "Epe Roth": [
+      0,
+      2,
+      2,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      12,
+      12,
+      14,
+      14,
+      14,
+      14,
+      19,
+      21,
+      28,
+      30,
+      32,
+      34,
+      36,
+      36,
+      38,
+      40,
+      42,
+      42,
+      44,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      61,
+      63,
+      68,
+      70,
+      70,
+      72,
+      74,
+      74,
+      76,
+      78,
+      78,
+      78,
+      80,
+      82,
+      84,
+      84,
+      89,
+      91,
+      93,
+      93,
+      95
+    ],
+    "Kovacic": [
+      0,
+      5,
+      5,
+      5,
+      7,
+      12,
+      14,
+      14,
+      16,
+      16,
+      16,
+      18,
+      18,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      28,
+      28,
+      30,
+      30,
+      32,
+      34,
+      39,
+      39,
+      41,
+      43,
+      48,
+      50,
+      50,
+      52,
+      54,
+      54,
+      56,
+      58,
+      65,
+      65,
+      65,
+      67,
+      67,
+      69,
+      71,
+      73,
+      75,
+      77,
+      79,
+      81,
+      81,
+      83,
+      88,
+      90,
+      92,
+      92
+    ],
+    "Patru Maqui": [
+      0,
+      2,
+      7,
+      7,
+      9,
+      9,
+      11,
+      11,
+      13,
+      18,
+      18,
+      20,
+      20,
+      20,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      35,
+      37,
+      37,
+      37,
+      39,
+      39,
+      44,
+      46,
+      53,
+      58,
+      60,
+      62,
+      64,
+      66,
+      68,
+      70,
+      75,
+      77,
+      77,
+      79,
+      81,
+      81,
+      83,
+      85,
+      85,
+      85,
+      85,
+      87,
+      87,
+      87,
+      89,
+      94,
+      96,
+      96,
+      96
+    ],
+    "Lucas Tkacz": [
+      0,
+      5,
+      5,
+      5,
+      7,
+      7,
+      12,
+      12,
+      14,
+      16,
+      16,
+      18,
+      18,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      35,
+      37,
+      37,
+      39,
+      41,
+      46,
+      48,
+      50,
+      52,
+      52,
+      54,
+      56,
+      58,
+      60,
+      60,
+      62,
+      64,
+      66,
+      66,
+      68,
+      70,
+      70,
+      75,
+      77,
+      77,
+      79,
+      81,
+      83,
+      83,
+      83,
+      88,
+      93,
+      95,
+      95,
+      97
+    ],
+    "Nico Conti": [
+      0,
+      2,
+      2,
+      2,
+      4,
+      4,
+      9,
+      9,
+      11,
+      13,
+      13,
+      15,
+      15,
+      15,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      30,
+      32,
+      32,
+      34,
+      36,
+      41,
+      43,
+      48,
+      55,
+      55,
+      57,
+      59,
+      61,
+      63,
+      63,
+      65,
+      67,
+      69,
+      69,
+      71,
+      73,
+      73,
+      78,
+      83,
+      83,
+      85,
+      87,
+      89,
+      91,
+      91,
+      96,
+      101,
+      103,
+      103,
+      105
+    ],
+    "Fran Garoby": [
+      0,
+      2,
+      2,
+      2,
+      4,
+      4,
+      6,
+      8,
+      10,
+      10,
+      10,
+      12,
+      12,
+      12,
+      12,
+      14,
+      16,
+      23,
+      25,
+      27,
+      27,
+      29,
+      29,
+      31,
+      33,
+      35,
+      37,
+      37,
+      44,
+      44,
+      46,
+      51,
+      53,
+      55,
+      55,
+      55,
+      57,
+      59,
+      61,
+      63,
+      65,
+      65,
+      67,
+      69,
+      69,
+      71,
+      78,
+      80,
+      82,
+      82,
+      87,
+      87,
+      89,
+      89,
+      91
+    ],
+    "Tomi Marchiano": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      4,
+      4,
+      6,
+      6,
+      6,
+      8,
+      10,
+      12,
+      19,
+      21,
+      21,
+      26,
+      28,
+      28,
+      30,
+      32,
+      37,
+      39,
+      44,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      61,
+      63,
+      65,
+      72,
+      77,
+      79,
+      81,
+      81,
+      83,
+      85,
+      85,
+      87,
+      89,
+      91,
+      93,
+      93,
+      95,
+      95,
+      100,
+      100,
+      100
+    ],
+    "JZ": [
+      0,
+      2,
+      7,
+      7,
+      7,
+      7,
+      9,
+      9,
+      11,
+      11,
+      11,
+      13,
+      13,
+      13,
+      13,
+      15,
+      17,
+      24,
+      26,
+      28,
+      30,
+      32,
+      32,
+      34,
+      36,
+      38,
+      40,
+      42,
+      44,
+      46,
+      48,
+      50,
+      52,
+      54,
+      54,
+      56,
+      58,
+      65,
+      65,
+      70,
+      72,
+      72,
+      74,
+      76,
+      76,
+      78,
+      85,
+      87,
+      89,
+      89,
+      94,
+      94,
+      96,
+      96,
+      96
+    ],
+    "Alejo Di Fiori": [
+      0,
+      2,
+      4,
+      9,
+      9,
+      9,
+      11,
+      11,
+      13,
+      15,
+      15,
+      15,
+      15,
+      15,
+      15,
+      20,
+      22,
+      24,
+      26,
+      28,
+      33,
+      35,
+      40,
+      40,
+      42,
+      42,
+      44,
+      46,
+      48,
+      48,
+      50,
+      52,
+      54,
+      56,
+      56,
+      58,
+      60,
+      67,
+      69,
+      74,
+      76,
+      76,
+      78,
+      80,
+      80,
+      82,
+      84,
+      86,
+      88,
+      88,
+      90,
+      90,
+      92,
+      92,
+      92
+    ],
+    "Nico Gianola": [
+      0,
+      0,
+      0,
+      2,
+      2,
+      2,
+      4,
+      4,
+      6,
+      6,
+      8,
+      10,
+      15,
+      15,
+      17,
+      22,
+      24,
+      26,
+      28,
+      30,
+      35,
+      37,
+      37,
+      37,
+      39,
+      41,
+      41,
+      43,
+      45,
+      45,
+      47,
+      52,
+      54,
+      56,
+      56,
+      58,
+      63,
+      70,
+      70,
+      70,
+      72,
+      72,
+      74,
+      79,
+      81,
+      81,
+      83,
+      85,
+      85,
+      85,
+      90,
+      90,
+      92,
+      92,
+      92
+    ],
+    "Tomi Samitier": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      7,
+      7,
+      7,
+      9,
+      11,
+      11,
+      13,
+      13,
+      18,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      33,
+      35,
+      35,
+      37,
+      39,
+      44,
+      49,
+      54,
+      56,
+      61,
+      61,
+      63,
+      65,
+      67,
+      67,
+      67,
+      72,
+      79,
+      81,
+      83,
+      85,
+      85,
+      90,
+      92,
+      92,
+      94,
+      96,
+      98,
+      100,
+      100,
+      105,
+      105,
+      107,
+      107,
+      107
+    ],
+    "Juan Leoni": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      7,
+      9,
+      11,
+      11,
+      11,
+      13,
+      13,
+      13,
+      15,
+      20,
+      20,
+      22,
+      24,
+      24,
+      29,
+      31,
+      31,
+      31,
+      33,
+      35,
+      35,
+      37,
+      44,
+      49,
+      49,
+      51,
+      53,
+      55,
+      55,
+      55,
+      57,
+      59,
+      59,
+      59,
+      61,
+      61,
+      63,
+      65,
+      65,
+      65,
+      67,
+      69,
+      69,
+      69,
+      71,
+      76,
+      78,
+      78,
+      78
+    ],
+    "Conrado": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      4,
+      6,
+      11,
+      11,
+      11,
+      11,
+      11,
+      11,
+      16,
+      18,
+      25,
+      27,
+      27,
+      29,
+      31,
+      31,
+      31,
+      33,
+      33,
+      35,
+      37,
+      39,
+      39,
+      41,
+      43,
+      45,
+      52,
+      52,
+      54,
+      59,
+      66,
+      66,
+      71,
+      73,
+      73,
+      75,
+      77,
+      79,
+      81,
+      83,
+      85,
+      87,
+      87,
+      89,
+      89,
+      91,
+      91,
+      91
+    ],
+    "Pulpo": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      7,
+      12,
+      12,
+      14,
+      16,
+      16,
+      18,
+      18,
+      23,
+      23,
+      25,
+      27,
+      29,
+      31,
+      31,
+      33,
+      35,
+      35,
+      37,
+      37,
+      37,
+      39,
+      41,
+      48,
+      48,
+      50,
+      52,
+      54,
+      56,
+      56,
+      58,
+      60,
+      62,
+      62,
+      64,
+      66,
+      66,
+      68,
+      70,
+      72,
+      74,
+      76,
+      78,
+      80,
+      80,
+      82,
+      82,
+      84,
+      84,
+      84
+    ],
+    "Fede Lacal": [
+      0,
+      2,
+      2,
+      2,
+      2,
+      4,
+      6,
+      6,
+      6,
+      6,
+      6,
+      8,
+      8,
+      8,
+      10,
+      12,
+      12,
+      19,
+      21,
+      23,
+      23,
+      25,
+      25,
+      25,
+      27,
+      29,
+      31,
+      31,
+      33,
+      35,
+      35,
+      37,
+      39,
+      41,
+      41,
+      43,
+      48,
+      55,
+      55,
+      57,
+      59,
+      59,
+      59,
+      61,
+      61,
+      63,
+      63,
+      65,
+      65,
+      70,
+      70,
+      70,
+      72,
+      72,
+      72
+    ],
+    "Gian Luttini": [
+      0,
+      5,
+      5,
+      10,
+      12,
+      12,
+      17,
+      17,
+      19,
+      19,
+      19,
+      21,
+      21,
+      21,
+      21,
+      23,
+      25,
+      27,
+      29,
+      29,
+      31,
+      33,
+      33,
+      35,
+      37,
+      37,
+      39,
+      39,
+      39,
+      39,
+      39,
+      44,
+      44,
+      46,
+      46,
+      46,
+      46,
+      53,
+      53,
+      53,
+      55,
+      57,
+      57,
+      59,
+      61,
+      63,
+      65,
+      67,
+      67,
+      67,
+      67,
+      72,
+      72,
+      74,
+      74
+    ]
+  },
+  "ranking": [
+    {
+      "pos": 1,
+      "name": "Tomi Samitier",
+      "pts": 107
+    },
+    {
+      "pos": 2,
+      "name": "Nico Conti",
+      "pts": 105
+    },
+    {
+      "pos": 3,
+      "name": "Tomi Marchiano",
+      "pts": 100
+    },
+    {
+      "pos": 4,
+      "name": "Lucas Tkacz",
+      "pts": 97
+    },
+    {
+      "pos": 5,
+      "name": "Patru Maqui",
+      "pts": 96
+    },
+    {
+      "pos": 6,
+      "name": "JZ",
+      "pts": 96
+    },
+    {
+      "pos": 7,
+      "name": "Epe Roth",
+      "pts": 95
+    },
+    {
+      "pos": 8,
+      "name": "Kovacic",
+      "pts": 92
+    },
+    {
+      "pos": 9,
+      "name": "Alejo Di Fiori",
+      "pts": 92
+    },
+    {
+      "pos": 10,
+      "name": "Nico Gianola",
+      "pts": 92
+    },
+    {
+      "pos": 11,
+      "name": "Fran Garoby",
+      "pts": 91
+    },
+    {
+      "pos": 12,
+      "name": "Conrado",
+      "pts": 91
+    },
+    {
+      "pos": 13,
+      "name": "Pulpo",
+      "pts": 84
+    },
+    {
+      "pos": 14,
+      "name": "Juan Leoni",
+      "pts": 78
+    },
+    {
+      "pos": 15,
+      "name": "Gian Luttini",
+      "pts": 74
+    },
+    {
+      "pos": 16,
+      "name": "Fede Lacal",
+      "pts": 72
+    }
+  ],
+  "top3": {
+    "Tomi Samitier": 1,
+    "Nico Conti": 2,
+    "Tomi Marchiano": 3
+  },
+  "upcoming": [
+    {
+      "id": "P8",
+      "phase": "Grupo",
+      "match": "Catar vs Suiza",
+      "predictions": [
+        {
+          "score": "0-2",
+          "count": 9,
+          "voters": [
+            "Epe Roth",
+            "Nico Conti",
+            "Fran Garoby",
+            "Nico Gianola",
+            "Tomi Samitier",
+            "Juan Leoni",
+            "Conrado",
+            "Pulpo",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "0-3",
+          "count": 4,
+          "voters": [
+            "Kovacic",
+            "Tomi Marchiano",
+            "JZ",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "voters": [
+            "Patru Maqui",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 1,
+          "voters": [
+            "Lucas Tkacz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P43",
+      "phase": "Grupo",
+      "match": "España vs Cabo Verde",
+      "predictions": [
+        {
+          "score": "3-0",
+          "count": 8,
+          "voters": [
+            "Epe Roth",
+            "Nico Conti",
+            "Fran Garoby",
+            "Alejo Di Fiori",
+            "Nico Gianola",
+            "Juan Leoni",
+            "Fede Lacal",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "4-0",
+          "count": 4,
+          "voters": [
+            "Patru Maqui",
+            "JZ",
+            "Tomi Samitier",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "5-0",
+          "count": 2,
+          "voters": [
+            "Kovacic",
+            "Conrado"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Lucas Tkacz"
+          ]
+        },
+        {
+          "score": "6-0",
+          "count": 1,
+          "voters": [
+            "Tomi Marchiano"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P61",
+      "phase": "Grupo",
+      "match": "Portugal vs RD Congo",
+      "predictions": [
+        {
+          "score": "2-0",
+          "count": 9,
+          "voters": [
+            "Epe Roth",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Tomi Marchiano",
+            "Alejo Di Fiori",
+            "Tomi Samitier",
+            "Juan Leoni",
+            "Fede Lacal",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "3-0",
+          "count": 5,
+          "voters": [
+            "Fran Garoby",
+            "JZ",
+            "Nico Gianola",
+            "Conrado",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Kovacic"
+          ]
+        },
+        {
+          "score": "4-1",
+          "count": 1,
+          "voters": [
+            "Patru Maqui"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P28",
+      "phase": "Grupo",
+      "match": "Ecuador vs Curazao",
+      "predictions": [
+        {
+          "score": "3-0",
+          "count": 8,
+          "voters": [
+            "Epe Roth",
+            "Kovacic",
+            "Fran Garoby",
+            "Tomi Marchiano",
+            "JZ",
+            "Tomi Samitier",
+            "Conrado",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 6,
+          "voters": [
+            "Patru Maqui",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Nico Gianola",
+            "Pulpo",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "voters": [
+            "Alejo Di Fiori",
+            "Juan Leoni"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P46",
+      "phase": "Grupo",
+      "match": "Uruguay vs Cabo Verde",
+      "predictions": [
+        {
+          "score": "2-0",
+          "count": 9,
+          "voters": [
+            "Patru Maqui",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Fran Garoby",
+            "Nico Gianola",
+            "Tomi Samitier",
+            "Juan Leoni",
+            "Pulpo",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "3-0",
+          "count": 4,
+          "voters": [
+            "Epe Roth",
+            "Kovacic",
+            "JZ",
+            "Conrado"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 2,
+          "voters": [
+            "Alejo Di Fiori",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Tomi Marchiano"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "phase": "Grupo",
+      "match": "Sudáfrica vs Rep. de Corea",
+      "predictions": [
+        {
+          "score": "0-1",
+          "count": 6,
+          "voters": [
+            "Epe Roth",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Nico Gianola",
+            "Tomi Samitier",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "voters": [
+            "Kovacic",
+            "Conrado",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "voters": [
+            "Fran Garoby",
+            "Alejo Di Fiori",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "0-3",
+          "count": 2,
+          "voters": [
+            "JZ",
+            "Juan Leoni"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 1,
+          "voters": [
+            "Patru Maqui"
+          ]
+        },
+        {
+          "score": "0-0",
+          "count": 1,
+          "voters": [
+            "Tomi Marchiano"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P53",
+      "phase": "Grupo",
+      "match": "Noruega vs Francia",
+      "predictions": [
+        {
+          "score": "1-2",
+          "count": 6,
+          "voters": [
+            "Patru Maqui",
+            "Tomi Marchiano",
+            "Alejo Di Fiori",
+            "Tomi Samitier",
+            "Juan Leoni",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "voters": [
+            "Epe Roth",
+            "Nico Gianola",
+            "Conrado"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 3,
+          "voters": [
+            "Kovacic",
+            "Fran Garoby",
+            "JZ"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 1,
+          "voters": [
+            "Lucas Tkacz"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 1,
+          "voters": [
+            "Nico Conti"
+          ]
+        },
+        {
+          "score": "0-3",
+          "count": 1,
+          "voters": [
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P54",
+      "phase": "Grupo",
+      "match": "Senegal vs Irak",
+      "predictions": [
+        {
+          "score": "2-0",
+          "count": 5,
+          "voters": [
+            "Patru Maqui",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Fran Garoby",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "voters": [
+            "Tomi Marchiano",
+            "Alejo Di Fiori",
+            "Nico Gianola",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "voters": [
+            "Juan Leoni",
+            "Conrado",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "3-0",
+          "count": 2,
+          "voters": [
+            "JZ",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "3-1",
+          "count": 1,
+          "voters": [
+            "Epe Roth"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 1,
+          "voters": [
+            "Kovacic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P47",
+      "phase": "Grupo",
+      "match": "Cabo Verde vs Arabia Saudí",
+      "predictions": [
+        {
+          "score": "0-2",
+          "count": 5,
+          "voters": [
+            "Epe Roth",
+            "Nico Gianola",
+            "Tomi Samitier",
+            "Juan Leoni",
+            "Conrado"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 3,
+          "voters": [
+            "Nico Conti",
+            "Tomi Marchiano",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "voters": [
+            "Kovacic",
+            "JZ"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 2,
+          "voters": [
+            "Patru Maqui",
+            "Fran Garoby"
+          ]
+        },
+        {
+          "score": "0-0",
+          "count": 1,
+          "voters": [
+            "Lucas Tkacz"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 1,
+          "voters": [
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "0-3",
+          "count": 1,
+          "voters": [
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P48",
+      "phase": "Grupo",
+      "match": "Uruguay vs España",
+      "predictions": [
+        {
+          "score": "1-2",
+          "count": 5,
+          "voters": [
+            "Kovacic",
+            "Patru Maqui",
+            "Alejo Di Fiori",
+            "Juan Leoni",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "voters": [
+            "Epe Roth",
+            "Nico Gianola",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 3,
+          "voters": [
+            "Nico Conti",
+            "JZ",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "voters": [
+            "Lucas Tkacz",
+            "Fran Garoby"
+          ]
+        },
+        {
+          "score": "2-2",
+          "count": 1,
+          "voters": [
+            "Tomi Marchiano"
+          ]
+        },
+        {
+          "score": "2-3",
+          "count": 1,
+          "voters": [
+            "Conrado"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P41",
+      "phase": "Grupo",
+      "match": "Egipto vs Irán",
+      "predictions": [
+        {
+          "score": "1-1",
+          "count": 5,
+          "voters": [
+            "Epe Roth",
+            "Kovacic",
+            "Lucas Tkacz",
+            "Fran Garoby",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 5,
+          "voters": [
+            "Nico Conti",
+            "Tomi Marchiano",
+            "JZ",
+            "Conrado",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 3,
+          "voters": [
+            "Patru Maqui",
+            "Nico Gianola",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 1,
+          "voters": [
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Juan Leoni"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P42",
+      "phase": "Grupo",
+      "match": "Nueva Zelanda vs Bélgica",
+      "predictions": [
+        {
+          "score": "0-2",
+          "count": 7,
+          "voters": [
+            "Epe Roth",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Fran Garoby",
+            "Tomi Marchiano",
+            "Alejo Di Fiori",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "0-3",
+          "count": 5,
+          "voters": [
+            "Patru Maqui",
+            "JZ",
+            "Nico Gianola",
+            "Conrado",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "voters": [
+            "Juan Leoni",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 1,
+          "voters": [
+            "Kovacic"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P71",
+      "phase": "Grupo",
+      "match": "Panamá vs Inglaterra",
+      "predictions": [
+        {
+          "score": "0-3",
+          "count": 7,
+          "voters": [
+            "Patru Maqui",
+            "Fran Garoby",
+            "JZ",
+            "Alejo Di Fiori",
+            "Nico Gianola",
+            "Juan Leoni",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 6,
+          "voters": [
+            "Epe Roth",
+            "Kovacic",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Tomi Marchiano",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "0-4",
+          "count": 1,
+          "voters": [
+            "Conrado"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 1,
+          "voters": [
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P72",
+      "phase": "Grupo",
+      "match": "Croacia vs Ghana",
+      "predictions": [
+        {
+          "score": "2-1",
+          "count": 7,
+          "voters": [
+            "Patru Maqui",
+            "Fran Garoby",
+            "Tomi Marchiano",
+            "Nico Gianola",
+            "Conrado",
+            "Pulpo",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 3,
+          "voters": [
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 2,
+          "voters": [
+            "Kovacic",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "voters": [
+            "Juan Leoni",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "2-2",
+          "count": 1,
+          "voters": [
+            "Epe Roth"
+          ]
+        },
+        {
+          "score": "3-0",
+          "count": 1,
+          "voters": [
+            "JZ"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P65",
+      "phase": "Grupo",
+      "match": "Colombia vs Portugal",
+      "predictions": [
+        {
+          "score": "2-1",
+          "count": 4,
+          "voters": [
+            "Epe Roth",
+            "Tomi Marchiano",
+            "Nico Gianola",
+            "Juan Leoni"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 4,
+          "voters": [
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Tomi Samitier",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 2,
+          "voters": [
+            "Fran Garoby",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "2-0",
+          "count": 1,
+          "voters": [
+            "Kovacic"
+          ]
+        },
+        {
+          "score": "2-3",
+          "count": 1,
+          "voters": [
+            "Patru Maqui"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 1,
+          "voters": [
+            "JZ"
+          ]
+        },
+        {
+          "score": "3-3",
+          "count": 1,
+          "voters": [
+            "Conrado"
+          ]
+        },
+        {
+          "score": "2-2",
+          "count": 1,
+          "voters": [
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 1,
+          "voters": [
+            "Gian Luttini"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P66",
+      "phase": "Grupo",
+      "match": "RD Congo vs Uzbekistán",
+      "predictions": [
+        {
+          "score": "1-2",
+          "count": 5,
+          "voters": [
+            "Epe Roth",
+            "Kovacic",
+            "Patru Maqui",
+            "JZ",
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 4,
+          "voters": [
+            "Nico Conti",
+            "Tomi Marchiano",
+            "Conrado",
+            "Fede Lacal"
+          ]
+        },
+        {
+          "score": "1-1",
+          "count": 2,
+          "voters": [
+            "Lucas Tkacz",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "2-1",
+          "count": 2,
+          "voters": [
+            "Fran Garoby",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "0-1",
+          "count": 2,
+          "voters": [
+            "Juan Leoni",
+            "Pulpo"
+          ]
+        },
+        {
+          "score": "2-2",
+          "count": 1,
+          "voters": [
+            "Nico Gianola"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P59",
+      "phase": "Grupo",
+      "match": "Argelia vs Austria",
+      "predictions": [
+        {
+          "score": "1-1",
+          "count": 8,
+          "voters": [
+            "Kovacic",
+            "Patru Maqui",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Fran Garoby",
+            "Tomi Marchiano",
+            "Pulpo",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "1-2",
+          "count": 3,
+          "voters": [
+            "Epe Roth",
+            "JZ",
+            "Juan Leoni"
+          ]
+        },
+        {
+          "score": "2-2",
+          "count": 1,
+          "voters": [
+            "Alejo Di Fiori"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 1,
+          "voters": [
+            "Nico Gianola"
+          ]
+        },
+        {
+          "score": "1-0",
+          "count": 1,
+          "voters": [
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "0-0",
+          "count": 1,
+          "voters": [
+            "Conrado"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 1,
+          "voters": [
+            "Fede Lacal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "P60",
+      "phase": "Grupo",
+      "match": "Jordania vs Argentina",
+      "predictions": [
+        {
+          "score": "0-3",
+          "count": 6,
+          "voters": [
+            "JZ",
+            "Alejo Di Fiori",
+            "Juan Leoni",
+            "Pulpo",
+            "Fede Lacal",
+            "Gian Luttini"
+          ]
+        },
+        {
+          "score": "0-2",
+          "count": 5,
+          "voters": [
+            "Patru Maqui",
+            "Lucas Tkacz",
+            "Nico Conti",
+            "Fran Garoby",
+            "Tomi Samitier"
+          ]
+        },
+        {
+          "score": "1-3",
+          "count": 3,
+          "voters": [
+            "Epe Roth",
+            "Tomi Marchiano",
+            "Nico Gianola"
+          ]
+        },
+        {
+          "score": "0-4",
+          "count": 1,
+          "voters": [
+            "Kovacic"
+          ]
+        },
+        {
+          "score": "0-5",
+          "count": 1,
+          "voters": [
+            "Conrado"
+          ]
+        }
+      ]
+    }
+  ],
+  "colors": {
+    "Tomi Samitier": "#FF5733",
+    "Nico Conti": "#33FF57",
+    "Patru Maqui": "#3357FF",
+    "Lucas Tkacz": "#FF33A1",
+    "Epe Roth": "#A133FF",
+    "Tomi Marchiano": "#33FFF0",
+    "Alejo Di Fiori": "#FF8F33",
+    "Pulpo": "#8FFF33",
+    "Nico Gianola": "#FF3333",
+    "Fran Garoby": "#33FF8F",
+    "JZ": "#8F33FF",
+    "Juan Leoni": "#FF338F",
+    "Kovacic": "#338FFF",
+    "Conrado": "#FFC133",
+    "Gian Luttini": "#33FFC1",
+    "Fede Lacal": "#C133FF"
+  }
+}

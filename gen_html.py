@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html = r'''<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -688,4 +688,8 @@ fetch('./data.json')
   .catch(function(err){document.getElementById('loading').innerHTML='<p style="color:var(--pink)">Error al cargar datos.<br><small>'+err.message+'</small></p>';});
 </script>
 </body>
-</html>
+</html>'''
+
+with open(r'C:\Users\fedel\Desktop\bot_prode\docs\index.html', 'w', encoding='utf-8') as f:
+    f.write(html)
+print('OK - {} chars'.format(len(html)))

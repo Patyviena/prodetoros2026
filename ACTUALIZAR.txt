@@ -1,0 +1,77 @@
+PRODE TOROS 2026 — COMO ACTUALIZAR
+====================================
+
+FLUJO ESTANDAR (cada vez que se carga un resultado en el Sheet):
+-----------------------------------------------------------------
+
+PASO 1 — Actualizar datos desde Google Sheet
+  Abrir terminal en: c:\Users\fedel\Desktop\bot_prode
+  Correr: python update_prode.py --no-push
+  Verifica que diga "Partidos jugados: X" y el lider correcto.
+
+PASO 2 — Regenerar HTML
+  Abrir terminal en: c:\Users\fedel\Desktop\bot_prode
+  Correr: python gen_html.py
+  Debe decir "OK - XXXXX chars"
+
+PASO 3 — Verificar local
+  Asegurarse de que el servidor local este corriendo:
+    cd c:\Users\fedel\Desktop\bot_prode\docs
+    python -m http.server 8787
+  Abrir: http://localhost:8787
+  Revisar: tabla, grafico, bracket (que el partido nuevo aparezca jugado)
+
+PASO 4 — Pushear a GitHub
+  cd c:\Users\fedel\Desktop\bot_prode
+  git add docs/data.json docs/index.html
+  git commit -m "datos: [descripcion breve del partido]"
+  git push
+
+PASO 5 — Verificar en vivo
+  Esperar 1-3 minutos, luego abrir:
+  https://patyviena.github.io/prodetoros2026/
+
+
+CUANDO TERMINA UNA FASE COMPLETA:
+-----------------------------------
+Abrir update_prode.py y cambiar la variable MATCHES_PLAYED_UP_TO:
+
+  Grupos terminados   -> MATCHES_PLAYED_UP_TO = 72   (ya configurado)
+  16avos terminados   -> MATCHES_PLAYED_UP_TO = 88
+  Octavos terminados  -> MATCHES_PLAYED_UP_TO = 96
+  Cuartos terminados  -> MATCHES_PLAYED_UP_TO = 100
+  Semis terminadas    -> MATCHES_PLAYED_UP_TO = 102
+  Todo terminado      -> MATCHES_PLAYED_UP_TO = 104
+
+Luego correr Paso 1 → 4 normal.
+
+
+PARA DESBLOQUEAR EL SIMULADOR:
+--------------------------------
+Cuando todos hayan completado la planilla de 16avos:
+En gen_html.py buscar el div con id="sim-lock-overlay" y eliminarlo.
+Luego regenerar HTML (Paso 2) y pushear (Paso 4).
+
+
+PARA AGREGAR FECHAS CONFIRMADAS DE PARTIDOS:
+---------------------------------------------
+En update_prode.py, en el dict MATCH_DATES, agregar la fecha exacta:
+  "P74": "2026-06-29",  # Alemania v Paraguay
+Solo agregar si la fecha es 100% confirmada. Formato YYYY-MM-DD.
+Esto hace que el candado del bracket muestre la fecha, y que show_preds
+se active automaticamente el dia del partido.
+
+
+LOGICA DE PUNTOS (recordatorio):
+----------------------------------
+Grupos:   comun=2, exacto=5, exacto+3goles=7
+16avos:   comun=2, exacto=5
+Octavos:  comun=3, exacto=7
+Cuartos:  comun=3, exacto=7  (revisar con el prode original)
+Semis:    comun=3, exacto=7
+Final:    comun=5, exacto=10
+Clasificado: +2 en cualquier fase de eliminatorias
+
+La columna "% Win" usa simulacion Monte Carlo (6000 iteraciones en el
+browser del usuario). NO gasta tokens. Se recalcula cada vez que se
+abre la pagina.

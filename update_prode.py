@@ -27,8 +27,22 @@ MATCHES_PLAYED_UP_TO = 72
 
 # Fechas de los 16avos (YYYY-MM-DD). Corregir si hay error.
 MATCH_DATES = {
-    "P73": "2026-06-28",  # Sudafrica v Canada (confirmada)
-    # Agregar fechas exactas de los demas 16avos cuando esten confirmadas
+    "P73": "2026-06-28",  # Sudafrica v Canada
+    "P74": "2026-06-29",  # Alemania v Paraguay
+    "P75": "2026-06-29",  # Paises Bajos v Marruecos
+    "P76": "2026-06-29",  # Brasil v Japon
+    "P77": "2026-06-30",  # Francia v Suecia
+    "P78": "2026-06-30",  # Costa de Marfil v Noruega
+    "P79": "2026-06-30",  # Mexico v Ecuador
+    "P80": "2026-07-01",  # Inglaterra v RD Congo
+    "P81": "2026-07-01",  # Estados Unidos v Bosnia
+    "P82": "2026-07-01",  # Belgica v Senegal
+    "P83": "2026-07-02",  # Portugal v Croacia
+    "P84": "2026-07-02",  # Espana v Austria
+    "P85": "2026-07-02",  # Suiza v Algeria
+    "P86": "2026-07-03",  # Argentina v Cabo Verde
+    "P87": "2026-07-03",  # Colombia v Ghana
+    "P88": "2026-07-03",  # Australia v Egipto
 }
 
 COLOR_PALETTE = {

@@ -11,13 +11,25 @@ import json
 import os
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, date
 import urllib.request
 import urllib.error
 
 # --- Configuracion ---
 SHEET_ID = "112gxMftT2pKnt3WPfbtrfhTaedodnmWZgOzEYdChYXg"
-GID_DATA  = "587902986"   # Tab: DATA PARA TABLA
+GID_DATA    = "587902986"   # Tab: DATA PARA TABLA
+GID_CLASSIF = "2141517289"  # Tab: TABLA Clasificados
+
+# Ultimo partido confirmado como jugado.
+# Grupos=72, 16avos=88, Octavos=96, Cuartos=100, Semis=102, Final=104
+# Actualizar cuando termine cada fase.
+MATCHES_PLAYED_UP_TO = 72
+
+# Fechas de los 16avos (YYYY-MM-DD). Corregir si hay error.
+MATCH_DATES = {
+    "P73": "2026-06-28",  # Sudafrica v Canada (confirmada)
+    # Agregar fechas exactas de los demas 16avos cuando esten confirmadas
+}
 
 COLOR_PALETTE = {
     "Tomi Samitier":  "#FF5733",
@@ -39,24 +51,67 @@ COLOR_PALETTE = {
 }
 
 
-def get_phase(match_id: str) -> str:
-    num = match_id.replace("P", "")
-    if not num.isdigit():
-        return "Grupo"
-    n = int(num)
-    if n <= 72:   return "Grupo"
-    if n <= 88:   return "16avos"
-    if n <= 96:   return "Octavos"
-    if n <= 100:  return "Cuartos"
-    if n <= 102:  return "Semis"
-    if n == 103:  return "Tercer Puesto"
-    return "Final"
+# Cuadro eliminatorio completo con placeholders
+KNOCKOUT_BRACKET = [
+    ("P73",  "16avos",     "1ro A vs 2do B"),
+    ("P74",  "16avos",     "1ro B vs 2do A"),
+    ("P75",  "16avos",     "1ro C vs 2do D"),
+    ("P76",  "16avos",     "1ro D vs 2do C"),
+    ("P77",  "16avos",     "1ro E vs 2do F"),
+    ("P78",  "16avos",     "1ro F vs 2do E"),
+    ("P79",  "16avos",     "1ro G vs 2do H"),
+    ("P80",  "16avos",     "1ro H vs 2do G"),
+    ("P81",  "16avos",     "1ro I vs 2do J"),
+    ("P82",  "16avos",     "1ro J vs 2do I"),
+    ("P83",  "16avos",     "1ro K vs 2do L"),
+    ("P84",  "16avos",     "1ro L vs 2do K"),
+    ("P85",  "16avos",     "3ros mejor (1) vs (2)"),
+    ("P86",  "16avos",     "3ros mejor (3) vs (4)"),
+    ("P87",  "16avos",     "3ros mejor (5) vs (6)"),
+    ("P88",  "16avos",     "3ros mejor (7) vs (8)"),
+    ("P89",  "Octavos",    "Gan. 16avos P1 vs P2"),
+    ("P90",  "Octavos",    "Gan. 16avos P3 vs P4"),
+    ("P91",  "Octavos",    "Gan. 16avos P5 vs P6"),
+    ("P92",  "Octavos",    "Gan. 16avos P7 vs P8"),
+    ("P93",  "Octavos",    "Gan. 16avos P9 vs P10"),
+    ("P94",  "Octavos",    "Gan. 16avos P11 vs P12"),
+    ("P95",  "Octavos",    "Gan. 16avos P13 vs P14"),
+    ("P96",  "Octavos",    "Gan. 16avos P15 vs P16"),
+    ("P97",  "Cuartos",    "Gan. Oct. P1 vs P2"),
+    ("P98",  "Cuartos",    "Gan. Oct. P3 vs P4"),
+    ("P99",  "Cuartos",    "Gan. Oct. P5 vs P6"),
+    ("P100", "Cuartos",    "Gan. Oct. P7 vs P8"),
+    ("P101", "Semis",      "Gan. Ctos. P1 vs P2"),
+    ("P102", "Semis",      "Gan. Ctos. P3 vs P4"),
+    ("P103", "3er Puesto", "Perdedor Semi 1 vs Semi 2"),
+    ("P104", "Final",      "Gran Final"),
+]
 
 
 def fetch_csv(gid: str) -> str:
     url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid={gid}"
     with urllib.request.urlopen(url) as r:
         return r.read().decode("utf-8-sig")
+
+
+def parse_classif(csv_text: str, players: list) -> dict:
+    """Lee TABLA Clasificados y devuelve {match_id: {player: team_name_raw}}"""
+    rows = list(csv.reader(io.StringIO(csv_text)))
+    if not rows:
+        return {}
+    # Fila 0: N, Partido, Jugador1, Jugador2, ...
+    header = rows[0]
+    col_map = {cell.strip(): ci for ci, cell in enumerate(header) if cell.strip() in players}
+    result = {}
+    for row in rows[2:]:  # saltar fila 0 (headers) y fila 1 (sub-headers)
+        if not row or not row[0].strip().startswith("P"):
+            continue
+        match_id = row[0].strip()
+        for player, ci in col_map.items():
+            val = row[ci].strip() if ci < len(row) else ""
+            if val:
+                result.setdefault(match_id, {})[player] = val
+    return result
 
 
 def parse_data(csv_text: str) -> dict:
@@ -71,8 +126,9 @@ def parse_data(csv_text: str) -> dict:
     players = [rows[0][c].strip() for c in range(2, len(rows[0]), 3) if rows[0][c].strip()]
 
     matches_played = []
+    group_total = 0      # total P1-P72 rows encontradas en el sheet
     history = {p: [0] for p in players}
-    upcoming = []
+    knockout_data = {}   # match_id -> {match_name, player_data, played, has_preds}
 
     for row in rows[2:]:
         if not row or not row[0].strip() or not row[0].strip().startswith("P"):
@@ -82,7 +138,6 @@ def parse_data(csv_text: str) -> dict:
         if not match_name:
             continue
 
-        # Extraer prediccion y puntos de cada jugador
         player_data = {}
         for i, player in enumerate(players):
             base = 2 + i * 3
@@ -90,53 +145,86 @@ def parse_data(csv_text: str) -> dict:
             pred_v = row[base + 1].strip() if base + 1 < len(row) else ""
             pts_s  = row[base + 2].strip() if base + 2 < len(row) else "0"
             player_data[player] = {
-                "pred": f"{pred_l}-{pred_v}" if pred_l and pred_v else "",
+                "pred": f"{pred_l}-{pred_v}" if pred_l and pred_v else None,
                 "pts":  int(pts_s) if pts_s.lstrip("-").isdigit() else 0,
             }
 
-        total_pts  = sum(d["pts"] for d in player_data.values())
-        has_preds  = any(d["pred"] for d in player_data.values())
+        total_pts = sum(d["pts"] for d in player_data.values())
+        has_preds = any(d["pred"] for d in player_data.values())
+        num = match_id[1:]
+        match_num = int(num) if num.isdigit() else 999
 
-        if total_pts > 0:
-            # Partido jugado: avanzar historico acumulado
-            matches_played.append(match_name)
-            for p in players:
-                history[p].append(history[p][-1] + player_data[p]["pts"])
+        if match_num <= 72:
+            group_total += 1
+            # Partido jugado si tiene puntos, O si la fase esta confirmada como completa
+            if total_pts > 0 or (has_preds and match_num <= MATCHES_PLAYED_UP_TO):
+                matches_played.append(match_name)
+                for p in players:
+                    history[p].append(history[p][-1] + player_data[p]["pts"])
+        else:
+            # Eliminatorias
+            knockout_data[match_id] = {
+                "match_name": match_name,
+                "player_data": player_data,
+                "played": total_pts > 0,
+                "has_preds": has_preds,
+            }
 
-        elif has_preds:
-            # Partido proximo: predicciones cargadas, sin resultado aun
-            score_groups: dict[str, list] = {}
-            for player in players:
-                score = player_data[player]["pred"]
-                if score:
-                    score_groups.setdefault(score, []).append(player)
+    # Construir cuadro eliminatorio: bracket fijo + datos reales del sheet
+    knockout_matches = []
+    for match_id, phase, placeholder_name in KNOCKOUT_BRACKET:
+        actual = knockout_data.get(match_id)
+        using_real_name = False
+        if actual:
+            raw_name = actual["match_name"]
+            if " vs " in raw_name.lower() or " v " in raw_name:
+                match_name = raw_name
+                using_real_name = True
+            else:
+                match_name = placeholder_name   # nombre del sheet es solo label de fase
+            player_data = actual["player_data"]
+            played      = actual["played"]
+            has_preds   = actual["has_preds"]
+        else:
+            match_name  = placeholder_name
+            player_data = {p: {"pred": None, "pts": 0} for p in players}
+            played      = False
+            has_preds   = False
 
-            preds = sorted(
-                [{"score": s, "count": len(v), "voters": v} for s, v in score_groups.items()],
-                key=lambda x: -x["count"],
-            )
-            upcoming.append({
-                "id":          match_id,
-                "phase":       get_phase(match_id),
-                "match":       match_name,
-                "predictions": preds,
-            })
+        is_tbd     = not using_real_name and not has_preds
+        match_date = MATCH_DATES.get(match_id, "")
+        today_str  = date.today().isoformat()
+        show_preds = played or bool(match_date and match_date <= today_str)
 
-    # Ranking final (ordenado por puntos desc)
-    final_pts = {p: history[p][-1] for p in players}
+        knockout_matches.append({
+            "id":          match_id,
+            "phase":       phase,
+            "match":       match_name,
+            "match_date":  match_date,
+            "is_tbd":      is_tbd,
+            "has_preds":   has_preds,
+            "played":      played,
+            "show_preds":  show_preds,
+            "predictions": {p: player_data[p]["pred"] for p in players},
+            "points":      {p: player_data[p]["pts"]  for p in players},
+        })
+
+    # Ranking final
+    final_pts      = {p: history[p][-1] for p in players}
     sorted_players = sorted(players, key=lambda p: -final_pts[p])
     ranking = [{"pos": i + 1, "name": p, "pts": final_pts[p]} for i, p in enumerate(sorted_players)]
     top3    = {r["name"]: r["pos"] for r in ranking if r["pos"] <= 3}
 
     return {
-        "last_updated":   datetime.now().strftime("%d/%m/%Y %H:%M"),
-        "players":        players,
-        "matches_played": matches_played,
-        "history":        history,
-        "ranking":        ranking,
-        "top3":           top3,
-        "upcoming":       upcoming,
-        "colors":         COLOR_PALETTE,
+        "last_updated":     datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "players":          players,
+        "group_total":      group_total,
+        "matches_played":   matches_played,
+        "history":          history,
+        "ranking":          ranking,
+        "top3":             top3,
+        "knockout_matches": knockout_matches,
+        "colors":           COLOR_PALETTE,
     }
 
 
@@ -173,15 +261,27 @@ def main() -> None:
     print("[2/3] Procesando datos...")
     data = parse_data(csv_text)
 
+    print("      Leyendo clasificados...")
+    try:
+        classif_csv = fetch_csv(GID_CLASSIF)
+        classif_data = parse_classif(classif_csv, data["players"])
+        for m in data["knockout_matches"]:
+            m["classif"] = classif_data.get(m["id"], {})
+        cls_matches = sum(1 for m in data["knockout_matches"] if m["classif"])
+        print(f"      Clasificados: {cls_matches} partidos con datos")
+    except Exception as e:
+        print(f"      Aviso: no se pudo leer clasificados ({e})")
+        for m in data["knockout_matches"]:
+            m["classif"] = {}
+
     os.makedirs("docs", exist_ok=True)
     out = os.path.join("docs", "data.json")
     with open(out, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"\n  Partidos jugados : {len(data['matches_played'])}")
-    print(f"  Proximos partidos: {len(data['upcoming'])}")
     lider = data["ranking"][0]
-    print(f"  Lider            : {lider['name']} ({lider['pts']} pts)")
+    print(f"\n  Partidos de grupos jugados : {len(data['matches_played'])}")
+    print(f"  Lider                      : {lider['name']} ({lider['pts']} pts)")
 
     if no_push:
         print("\n[3/3] Modo --no-push: JSON generado localmente.")

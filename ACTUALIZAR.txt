@@ -1,40 +1,39 @@
 PRODE TOROS 2026 — COMO ACTUALIZAR
 ====================================
 
-FLUJO ESTANDAR (cada vez que se carga un resultado en el Sheet):
------------------------------------------------------------------
+ARQUITECTURA RAPIDA:
+  - update_prode.py lee el Google Sheet y genera docs/data.json
+  - gen_html.py genera docs/index.html (el "shell" estatico)
+  - El HTML hace fetch('./data.json') al cargarse — solo el JSON cambia con cada resultado
+  - CONCLUSION: para actualizar resultados, solo necesitas correr update_prode.py (no tocar el HTML)
 
-PASO 1 — Actualizar datos desde Google Sheet
+
+===========================================================
+FLUJO ESTANDAR — ACTUALIZAR UN RESULTADO (lo mas comun)
+===========================================================
+
+PASO 1 — Cargá el resultado en el Google Sheet
+  Entrá al Sheet, ponés el marcador real del partido.
+  Las formulas del sheet calculan automaticamente los puntos de cada jugador.
+  ESPERAR 2-3 minutos para que se limpie el cache de Google Sheets.
+
+PASO 2 — Actualizar y publicar (UN SOLO COMANDO)
   Abrir terminal en: c:\Users\fedel\Desktop\bot_prode
-  Correr: python update_prode.py --no-push
-  Verifica que diga "Partidos jugados: X" y el lider correcto.
+  Correr: python update_prode.py
+  Esto hace todo junto: lee el sheet, genera el JSON, hace git push automatico.
+  Si dice "Listo!" al final, ya esta publicado.
 
-PASO 2 — Regenerar HTML
-  Abrir terminal en: c:\Users\fedel\Desktop\bot_prode
-  Correr: python gen_html.py
-  Debe decir "OK - XXXXX chars"
-
-PASO 3 — Verificar local
-  Asegurarse de que el servidor local este corriendo:
-    cd c:\Users\fedel\Desktop\bot_prode\docs
-    python -m http.server 8787
-  Abrir: http://localhost:8787
-  Revisar: tabla, grafico, bracket (que el partido nuevo aparezca jugado)
-
-PASO 4 — Pushear a GitHub
-  cd c:\Users\fedel\Desktop\bot_prode
-  git add docs/data.json docs/index.html
-  git commit -m "datos: [descripcion breve del partido]"
-  git push
-
-PASO 5 — Verificar en vivo
+PASO 3 — Verificar en vivo
   Esperar 1-3 minutos, luego abrir:
   https://patyviena.github.io/prodetoros2026/
+  Verificar que el partido nuevo aparezca jugado en el bracket (borde verde).
 
 
-CUANDO TERMINA UNA FASE COMPLETA:
------------------------------------
-Abrir update_prode.py y cambiar la variable MATCHES_PLAYED_UP_TO:
+===========================================================
+CUANDO TERMINA UNA FASE COMPLETA (todos los partidos)
+===========================================================
+Esto solo importa si hay partidos donde TODOS los jugadores sacaron 0 pts.
+En ese caso, abrir update_prode.py y cambiar MATCHES_PLAYED_UP_TO:
 
   Grupos terminados   -> MATCHES_PLAYED_UP_TO = 72   (ya configurado)
   16avos terminados   -> MATCHES_PLAYED_UP_TO = 88
@@ -43,35 +42,69 @@ Abrir update_prode.py y cambiar la variable MATCHES_PLAYED_UP_TO:
   Semis terminadas    -> MATCHES_PLAYED_UP_TO = 102
   Todo terminado      -> MATCHES_PLAYED_UP_TO = 104
 
-Luego correr Paso 1 → 4 normal.
+Luego correr el FLUJO ESTANDAR normal (Paso 2).
+NOTA: para la eliminatoria esto casi nunca pasa (si nadie acerta, igual aparece played=True por total_pts).
 
 
-PARA DESBLOQUEAR EL SIMULADOR:
---------------------------------
-Cuando todos hayan completado la planilla de 16avos:
-En gen_html.py buscar el div con id="sim-lock-overlay" y eliminarlo.
-Luego regenerar HTML (Paso 2) y pushear (Paso 4).
+===========================================================
+CUANDO HAY CAMBIOS EN EL CODIGO (gen_html.py o update_prode.py)
+===========================================================
+Solo en este caso hay que regenerar el HTML tambien:
+
+  python update_prode.py --no-push    (genera JSON, sin publicar)
+  python gen_html.py                  (regenera el HTML)
+  [revisar en http://localhost:8787]
+  git add docs/data.json docs/index.html
+  git commit -m "descripcion del cambio"
+  git push
 
 
-PARA AGREGAR FECHAS CONFIRMADAS DE PARTIDOS:
----------------------------------------------
-En update_prode.py, en el dict MATCH_DATES, agregar la fecha exacta:
-  "P74": "2026-06-29",  # Alemania v Paraguay
-Solo agregar si la fecha es 100% confirmada. Formato YYYY-MM-DD.
+===========================================================
+PARA DESBLOQUEAR EL SIMULADOR
+===========================================================
+Cuando todos hayan completado la planilla de 16avos y quieras habilitar el sim:
+  1. Abrir gen_html.py
+  2. Buscar el div con id="sim-lock-overlay" y ELIMINAR todo ese bloque
+  3. Correr: python gen_html.py
+  4. git add docs/index.html && git commit -m "unlock simulador" && git push
+
+
+===========================================================
+PARA AGREGAR FECHAS CONFIRMADAS DE PARTIDOS
+===========================================================
+En update_prode.py, dict MATCH_DATES, agregar la fecha exacta:
+  "P89": "2026-07-05",  # ejemplo octavos
+Solo si la fecha es 100% confirmada. Formato YYYY-MM-DD.
 Esto hace que el candado del bracket muestre la fecha, y que show_preds
 se active automaticamente el dia del partido.
 
 
-LOGICA DE PUNTOS (recordatorio):
-----------------------------------
+===========================================================
+LOGICA DE PUNTOS (recordatorio)
+===========================================================
 Grupos:   comun=2, exacto=5, exacto+3goles=7
-16avos:   comun=2, exacto=5
-Octavos:  comun=3, exacto=7
-Cuartos:  comun=3, exacto=7  (revisar con el prode original)
-Semis:    comun=3, exacto=7
-Final:    comun=5, exacto=10
-Clasificado: +2 en cualquier fase de eliminatorias
+16avos:   comun=2, exacto=5, clasificado=+2
+Octavos:  comun=3, exacto=7, clasificado=+2
+Cuartos:  comun=3, exacto=7, clasificado=+2
+Semis:    comun=3, exacto=7, clasificado=+2
+3er Pst:  comun=3, exacto=7, clasificado=+2
+Final:    comun=5, exacto=10, clasificado=+2
 
 La columna "% Win" usa simulacion Monte Carlo (6000 iteraciones en el
-browser del usuario). NO gasta tokens. Se recalcula cada vez que se
-abre la pagina.
+browser del usuario). NO gasta tokens. Se recalcula sola cada vez que
+se abre la pagina.
+
+
+===========================================================
+CHEQUEO DE EMERGENCIA — si algo falla
+===========================================================
+Ver cuantos partidos tiene el JSON:
+  python -c "import json; d=json.load(open('docs/data.json')); print(len(d['matches_played']), 'partidos, lider:', d['ranking'][0]['name'], d['ranking'][0]['pts'], 'pts')"
+
+Ver si el sheet se esta leyendo bien antes de publicar:
+  python update_prode.py --no-push
+  (si el lider y los pts se ven bien, listo para publicar sin --no-push)
+
+Servidor local para preview:
+  cd docs && python -m http.server 8787
+  Abrir: http://localhost:8787

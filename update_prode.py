@@ -191,6 +191,17 @@ def parse_data(csv_text: str) -> dict:
                 "has_preds": has_preds,
             }
 
+    # Sumar puntos de eliminatorias jugadas al historial y ranking
+    for match_id, phase, placeholder_name in KNOCKOUT_BRACKET:
+        kd = knockout_data.get(match_id)
+        if not kd or not kd["played"]:
+            continue
+        raw_name = kd["match_name"]
+        mn = raw_name if (" vs " in raw_name.lower() or " v " in raw_name) else placeholder_name
+        matches_played.append(mn)
+        for p in players:
+            history[p].append(history[p][-1] + kd["player_data"][p]["pts"])
+
     # Construir cuadro eliminatorio: bracket fijo + datos reales del sheet
     knockout_matches = []
     for match_id, phase, placeholder_name in KNOCKOUT_BRACKET:

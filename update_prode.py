@@ -141,6 +141,7 @@ def parse_data(csv_text: str) -> dict:
 
     matches_played = []
     group_total = 0      # total P1-P72 rows encontradas en el sheet
+    group_preds  = []    # predicciones por partido para la matriz
     history = {p: [0] for p in players}
     knockout_data = {}   # match_id -> {match_name, player_data, played, has_preds}
 
@@ -175,6 +176,12 @@ def parse_data(csv_text: str) -> dict:
                 matches_played.append(match_name)
                 for p in players:
                     history[p].append(history[p][-1] + player_data[p]["pts"])
+                group_preds.append({
+                    "id":          match_id,
+                    "match":       match_name,
+                    "predictions": {p: player_data[p]["pred"] for p in players},
+                    "pts":         {p: player_data[p]["pts"]  for p in players},
+                })
         else:
             # Eliminatorias
             knockout_data[match_id] = {
@@ -234,6 +241,7 @@ def parse_data(csv_text: str) -> dict:
         "players":          players,
         "group_total":      group_total,
         "matches_played":   matches_played,
+        "group_preds":      group_preds,
         "history":          history,
         "ranking":          ranking,
         "top3":             top3,

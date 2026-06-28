@@ -175,6 +175,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-cls-btn.active{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
 .pg-classif{font-size:.65rem;color:var(--cyan);margin-left:4px;}
 .relator-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+/* Paneles herramientas adicionales (compartido) */
+.tool-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.tool-header{padding:28px 48px 20px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.tool-title{font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.tool-subtitle{font-size:.82rem;color:var(--muted);}
+.tool-body{flex:1;overflow-y:scroll;padding:28px 40px 60px;scrollbar-width:none;}
+.tool-body::-webkit-scrollbar{display:none;}
+/* Badges */
+.badges-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
+.badge-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:6px;transition:border-color .2s;}
+.badge-card:hover{border-color:var(--gold);}
+.badge-icon{font-size:1.8rem;line-height:1;}
+.badge-title{font-size:.95rem;font-weight:700;margin-top:4px;}
+.badge-desc{font-size:.75rem;color:var(--muted);line-height:1.5;}
+.badge-winner{font-size:1rem;font-weight:700;margin-top:8px;}
+.badge-stat{font-size:.78rem;color:var(--muted);}
+/* Matriz de predicciones */
+.matrix-wrap{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.matrix-wrap::-webkit-scrollbar{height:5px;}
+.matrix-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.matrix-table{border-collapse:collapse;font-size:.72rem;min-width:100%;}
+.matrix-table th{position:sticky;top:0;background:var(--bg-card);padding:6px 4px;text-align:center;border-bottom:2px solid var(--border);white-space:nowrap;font-weight:600;z-index:2;}
+.matrix-match-col{text-align:left!important;min-width:160px;position:sticky;left:0;z-index:3!important;background:var(--bg-card)!important;}
+.matrix-res-col{min-width:54px;}
+.matrix-player-col{min-width:48px;font-size:.65rem;}
+.matrix-table td{padding:4px;text-align:center;border-bottom:1px solid rgba(48,54,61,.5);}
+.matrix-match-name{text-align:left!important;color:var(--muted);font-size:.7rem;position:sticky;left:0;background:var(--bg);z-index:1;padding:4px 8px 4px 0!important;}
+.matrix-actual{font-weight:600;color:var(--text);}
+.matrix-cell{border-radius:4px;font-variant-numeric:tabular-nums;}
+.mx-exact{background:rgba(63,185,80,.18);color:#3fb950;font-weight:700;}
+.mx-common{background:rgba(255,215,0,.12);color:var(--gold);}
+.mx-miss{background:rgba(255,64,129,.08);color:rgba(255,64,129,.6);}
+tr.diff-hard .matrix-match-name{color:var(--pink);}
+tr.diff-med .matrix-match-name{color:var(--gold2);}
+.matrix-legend{display:flex;gap:16px;margin-bottom:16px;font-size:.75rem;flex-wrap:wrap;}
+.mx-leg{display:flex;align-items:center;gap:6px;}
+.mx-leg-dot{width:10px;height:10px;border-radius:3px;}
+/* Dificultad */
+.dif-table{width:100%;border-collapse:collapse;font-size:.82rem;}
+.dif-table th{padding:8px 10px;text-align:left;border-bottom:2px solid var(--border);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);}
+.dif-table td{padding:7px 10px;border-bottom:1px solid rgba(48,54,61,.5);}
+.dif-match{color:var(--text);font-weight:500;}
+.dif-result{font-variant-numeric:tabular-nums;color:var(--muted);}
+.dif-num{text-align:center;font-variant-numeric:tabular-nums;font-weight:600;}
+.dif-bar-cell{display:flex;align-items:center;gap:10px;min-width:200px;}
+.dif-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.dif-fill{height:100%;background:var(--pink);border-radius:3px;transition:width .3s;}
+.dif-label{font-size:.72rem;white-space:nowrap;color:var(--muted);}
+.dif-rank-badge{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--border);font-size:.65rem;font-weight:700;text-align:center;line-height:22px;color:var(--muted);}
 .relator-header{padding:28px 48px 20px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;}
 .relator-title{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:5px;}
 .relator-subtitle{font-size:.76rem;color:var(--muted);}
@@ -207,7 +256,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .mob-btn.active{color:var(--cyan);}
 /* Hide rank columns on mobile */
 .rk-hide-mob{}
-@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:28px 16px;}.relator-body{padding:24px 16px;}.mobile-bnav{display:flex;}.main-content,.sim-content,.relator-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:260px;}.rk-form{gap:2px;}.ranking-table th,.ranking-table td{padding:8px 6px;font-size:.82rem;}}
+@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:28px 16px;}.relator-body,.tool-body{padding:20px 16px 62px;}.tool-header{padding:20px 16px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;}.mobile-bnav::-webkit-scrollbar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:260px;}.rk-form{gap:2px;}.ranking-table th,.ranking-table td{padding:8px 6px;font-size:.82rem;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}}
 </style>
 </head>
 <body>
@@ -238,6 +287,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
       </button>
       <button class="nav-item relator-nav" data-panel="relator">
         <span class="nav-icon">&#127908;</span>Relator de Prode
+      </button>
+      <div class="nav-divider"></div>
+      <div class="nav-section">Estadisticas</div>
+      <button class="nav-item" data-panel="badges">
+        <span class="nav-icon">&#127941;</span>Premios
+      </button>
+      <button class="nav-item" data-panel="matrix">
+        <span class="nav-icon">&#128202;</span>Predicciones
+      </button>
+      <button class="nav-item" data-panel="dificultad">
+        <span class="nav-icon">&#127919;</span>Dificultad
       </button>
     </nav>
     <div class="sidebar-footer">
@@ -345,6 +405,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
     <div class="relator-body" id="relator-body"></div>
   </div>
 
+  <div class="tool-content" id="badges-content" style="display:none">
+    <div class="tool-header">
+      <div class="tool-title"><div class="section-bar" style="background:var(--gold)"></div>Premios</div>
+      <div class="tool-subtitle">Estadisticas destacadas de la fase de grupos — calculadas automaticamente</div>
+    </div>
+    <div class="tool-body" id="badges-body"></div>
+  </div>
+
+  <div class="tool-content" id="matrix-content" style="display:none">
+    <div class="tool-header">
+      <div class="tool-title"><div class="section-bar" style="background:var(--cyan)"></div>Matriz de Predicciones</div>
+      <div class="tool-subtitle">Que predijo cada uno en cada partido jugado — verde=exacto, amarillo=comun, rojo=fallo</div>
+    </div>
+    <div class="tool-body" id="matrix-body"></div>
+  </div>
+
+  <div class="tool-content" id="dificultad-content" style="display:none">
+    <div class="tool-header">
+      <div class="tool-title"><div class="section-bar" style="background:var(--pink)"></div>Partidos por Dificultad</div>
+      <div class="tool-subtitle">Los 72 partidos de grupos ordenados por cuantos jugadores acertaron la direccion</div>
+    </div>
+    <div class="tool-body" id="dificultad-body"></div>
+  </div>
+
   <div class="s-dots" id="s-dots">
     <button class="s-dot active" title="Evolucion"></button>
     <button class="s-dot" title="Tabla"></button>
@@ -356,6 +440,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
     <button class="mob-btn" data-target="section-ranking"><span class="mi">&#127942;</span>Tabla</button>
     <button class="mob-btn" data-target="section-bracket"><span class="mi">&#9917;</span>Bracket</button>
     <button class="mob-btn" data-panel="relator"><span class="mi">&#127908;</span>Relator</button>
+    <button class="mob-btn" data-panel="badges"><span class="mi">&#127941;</span>Premios</button>
+    <button class="mob-btn" data-panel="matrix"><span class="mi">&#128202;</span>Preds.</button>
+    <button class="mob-btn" data-panel="dificultad"><span class="mi">&#127919;</span>Dific.</button>
   </nav>
 
 </div>
@@ -584,9 +671,123 @@ function _relateNow(){
 }
 function renderRelator(data){_relatorData=data;document.getElementById('relator-btn').onclick=_relateNow;}
 
+function renderBadges(data){
+  var players=data.players,colors=data.colors,N=players.length;
+  var gp=data.group_preds||[];
+  // Compute per-player stats
+  var st={};
+  players.forEach(function(p){
+    var hist=data.history[p]||[0],d=[];
+    for(var i=1;i<hist.length;i++)d.push(hist[i]-hist[i-1]);
+    var n=d.length||1, pts=data.ranking.find(function(r){return r.name===p;}).pts;
+    var mean=pts/n;
+    var variance=d.reduce(function(s,x){return s+(x-mean)*(x-mean);},0)/n;
+    var hardPts=0,hardN=0;
+    gp.forEach(function(m){
+      var ac=players.filter(function(q){return(m.pts[q]||0)>0;}).length;
+      if(ac<=Math.floor(N*0.3)){hardN++;hardPts+=(m.pts[p]||0);}
+    });
+    st[p]={
+      exactos:d.filter(function(x){return x>=5;}).length,
+      misses:d.filter(function(x){return!x;}).length,
+      last20:d.slice(-20).reduce(function(a,b){return a+b;},0),
+      first20:d.slice(0,20).reduce(function(a,b){return a+b;},0),
+      stddev:Math.sqrt(variance),avg:mean,hardPts:hardPts,hardN:hardN
+    };
+  });
+  var defs=[
+    {icon:'&#127919;',name:'El Francotirador',desc:'Mas resultados exactos en la fase de grupos',key:'exactos',asc:false,fmt:function(v){return v+' exactos';}},
+    {icon:'&#128208;',name:'El Reloj Suizo',desc:'Mayor consistencia — menor varianza entre partidos',key:'stddev',asc:true,fmt:function(v){return '&sigma;='+v.toFixed(2)+' (menor=mas consistente)';}},
+    {icon:'&#128176;',name:'El Cobrador',desc:'Mas puntos en partidos donde &le;30% acerto la direccion',key:'hardPts',asc:false,fmt:function(v,p){return v+' pts en '+st[p].hardN+' partidos dificiles';}},
+    {icon:'&#128293;',name:'El Cerrero',desc:'Mejor rendimiento en los ultimos 20 partidos de grupos',key:'last20',asc:false,fmt:function(v){return v+' pts (ult. 20)';}},
+    {icon:'&#128640;',name:'El Arrancador',desc:'Mayor puntaje en los primeros 20 partidos de grupos',key:'first20',asc:false,fmt:function(v){return v+' pts (prim. 20)';}},
+    {icon:'&#129396;',name:'El Sufridor',desc:'Mas partidos sin puntuar — el que mas pago el plato',key:'misses',asc:false,fmt:function(v){return v+' misses';}},
+    {icon:'&#129504;',name:'El Analitico',desc:'Mayor promedio de puntos por partido jugado',key:'avg',asc:false,fmt:function(v){return v.toFixed(2)+' pts/partido';}},
+  ];
+  var html='<div class="badges-grid">';
+  defs.forEach(function(def){
+    var sorted=players.slice().sort(function(a,b){
+      return def.asc?(st[a][def.key]-st[b][def.key]):(st[b][def.key]-st[a][def.key]);
+    });
+    var winner=sorted[0],val=st[winner][def.key],c=colors[winner]||'#ccc';
+    html+='<div class="badge-card">';
+    html+='<div class="badge-icon">'+def.icon+'</div>';
+    html+='<div class="badge-title">'+def.name+'</div>';
+    html+='<div class="badge-desc">'+def.desc+'</div>';
+    html+='<div class="badge-winner" style="color:'+c+'">'+winner+'</div>';
+    html+='<div class="badge-stat">'+def.fmt(val,winner)+'</div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  document.getElementById('badges-body').innerHTML=html;
+}
+
+function renderMatrix(data){
+  var players=data.players,colors=data.colors,gp=data.group_preds||[];
+  if(!gp.length){document.getElementById('matrix-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos de predicciones de grupos.</p>';return;}
+  var abbr=function(n){return n.split(' ')[0].substring(0,7);};
+  var html='<div class="matrix-legend">';
+  html+='<span class="mx-leg"><span class="mx-leg-dot" style="background:rgba(63,185,80,.4)"></span>Exacto</span>';
+  html+='<span class="mx-leg"><span class="mx-leg-dot" style="background:rgba(255,215,0,.3)"></span>Comun</span>';
+  html+='<span class="mx-leg"><span class="mx-leg-dot" style="background:rgba(255,64,129,.2)"></span>Fallo</span>';
+  html+='<span class="mx-leg" style="color:var(--pink)">&#9679; nombre en rojo = partido dificil (&le;30% acerto)</span>';
+  html+='</div>';
+  html+='<div class="matrix-wrap"><table class="matrix-table"><thead><tr>';
+  html+='<th class="matrix-match-col">Partido</th><th class="matrix-res-col">Resultado</th>';
+  players.forEach(function(p){html+='<th class="matrix-player-col" title="'+p+'" style="color:'+(colors[p]||'#ccc')+'">'+abbr(p)+'</th>';});
+  html+='</tr></thead><tbody>';
+  gp.forEach(function(m){
+    var N=players.length;
+    var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
+    var diffCls=ac<=Math.floor(N*0.3)?'diff-hard':ac<=Math.floor(N*0.5)?'diff-med':'';
+    var actualRes=null;
+    players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=5&&m.predictions[p])actualRes=m.predictions[p];});
+    html+='<tr class="'+diffCls+'">';
+    html+='<td class="matrix-match-name" title="'+m.match+'">'+m.match.replace(/ vs /g,' v ').substring(0,22)+(m.match.length>22?'&#8230;':'')+'</td>';
+    html+='<td class="matrix-actual">'+(actualRes||'?')+'</td>';
+    players.forEach(function(p){
+      var pred=m.predictions[p],pts=m.pts[p]||0;
+      var cls=pts>=5?'mx-exact':pts>=2?'mx-common':'mx-miss';
+      html+='<td class="matrix-cell '+cls+'" title="'+p+': '+(pred||'—')+' ('+pts+'pts)">'+(pred||'—')+'</td>';
+    });
+    html+='</tr>';
+  });
+  html+='</tbody></table></div>';
+  document.getElementById('matrix-body').innerHTML=html;
+}
+
+function renderDifficulty(data){
+  var players=data.players,gp=data.group_preds||[],N=players.length;
+  if(!gp.length){document.getElementById('dificultad-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos.</p>';return;}
+  var matches=gp.map(function(m){
+    var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
+    var ex=players.filter(function(p){return(m.pts[p]||0)>=5;}).length;
+    var actualRes=null;
+    players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=5&&m.predictions[p])actualRes=m.predictions[p];});
+    return{id:m.id,match:m.match,ac:ac,ex:ex,pct:ac/N,actualRes:actualRes};
+  }).sort(function(a,b){return a.ac-b.ac;});
+  var html='<table class="dif-table"><thead><tr>';
+  html+='<th>#</th><th>Partido</th><th>Resultado</th><th>Acertaron</th><th>Exactos</th><th>Dificultad</th>';
+  html+='</tr></thead><tbody>';
+  matches.forEach(function(m,i){
+    var barW=Math.round((1-m.pct)*100);
+    var label=m.pct<=0.25?'&#128308; Muy dificil':m.pct<=0.5?'&#128992; Dificil':m.pct<=0.75?'&#128993; Moderado':'&#128994; Facil';
+    html+='<tr>';
+    html+='<td><span class="dif-rank-badge">'+(i+1)+'</span></td>';
+    html+='<td class="dif-match">'+m.match+'</td>';
+    html+='<td class="dif-result">'+(m.actualRes||'—')+'</td>';
+    html+='<td class="dif-num">'+m.ac+'/'+N+'</td>';
+    html+='<td class="dif-num">'+m.ex+'</td>';
+    html+='<td class="dif-bar-cell"><div class="dif-bar"><div class="dif-fill" style="width:'+barW+'%"></div></div><span class="dif-label">'+label+'</span></td>';
+    html+='</tr>';
+  });
+  html+='</tbody></table>';
+  document.getElementById('dificultad-body').innerHTML=html;
+}
+
 function initNav(){
   var mc=document.getElementById('main-content');
-  var panels={sim:document.getElementById('sim-content'),relator:document.getElementById('relator-content')};
+  var panels={sim:document.getElementById('sim-content'),relator:document.getElementById('relator-content'),badges:document.getElementById('badges-content'),matrix:document.getElementById('matrix-content'),dificultad:document.getElementById('dificultad-content')};
   var navItems=document.querySelectorAll('.nav-item');
   var sections=['section-chart','section-ranking','section-bracket'];
   var dots=Array.from(document.querySelectorAll('.s-dot'));
@@ -683,6 +884,9 @@ fetch('./data.json')
     renderBracket(data);
     renderSim(data);
     renderRelator(data);
+    renderBadges(data);
+    renderMatrix(data);
+    renderDifficulty(data);
     initNav();
   })
   .catch(function(err){document.getElementById('loading').innerHTML='<p style="color:var(--pink)">Error al cargar datos.<br><small>'+err.message+'</small></p>';});

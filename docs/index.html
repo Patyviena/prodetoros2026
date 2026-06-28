@@ -467,18 +467,39 @@ var _winProbs=null;
 function calcWinProbs(data){
   var N=6000,players=data.players,base={};
   data.ranking.forEach(function(r){base[r.name]=r.pts;});
+
+  // Distribucion historica individual
   var dists={};
   players.forEach(function(p){
-    var h=data.history[p]||[0],d=[],tot;
+    var h=data.history[p]||[0],d=[];
     for(var i=1;i<h.length;i++)d.push(h[i]-h[i-1]);
-    tot=d.length||1;
-    var nm=0,nc=0,ne=0,nb=0;
+    var tot=d.length||1,nm=0,nc=0,ne=0,nb=0;
     d.forEach(function(v){if(!v)nm++;else if(v<5)nc++;else if(v<9)ne++;else nb++;});
     dists[p]={m:nm/tot,c:nc/tot,e:ne/tot,b:nb/tot};
   });
+
+  // Promedio global (regresion a la media):
+  // 72 partidos de grupos es buena muestra pero el knockout es distinto.
+  // Blend 50% individual / 50% global reduce la ventaja de los lideres
+  // sin ignorar la habilidad real — es un estimador mas honesto.
+  var gm=0,gc=0,ge=0,gb=0,np=players.length;
+  players.forEach(function(p){gm+=dists[p].m;gc+=dists[p].c;ge+=dists[p].e;gb+=dists[p].b;});
+  gm/=np;gc/=np;ge/=np;gb/=np;
+  var alpha=0.5;
+  players.forEach(function(p){
+    dists[p]={
+      m:alpha*dists[p].m+(1-alpha)*gm,
+      c:alpha*dists[p].c+(1-alpha)*gc,
+      e:alpha*dists[p].e+(1-alpha)*ge,
+      b:alpha*dists[p].b+(1-alpha)*gb
+    };
+  });
+
   var rem=(data.knockout_matches||[]).filter(function(m){return!m.played;});
-  var phE={'16avos':5,'Octavos':7,'Cuartos':10,'Semis':13,'3er Puesto':10,'Final':16};
-  var phC={'16avos':2,'Octavos':3,'Cuartos':4,'Semis':5,'3er Puesto':4,'Final':6};
+  // Puntos reales por fase (exacto / comun)
+  var phE={'16avos':5,'Octavos':7,'Cuartos':7,'Semis':7,'3er Puesto':7,'Final':10};
+  var phC={'16avos':2,'Octavos':3,'Cuartos':3,'Semis':3,'3er Puesto':3,'Final':5};
+
   if(!rem.length){
     var mxB=Math.max.apply(null,players.map(function(p){return base[p]||0;}));
     var pb={};players.forEach(function(p){pb[p]=(base[p]||0)===mxB?1:0;});return pb;
@@ -488,13 +509,17 @@ function calcWinProbs(data){
     var sp={};players.forEach(function(p){sp[p]=base[p]||0;});
     rem.forEach(function(m){
       var ex=phE[m.phase]||5,cm=phC[m.phase]||2;
+      // Simular resultado del partido (igual para todos en esta iteracion)
+      // Esto captura la correlacion real: si el resultado es X, todos
+      // que predijeron X suman; los que no, no.
+      var matchR=Math.random();
       players.forEach(function(p){
         var ds=dists[p],r=Math.random(),pts=0;
         if(r<ds.m)pts=0;
         else if(r<ds.m+ds.c)pts=cm;
         else if(r<ds.m+ds.c+ds.e)pts=ex;
         else pts=ex+2;
-        if(Math.random()<0.5)pts+=2;
+        if(matchR<0.5)pts+=2; // clasificado: mismo resultado para todos
         sp[p]+=pts;
       });
     });

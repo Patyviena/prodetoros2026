@@ -438,8 +438,8 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     <section id="section-bonus" class="content-section">
       <div class="section-header">
         <div>
-          <div class="section-title"><div class="section-bar" style="background:var(--gold2)"></div>Bonus Clasificados</div>
-          <div class="section-desc">+2 pts por predecir quien avanza en cada partido eliminatorio</div>
+          <div class="section-title"><div class="section-bar" style="background:var(--gold2)"></div>Bonus Pre-Torneo</div>
+          <div class="section-desc">Predicciones selladas antes del torneo &nbsp;&middot;&nbsp; Campeon, Subcampeon, Goleador y mas &nbsp;&middot;&nbsp; 60 pts en juego</div>
         </div>
       </div>
       <div id="bonus-body"></div>
@@ -918,43 +918,69 @@ function renderFases(data){
 }
 
 function renderBonus(data){
-  var players=data.players,colors=data.colors;
-  var ko=(data.knockout_matches||[]).filter(function(m){return m.played;});
+  var players=data.players,colors=data.colors,bp=data.bonus_preds||[];
+  if(!bp.length){
+    document.getElementById('bonus-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos de bonus.</p>';
+    return;
+  }
 
-  // Inferir bonus: en knockout, pts=4 -> comun+cls(+2), pts=7 -> exacto+cls(+2)
-  var bonusPts={},bonusDetail={};
-  players.forEach(function(p){bonusPts[p]=0;bonusDetail[p]=[];});
-  ko.forEach(function(m){
-    players.forEach(function(p){
-      var pts=m.points[p]||0;
-      var ex=m.phase==='Final'?10:7;
-      var cm=m.phase==='Final'?5:m.phase==='Octavos'||m.phase==='Cuartos'||m.phase==='Semis'||m.phase==='3er Puesto'?3:2;
-      var gotBonus=(pts===cm+2||pts===ex+2);
-      if(gotBonus){bonusPts[p]+=2;bonusDetail[p].push(m.match.replace(/ vs /g,' v '));}
-    });
-  });
+  // Totales por jugador
+  var totals={};players.forEach(function(p){totals[p]=0;});
+  bp.forEach(function(b){players.forEach(function(p){totals[p]+=(b.earned[p]||0);});});
+  var maxPts=bp.reduce(function(s,b){return s+b.pts_value;},0);
 
-  var sorted=players.slice().sort(function(a,b){return bonusPts[b]-bonusPts[a];});
+  // Ranking summary
+  var sorted=players.slice().sort(function(a,b){return totals[b]-totals[a];});
   var posLabels=['p1','p2','p3'];
-  var koPlayed=ko.length;
+  var html='<div class="bonus-intro">Predicciones realizadas antes de que comenzara el torneo. Puntos se acreditan cuando se confirme el resultado final &mdash; max. posible: <strong>'+maxPts+' pts</strong>.</div>';
 
-  var html='<div class="bonus-intro">Cada partido eliminatorio vale +2 pts si acertaste quien avanza. ';
-  html+=koPlayed+' partido'+(koPlayed!==1?'s':'')+' eliminatorio'+(koPlayed!==1?'s':'')+' jugado'+(koPlayed!==1?'s':'')+' hasta ahora.</div>';
-
+  // Ranking compacto
+  html+='<div class="phase-lead-title">Ranking bonus acumulado</div>';
   sorted.forEach(function(p,i){
-    var v=bonusPts[p],c=colors[p]||'#ccc',pc=i<3?posLabels[i]:'';
-    html+='<div class="bonus-row"><div class="bonus-pos '+pc+'">'+(i+1)+'</div>';
-    html+='<div class="bonus-name"><span class="clr-dot" style="background:'+c+'"></span>'+p+'</div>';
-    html+='<div class="bonus-total" style="color:'+(v>0?'var(--gold)':'var(--muted)')+'">+'+v+'</div>';
-    if(v>0){
-      html+='<div class="bonus-chips">';
-      bonusDetail[p].forEach(function(mn){html+='<span class="bonus-chip">'+mn+'</span>';});
-      html+='</div>';
-    }else{
-      html+='<div class="bonus-zero">sin bonus aun</div>';
-    }
-    html+='</div>';
+    var v=totals[p],c=colors[p]||'#ccc',pc=i<3?posLabels[i]:'';
+    var pct=maxPts>0?Math.round(v/maxPts*100):0;
+    html+='<div class="phase-row"><div class="phase-pos '+pc+'">'+(i+1)+'</div>';
+    html+='<div class="phase-name"><span class="clr-dot" style="background:'+c+'"></span>'+p+'</div>';
+    html+='<div class="phase-pts-val" style="color:'+(v>0?'var(--gold)':'var(--muted)')+'">+'+v+'</div>';
+    html+='<div class="phase-bar-wrap"><div class="phase-bar-fill" style="width:'+pct+'%;background:'+c+'"></div></div></div>';
   });
+
+  // Detalle por categoria
+  html+='<div style="margin-top:36px">';
+  var ICONS={'Campeon del Mundial':'&#127942;','Subcampeon':'&#129352;','Goleador del torneo':'&#9917;','Sel. mas goles a favor':'&#128293;','Sel. mas goles en contra':'&#129505;'};
+  bp.forEach(function(b){
+    var icon=ICONS[b.label]||'&#127381;';
+    // Agrupar jugadores por prediccion
+    var groups={};
+    players.forEach(function(p){
+      var pred=b.predictions[p]||'—';
+      if(!groups[pred])groups[pred]=[];
+      groups[pred].push(p);
+    });
+    var sortedGroups=Object.keys(groups).sort(function(a,b2){return groups[b2].length-groups[a].length;});
+
+    html+='<div class="day-group"><div class="day-header">'+icon+' '+b.label+' <span class="phase-badge" style="color:var(--gold);font-size:.75rem;font-weight:700">+'+b.pts_value+' pts</span>';
+    var earnedAny=players.some(function(p){return(b.earned[p]||0)>0;});
+    if(earnedAny){html+=' <span style="color:var(--green);font-size:.72rem">&#10003; Acreditado</span>';}
+    else{html+=' <span style="color:var(--muted);font-size:.68rem">Pendiente</span>';}
+    html+='</div>';
+
+    html+='<div style="display:flex;flex-wrap:wrap;gap:10px 20px;padding:6px 0 4px">';
+    sortedGroups.forEach(function(pred){
+      var ps=groups[pred];
+      html+='<div style="min-width:120px"><div style="font-size:.7rem;font-weight:700;color:var(--text);margin-bottom:4px">'+pred+' <span style="color:var(--muted);font-weight:400">('+ps.length+')</span></div>';
+      html+='<div style="display:flex;flex-wrap:wrap;gap:3px">';
+      ps.forEach(function(p){
+        var c=colors[p]||'#ccc';
+        var earned=(b.earned[p]||0)>0;
+        html+='<span class="bonus-chip" style="border-color:'+(earned?'var(--green)':'rgba(255,215,0,.25)')+';color:'+(earned?'var(--green)':c)+'">'+(earned?'&#10003; ':'')+p.split(' ')[0]+'</span>';
+      });
+      html+='</div></div>';
+    });
+    html+='</div></div>';
+  });
+  html+='</div>';
+
   document.getElementById('bonus-body').innerHTML=html;
 }
 

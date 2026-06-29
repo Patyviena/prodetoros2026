@@ -45,6 +45,14 @@ MATCH_DATES = {
     "P88": "2026-07-03",  # Australia v Egipto
 }
 
+BONUS_CATEGORIES = {
+    "B1": {"label": "Campeon del Mundial",       "pts": 20},
+    "B2": {"label": "Subcampeon",                "pts": 12},
+    "B3": {"label": "Goleador del torneo",       "pts": 12},
+    "B4": {"label": "Sel. mas goles a favor",    "pts":  8},
+    "B6": {"label": "Sel. mas goles en contra",  "pts":  8},
+}
+
 COLOR_PALETTE = {
     "Tomi Samitier":  "#FF5733",
     "Nico Conti":     "#33FF57",
@@ -247,6 +255,33 @@ def parse_data(csv_text: str) -> dict:
     ranking = [{"pos": i + 1, "name": p, "pts": final_pts[p]} for i, p in enumerate(sorted_players)]
     top3    = {r["name"]: r["pos"] for r in ranking if r["pos"] <= 3}
 
+    # Parsear filas bonus (B1, B2, ...)
+    bonus_preds = []
+    for row in rows[2:]:
+        if not row or not row[0].strip():
+            continue
+        bid = row[0].strip()
+        if not (bid.startswith("B") and bid[1:].isdigit()):
+            continue
+        cat = BONUS_CATEGORIES.get(bid)
+        if not cat:
+            continue
+        preds, earned = {}, {}
+        for i, player in enumerate(players):
+            base = 2 + i * 3
+            vals = [row[base + j].strip() if base + j < len(row) else "" for j in range(3)]
+            pred_text = next((v for v in vals if v and not v.lstrip("-").isdigit()), "")
+            pts_val   = next((int(v) for v in vals if v and v.lstrip("-").isdigit()), 0)
+            preds[player]  = pred_text
+            earned[player] = pts_val
+        bonus_preds.append({
+            "id":          bid,
+            "label":       cat["label"],
+            "pts_value":   cat["pts"],
+            "predictions": preds,
+            "earned":      earned,
+        })
+
     return {
         "last_updated":     datetime.now().strftime("%d/%m/%Y %H:%M"),
         "players":          players,
@@ -258,6 +293,7 @@ def parse_data(csv_text: str) -> dict:
         "top3":             top3,
         "knockout_matches": knockout_matches,
         "colors":           COLOR_PALETTE,
+        "bonus_preds":      bonus_preds,
     }
 
 

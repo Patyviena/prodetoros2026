@@ -448,15 +448,11 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
   </main>
 
   <div class="sim-content" id="sim-content" style="display:none">
-    <div class="sim-lock-overlay" id="sim-lock-overlay">
-      <div class="sim-lock-icon">&#128274;</div>
-      <div class="sim-lock-title">Simulador bloqueado</div>
-      <div class="sim-lock-desc">Disponible cuando todos completen la planilla. Asi todos juegan con la misma info.</div>
-    </div>
     <div class="sim-header">
       <div class="sim-title-block">
         <div class="sim-title"><div class="section-bar" style="background:var(--violet)"></div>Simulacion de Prode</div>
         <div class="sim-subtitle">Ingresa resultados y ve como queda la tabla &nbsp;&middot;&nbsp; Encontra la combinacion para ganar</div>
+        <div style="margin-top:8px;font-size:.72rem;color:var(--gold2);background:rgba(255,149,0,.08);border:1px solid rgba(255,149,0,.2);border-radius:6px;padding:7px 12px;display:inline-block;">&#9888; Los 5 bonus pre-torneo (Campeon, Subcampeon, Goleador, etc.) no estan incluidos en esta simulacion &mdash; se acreditan al final del Mundial.</div>
         <div class="sim-bonus-note">&#10003; Bonus goles +3 incluido &nbsp;&middot;&nbsp; &#10007; Bonus clasificado no incluido</div>
       </div>
       <button class="sim-reset-btn" id="sim-reset-btn">&#8635; Reiniciar</button>
@@ -933,17 +929,6 @@ function renderBonus(data){
   var sorted=players.slice().sort(function(a,b){return totals[b]-totals[a];});
   var posLabels=['p1','p2','p3'];
   var html='<div class="bonus-intro">Predicciones realizadas antes de que comenzara el torneo. Puntos se acreditan cuando se confirme el resultado final &mdash; max. posible: <strong>'+maxPts+' pts</strong>.</div>';
-
-  // Ranking compacto
-  html+='<div class="phase-lead-title">Ranking bonus acumulado</div>';
-  sorted.forEach(function(p,i){
-    var v=totals[p],c=colors[p]||'#ccc',pc=i<3?posLabels[i]:'';
-    var pct=maxPts>0?Math.round(v/maxPts*100):0;
-    html+='<div class="phase-row"><div class="phase-pos '+pc+'">'+(i+1)+'</div>';
-    html+='<div class="phase-name"><span class="clr-dot" style="background:'+c+'"></span>'+p+'</div>';
-    html+='<div class="phase-pts-val" style="color:'+(v>0?'var(--gold)':'var(--muted)')+'">+'+v+'</div>';
-    html+='<div class="phase-bar-wrap"><div class="phase-bar-fill" style="width:'+pct+'%;background:'+c+'"></div></div></div>';
-  });
 
   // Detalle por categoria
   html+='<div style="margin-top:36px">';

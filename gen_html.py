@@ -179,6 +179,51 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-cls-btn.active{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
 .pg-classif{font-size:.65rem;color:var(--cyan);margin-left:4px;}
 .relator-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+/* Seccion Fases y Bonus (feed principal) */
+.phase-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;}
+.phase-tab{padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:600;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.phase-tab:hover{color:var(--text);border-color:var(--muted);}
+.phase-tab.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+.phase-tab.done{border-color:var(--green);}
+.phase-tab.done.active{background:var(--green);color:var(--bg);border-color:var(--green);}
+.phase-tab.upcoming{opacity:.4;}
+.phase-badge{font-size:.55rem;vertical-align:super;margin-left:3px;font-weight:700;}
+.phase-content{display:none;}.phase-content.active{display:block;}
+.phase-lead-title{font-size:.68rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:700;margin-bottom:12px;}
+.phase-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(48,54,61,.4);}
+.phase-row:last-child{border-bottom:none;}
+.phase-pos{width:22px;text-align:center;font-size:.75rem;color:var(--muted);font-weight:700;flex-shrink:0;}
+.phase-pos.p1{color:var(--gold);}
+.phase-pos.p2{color:var(--silver);}
+.phase-pos.p3{color:var(--bronze);}
+.phase-name{width:150px;font-size:.84rem;display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.phase-pts-val{width:36px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:.9rem;flex-shrink:0;}
+.phase-bar-wrap{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;}
+.phase-bar-fill{height:100%;border-radius:4px;transition:width .4s ease;}
+.phase-upcoming-msg{color:var(--muted);font-size:.85rem;padding:24px 0;text-align:center;}
+.day-group{margin-top:28px;}
+.day-header{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.day-match-row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid rgba(48,54,61,.3);font-size:.8rem;}
+.day-match-name{color:var(--muted);min-width:180px;}
+.day-match-scores{display:flex;gap:6px;flex-wrap:wrap;}
+.day-score-chip{font-size:.7rem;font-variant-numeric:tabular-nums;padding:1px 6px;border-radius:3px;font-weight:600;}
+.dsc-exact{background:rgba(63,185,80,.15);color:#3fb950;}
+.dsc-common{background:rgba(0,229,255,.1);color:var(--cyan);}
+.dsc-bonus{background:rgba(255,215,0,.15);color:var(--gold);}
+.dsc-miss{background:rgba(48,54,61,.6);color:var(--muted);}
+/* Bonus section */
+.bonus-intro{font-size:.8rem;color:var(--muted);margin-bottom:24px;line-height:1.7;}
+.bonus-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(48,54,61,.4);}
+.bonus-row:last-child{border-bottom:none;}
+.bonus-pos{width:22px;text-align:center;font-size:.75rem;color:var(--muted);font-weight:700;flex-shrink:0;}
+.bonus-pos.p1{color:var(--gold);}
+.bonus-pos.p2{color:var(--silver);}
+.bonus-pos.p3{color:var(--bronze);}
+.bonus-name{width:150px;font-size:.84rem;display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.bonus-total{width:48px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums;font-size:.95rem;flex-shrink:0;}
+.bonus-chips{display:flex;gap:5px;flex-wrap:wrap;}
+.bonus-chip{font-size:.65rem;padding:2px 7px;border-radius:10px;border:1px solid rgba(255,215,0,.25);color:var(--gold2);background:rgba(255,215,0,.07);white-space:nowrap;}
+.bonus-zero{color:var(--border);font-size:.75rem;}
 /* Paneles herramientas adicionales (compartido) */
 .tool-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 .tool-header{padding:28px 48px 20px;border-bottom:1px solid var(--border);flex-shrink:0;}
@@ -260,7 +305,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .mob-btn.active{color:var(--cyan);}
 /* Hide rank columns on mobile */
 .rk-hide-mob{}
-@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:20px 14px 28px;}.relator-body,.tool-body{padding:20px 14px 62px;}.tool-header{padding:20px 14px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;}.mobile-bnav::-webkit-scrollbar{display:none;}.mob-btn{min-width:54px;flex:0 0 auto;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:300px;padding:12px;}.chart-mobile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px 0;}.cml-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);}.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.rk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.rk-table-wrap::-webkit-scrollbar{height:4px;}.rk-table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}.rank-table{font-size:.75rem;min-width:520px;}.rank-table th,.rank-table td{padding:8px 8px;}.rk-pts{font-size:.88rem;}.rk-form{gap:2px;}.rk-form-dot{width:6px;height:6px;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}}
+@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:20px 14px 28px;}.relator-body,.tool-body{padding:20px 14px 62px;}.tool-header{padding:20px 14px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;}.mobile-bnav::-webkit-scrollbar{display:none;}.mob-btn{min-width:54px;flex:0 0 auto;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:300px;padding:12px;}.chart-mobile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px 0;}.cml-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);}.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.rk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.rk-table-wrap::-webkit-scrollbar{height:4px;}.rk-table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}.rank-table{font-size:.75rem;min-width:520px;}.rank-table th,.rank-table td{padding:8px 8px;}.rk-pts{font-size:.88rem;}.rk-form{gap:2px;}.rk-form-dot{width:6px;height:6px;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}.phase-name{width:120px;}.bonus-name{width:120px;}.day-match-name{min-width:120px;}}
 </style>
 </head>
 <body>
@@ -283,6 +328,12 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
       </button>
       <button class="nav-item" data-target="section-bracket">
         <span class="nav-icon">&#9917;</span>Cuadro Eliminatorio
+      </button>
+      <button class="nav-item" data-target="section-fases">
+        <span class="nav-icon">&#128197;</span>Por Fase
+      </button>
+      <button class="nav-item" data-target="section-bonus">
+        <span class="nav-icon">&#11088;</span>Bonus
       </button>
       <div class="nav-divider"></div>
       <div class="nav-section">Herramientas</div>
@@ -373,6 +424,27 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
       <div class="pred-detail" id="pred-detail"></div>
     </section>
 
+    <section id="section-fases" class="content-section">
+      <div class="section-header">
+        <div>
+          <div class="section-title"><div class="section-bar" style="background:var(--gold)"></div>Rendimiento por Fase</div>
+          <div class="section-desc">Puntos acumulados en cada etapa del torneo &nbsp;&middot;&nbsp; Click en la fase para ver el detalle</div>
+        </div>
+      </div>
+      <div class="phase-tabs" id="phase-tabs"></div>
+      <div id="phase-contents"></div>
+    </section>
+
+    <section id="section-bonus" class="content-section">
+      <div class="section-header">
+        <div>
+          <div class="section-title"><div class="section-bar" style="background:var(--gold2)"></div>Bonus Clasificados</div>
+          <div class="section-desc">+2 pts por predecir quien avanza en cada partido eliminatorio</div>
+        </div>
+      </div>
+      <div id="bonus-body"></div>
+    </section>
+
   </main>
 
   <div class="sim-content" id="sim-content" style="display:none">
@@ -440,12 +512,16 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     <button class="s-dot active" title="Evolucion"></button>
     <button class="s-dot" title="Tabla"></button>
     <button class="s-dot" title="Bracket"></button>
+    <button class="s-dot" title="Por Fase"></button>
+    <button class="s-dot" title="Bonus"></button>
   </div>
 
   <nav class="mobile-bnav">
     <button class="mob-btn active" data-target="section-chart"><span class="mi">&#128200;</span>Evol.</button>
     <button class="mob-btn" data-target="section-ranking"><span class="mi">&#127942;</span>Tabla</button>
     <button class="mob-btn" data-target="section-bracket"><span class="mi">&#9917;</span>Bracket</button>
+    <button class="mob-btn" data-target="section-fases"><span class="mi">&#128197;</span>Fases</button>
+    <button class="mob-btn" data-target="section-bonus"><span class="mi">&#11088;</span>Bonus</button>
     <button class="mob-btn" data-panel="sim"><span class="mi">&#127922;</span>Sim.</button>
     <button class="mob-btn" data-panel="relator"><span class="mi">&#127908;</span>Relator</button>
     <button class="mob-btn" data-panel="badges"><span class="mi">&#127941;</span>Premios</button>
@@ -706,6 +782,182 @@ function _relateNow(){
     body.appendChild(el);
   });
 }
+function renderFases(data){
+  var players=data.players,colors=data.colors;
+  var PHASES=['Grupos','16avos','Octavos','Cuartos','Semis','3er Puesto','Final'];
+  var PHASE_LABELS={'Grupos':'Grupos','16avos':'16avos','Octavos':'Octavos','Cuartos':'Cuartos','Semis':'Semis','3er Puesto':'3er Puesto','Final':'Final'};
+
+  // Calcular puntos por fase
+  var pp={};
+  PHASES.forEach(function(ph){pp[ph]={};players.forEach(function(p){pp[ph][p]=0;});});
+  (data.group_preds||[]).forEach(function(m){
+    players.forEach(function(p){pp['Grupos'][p]+=(m.pts[p]||0);});
+  });
+  (data.knockout_matches||[]).filter(function(m){return m.played;}).forEach(function(m){
+    if(pp[m.phase])players.forEach(function(p){pp[m.phase][p]+=(m.points[p]||0);});
+  });
+
+  // Estado de cada fase
+  var ko=data.knockout_matches||[];
+  function phaseStatus(ph){
+    if(ph==='Grupos')return(data.group_preds||[]).length>0?'done':'upcoming';
+    var ms=ko.filter(function(m){return m.phase===ph;});
+    if(!ms.length)return'upcoming';
+    var played=ms.filter(function(m){return m.played;}).length;
+    if(played===0)return'upcoming';
+    if(played===ms.length)return'done';
+    return'active';
+  }
+
+  // Partidos por dia en knockout
+  var dayMap={};
+  ko.filter(function(m){return m.played&&m.match_date;}).forEach(function(m){
+    if(!dayMap[m.match_date])dayMap[m.match_date]=[];
+    dayMap[m.match_date].push(m);
+  });
+
+  function fmtDate(d){var p=d.split('-');var meses=['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];return p[2]+' '+meses[parseInt(p[1])];}
+
+  function chipCls(pts,phase){
+    var ex=phase==='Final'?10:phase==='Grupos'?5:7;
+    var cm=phase==='Final'?5:phase==='Grupos'?2:3;
+    if(!pts)return'dsc-miss';
+    // pts exacto+bonus tiene 2 mas que exacto
+    if(pts===ex+2||pts===cm+2)return'dsc-bonus';
+    if(pts>=ex)return'dsc-exact';
+    return'dsc-common';
+  }
+
+  function renderPhaseContent(ph){
+    var pts=pp[ph];
+    var status=phaseStatus(ph);
+    if(status==='upcoming'){
+      return'<div class="phase-upcoming-msg">Fase aun no comenzada &mdash; los datos apareceran cuando se juegue el primer partido</div>';
+    }
+    // Leaderboard
+    var sorted=players.slice().sort(function(a,b){return pts[b]-pts[a];});
+    var maxPts=pts[sorted[0]]||1;
+    var posLabels=['p1','p2','p3'];
+    var html='<div class="phase-lead-title">Puntos acumulados en fase</div>';
+    sorted.forEach(function(p,i){
+      var v=pts[p],pct=Math.round(v/maxPts*100),c=colors[p]||'#ccc';
+      var pc=i<3?posLabels[i]:'';
+      html+='<div class="phase-row"><div class="phase-pos '+pc+'">'+(i+1)+'</div>';
+      html+='<div class="phase-name"><span class="clr-dot" style="background:'+c+'"></span>'+p+'</div>';
+      html+='<div class="phase-pts-val" style="color:'+c+'">'+v+'</div>';
+      html+='<div class="phase-bar-wrap"><div class="phase-bar-fill" style="width:'+pct+'%;background:'+c+'"></div></div></div>';
+    });
+
+    // By-day (solo knockout)
+    if(ph!=='Grupos'){
+      var days=Object.keys(dayMap).filter(function(d){
+        return dayMap[d].some(function(m){return m.phase===ph;});
+      }).sort();
+      days.forEach(function(day){
+        var matches=dayMap[day].filter(function(m){return m.phase===ph;});
+        if(!matches.length)return;
+        html+='<div class="day-group"><div class="day-header">&#128197; '+fmtDate(day)+'</div>';
+        matches.forEach(function(m){
+          html+='<div class="day-match-row"><div class="day-match-name">'+m.match+'</div><div class="day-match-scores">';
+          var grouped={};
+          players.forEach(function(p){
+            var v=m.points[p]||0;
+            var cls=chipCls(v,ph);
+            if(!grouped[cls+'-'+v])grouped[cls+'-'+v]={cls:cls,pts:v,names:[]};
+            grouped[cls+'-'+v].names.push(p);
+          });
+          Object.keys(grouped).sort(function(a,b){return grouped[b].pts-grouped[a].pts;}).forEach(function(k){
+            var g=grouped[k];
+            html+='<span class="day-score-chip '+g.cls+'" title="'+g.names.join(', ')+'">'+g.pts+'pts &times;'+g.names.length+'</span>';
+          });
+          html+='</div></div>';
+        });
+        html+='</div>';
+      });
+    }
+    return html;
+  }
+
+  // Tabs
+  var firstActive='Grupos';
+  var tabsHtml='';
+  PHASES.forEach(function(ph){
+    var st=phaseStatus(ph);
+    var cls='phase-tab'+(st==='done'?' done':st==='upcoming'?' upcoming':'');
+    var badge=st==='done'?'<span class="phase-badge" style="color:var(--green)">&#10003;</span>':
+               st==='active'?'<span class="phase-badge" style="color:var(--cyan)">&#9679;</span>':'';
+    if(st==='active')firstActive=ph;
+    tabsHtml+='<button class="'+cls+'" data-phase="'+ph+'">'+PHASE_LABELS[ph]+badge+'</button>';
+  });
+  document.getElementById('phase-tabs').innerHTML=tabsHtml;
+
+  // Contenidos
+  var contentsEl=document.getElementById('phase-contents');
+  contentsEl.innerHTML='';
+  PHASES.forEach(function(ph){
+    var div=document.createElement('div');
+    div.className='phase-content';
+    div.id='phase-cnt-'+ph.replace(/\s/g,'-');
+    div.innerHTML=renderPhaseContent(ph);
+    contentsEl.appendChild(div);
+  });
+
+  // Activar primera tab con datos
+  function activateTab(ph){
+    document.querySelectorAll('.phase-tab').forEach(function(t){
+      t.classList.toggle('active',t.dataset.phase===ph);
+    });
+    document.querySelectorAll('.phase-content').forEach(function(c){
+      c.classList.toggle('active',c.id==='phase-cnt-'+ph.replace(/\s/g,'-'));
+    });
+  }
+  activateTab(firstActive);
+  document.querySelectorAll('.phase-tab').forEach(function(btn){
+    btn.addEventListener('click',function(){activateTab(this.dataset.phase);});
+  });
+}
+
+function renderBonus(data){
+  var players=data.players,colors=data.colors;
+  var ko=(data.knockout_matches||[]).filter(function(m){return m.played;});
+
+  // Inferir bonus: en knockout, pts=4 -> comun+cls(+2), pts=7 -> exacto+cls(+2)
+  var bonusPts={},bonusDetail={};
+  players.forEach(function(p){bonusPts[p]=0;bonusDetail[p]=[];});
+  ko.forEach(function(m){
+    players.forEach(function(p){
+      var pts=m.points[p]||0;
+      var ex=m.phase==='Final'?10:7;
+      var cm=m.phase==='Final'?5:m.phase==='Octavos'||m.phase==='Cuartos'||m.phase==='Semis'||m.phase==='3er Puesto'?3:2;
+      var gotBonus=(pts===cm+2||pts===ex+2);
+      if(gotBonus){bonusPts[p]+=2;bonusDetail[p].push(m.match.replace(/ vs /g,' v '));}
+    });
+  });
+
+  var sorted=players.slice().sort(function(a,b){return bonusPts[b]-bonusPts[a];});
+  var posLabels=['p1','p2','p3'];
+  var koPlayed=ko.length;
+
+  var html='<div class="bonus-intro">Cada partido eliminatorio vale +2 pts si acertaste quien avanza. ';
+  html+=koPlayed+' partido'+(koPlayed!==1?'s':'')+' eliminatorio'+(koPlayed!==1?'s':'')+' jugado'+(koPlayed!==1?'s':'')+' hasta ahora.</div>';
+
+  sorted.forEach(function(p,i){
+    var v=bonusPts[p],c=colors[p]||'#ccc',pc=i<3?posLabels[i]:'';
+    html+='<div class="bonus-row"><div class="bonus-pos '+pc+'">'+(i+1)+'</div>';
+    html+='<div class="bonus-name"><span class="clr-dot" style="background:'+c+'"></span>'+p+'</div>';
+    html+='<div class="bonus-total" style="color:'+(v>0?'var(--gold)':'var(--muted)')+'">+'+v+'</div>';
+    if(v>0){
+      html+='<div class="bonus-chips">';
+      bonusDetail[p].forEach(function(mn){html+='<span class="bonus-chip">'+mn+'</span>';});
+      html+='</div>';
+    }else{
+      html+='<div class="bonus-zero">sin bonus aun</div>';
+    }
+    html+='</div>';
+  });
+  document.getElementById('bonus-body').innerHTML=html;
+}
+
 function renderRelator(data){_relatorData=data;document.getElementById('relator-btn').onclick=_relateNow;}
 
 function renderBadges(data){
@@ -826,7 +1078,7 @@ function initNav(){
   var mc=document.getElementById('main-content');
   var panels={sim:document.getElementById('sim-content'),relator:document.getElementById('relator-content'),badges:document.getElementById('badges-content'),matrix:document.getElementById('matrix-content'),dificultad:document.getElementById('dificultad-content')};
   var navItems=document.querySelectorAll('.nav-item');
-  var sections=['section-chart','section-ranking','section-bracket'];
+  var sections=['section-chart','section-ranking','section-bracket','section-fases','section-bonus'];
   var dots=Array.from(document.querySelectorAll('.s-dot'));
   var mobBtns=Array.from(document.querySelectorAll('.mob-btn'));
 
@@ -921,6 +1173,8 @@ fetch('./data.json?_=' + Date.now(), {cache: 'no-store'})
     renderBracket(data);
     renderSim(data);
     renderRelator(data);
+    renderFases(data);
+    renderBonus(data);
     renderBadges(data);
     renderMatrix(data);
     renderDifficulty(data);

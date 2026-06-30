@@ -126,7 +126,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .legend-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:24px;}
 .legend-item{display:flex;align-items:center;gap:6px;font-size:.7rem;color:var(--muted);}
 .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.sim-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.sim-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow-y:auto;}
 .sim-header{padding:28px 40px 20px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;}
 .sim-title-block{}
 .sim-title{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:4px;}
@@ -310,6 +310,23 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .sim-bonus-sel{width:100%;background:var(--bg-card2);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:6px 8px;font-size:.8rem;outline:none;cursor:pointer;transition:border-color .15s;}
 .sim-bonus-sel:focus{border-color:rgba(255,215,0,.5);}
 .sim-bonus-sel.selected{border-color:var(--gold);color:var(--gold);}
+.mass-sim-area{border-top:2px solid var(--border);padding:24px 40px 40px;flex-shrink:0;}
+.mass-sim-trigger{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap;}
+.mass-sim-title-row{font-size:1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.mass-sim-btn{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.3);color:var(--cyan);border-radius:8px;padding:9px 20px;font-size:.84rem;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:all .2s;}
+.mass-sim-btn:hover:not(:disabled){background:rgba(0,229,255,.15);}
+.mass-sim-btn:disabled{opacity:.55;cursor:wait;}
+.mass-sim-prog{font-size:.85rem;font-weight:700;color:var(--gold);min-width:40px;}
+.mass-sim-note{font-size:.7rem;color:var(--muted);}
+.mass-sim-scroll{overflow-x:auto;width:100%;border-radius:8px;border:1px solid var(--border);}
+.mass-sim-tbl{border-collapse:collapse;width:100%;font-size:.71rem;}
+.mass-sim-tbl th{padding:7px 6px;text-align:center;color:var(--muted);font-weight:600;font-size:.64rem;border-bottom:2px solid var(--border);white-space:nowrap;background:var(--bg-card2);position:sticky;top:0;}
+.mass-sim-tbl td{padding:5px 6px;text-align:center;border:1px solid rgba(48,54,61,.25);font-variant-numeric:tabular-nums;}
+.mass-sim-pos{font-weight:700;color:var(--text);background:var(--bg-card2)!important;font-size:.75rem;position:sticky;left:0;}
+.mass-sim-pos.p1{color:var(--gold);}
+.mass-sim-pos.p2{color:var(--silver);}
+.mass-sim-pos.p3{color:var(--bronze);}
+.mass-sim-sub{font-size:.7rem;color:var(--muted);margin-bottom:14px;}
 /* Mobile bottom nav */
 .mobile-bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-top:1px solid var(--border);z-index:200;height:58px;}
 .mob-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 2px;color:var(--muted);font-size:.56rem;border:none;background:none;cursor:pointer;gap:3px;height:100%;}
@@ -480,6 +497,14 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
         </div>
         <div id="sim-rank-list"></div>
       </div>
+    </div>
+    <div class="mass-sim-area">
+      <div class="mass-sim-trigger">
+        <button class="mass-sim-btn" id="mass-sim-btn">&#127922; Simular 1.000.000</button>
+        <span class="mass-sim-prog" id="mass-sim-prog"></span>
+        <span class="mass-sim-note">Distribucion estadistica de posiciones finales &nbsp;&middot;&nbsp; incluye bonus seleccionados arriba</span>
+      </div>
+      <div id="mass-sim-result"></div>
     </div>
   </div>
 
@@ -691,6 +716,78 @@ var PHASE_PTS={'16avos':{common:2,exact:5},'Octavos':{common:3,exact:7},'Cuartos
 var _DEMO_NAMES={'P73':'Uruguay vs Mexico','P74':'Argentina vs Ecuador','P75':'Brasil vs Venezuela','P76':'Colombia vs Peru','P77':'USA vs Panama','P78':'Canada vs El Salvador','P79':'Francia vs Marruecos','P80':'Espana vs Suiza','P81':'Alemania vs Escocia','P82':'Portugal vs Turquia','P83':'Inglaterra vs Rep. Checa','P84':'Holanda vs Dinamarca','P85':'Japon vs Australia','P86':'Korea Sur vs Senegal','P87':'Italia vs Polonia','P88':'Croacia vs Rumania'};
 var _DPATS=[['2-0','2-1','1-0','2-0','2-1','1-0','1-1','0-1','2-1','2-0','1-0','0-1','1-1','2-0','1-0','0-1'],['1-0','0-1','1-1','2-1','0-2','1-0','2-0','1-2','1-1','0-1','2-1','1-0','0-2','1-1','2-0','0-1'],['0-1','0-2','1-2','0-1','1-1','0-2','2-1','0-1','1-0','0-2','1-1','0-1','2-0','0-1','1-2','0-1'],['1-1','2-2','0-0','1-1','2-1','0-1','1-1','2-0','0-0','1-2','1-1','0-1','2-1','1-1','0-2','1-1'],['2-1','1-2','2-0','1-1','0-1','2-1','1-0','0-2','1-1','2-1','0-1','1-0','2-0','1-1','0-1','2-1'],['1-0','2-0','0-1','1-0','2-1','1-0','0-1','1-1','1-0','2-0','0-1','2-1','1-0','0-2','1-1','1-0']];
 var _simData=null,_simMatches=[];
+function _runMassiveSimulation(){
+  if(!_simData)return;
+  var N=1000000,CHUNK=40000;
+  var players=_simData.players,nP=players.length;
+  var unplayed=_simMatches.filter(function(m){return!m.played;});
+  var nU=unplayed.length;
+  // Base pts (actual ranking, already includes played knockout pts)
+  var basePts=new Float64Array(nP);
+  players.forEach(function(p,pi){var r=_simData.ranking.find(function(r){return r.name===p;});basePts[pi]=r?r.pts:0;});
+  // Bonus pts from current selection
+  var bonusPts=new Float64Array(nP);
+  (_simData.bonus_preds||[]).forEach(function(b){var sel=_simBonusSel[b.id];if(!sel)return;players.forEach(function(p,pi){if((b.predictions[p]||'').trim().toLowerCase()===sel)bonusPts[pi]+=b.pts_value;});});
+  // Pre-compute score tables [matchIdx][scoreIdx 0-15][playerIdx]
+  var scoreTables=unplayed.map(function(m){var t=[];for(var l=0;l<4;l++){for(var a=0;a<4;a++){var row=new Float64Array(nP);players.forEach(function(p,pi){row[pi]=_calcPts(m.predictions[p],{l:l,a:a},m.phase);});t.push(row);}}return t;});
+  // Pre-compute cls tables [matchIdx][0=L,1=V][playerIdx]
+  var clsTables=unplayed.map(function(m){return['L','V'].map(function(side){var row=new Float64Array(nP);if(m.classif)players.forEach(function(p,pi){if(m.classif[p])row[pi]=_classifBonus(m.classif[p],m.match,side);});return row;});});
+  // Position distribution [pos][playerIdx]
+  var posDist=[];for(var i=0;i<nP;i++)posDist.push(new Int32Array(nP));
+  var simTotals=new Float64Array(nP);
+  var ranked=[];for(var i=0;i<nP;i++)ranked.push(i);
+  var done=0;
+  var btn=document.getElementById('mass-sim-btn');
+  var prog=document.getElementById('mass-sim-prog');
+  btn.disabled=true;prog.textContent='0%';
+  document.getElementById('mass-sim-result').innerHTML='';
+  function runChunk(){
+    var end=Math.min(done+CHUNK,N);
+    for(var sim=done;sim<end;sim++){
+      for(var pi=0;pi<nP;pi++)simTotals[pi]=basePts[pi]+bonusPts[pi];
+      for(var mi=0;mi<nU;mi++){
+        var si=Math.floor(Math.random()*16);
+        var cls=Math.random()<.5?0:1;
+        var sr=scoreTables[mi][si],cr=clsTables[mi][cls];
+        for(var pi=0;pi<nP;pi++)simTotals[pi]+=sr[pi]+cr[pi];
+      }
+      ranked.sort(function(a,b){return simTotals[b]-simTotals[a];});
+      for(var pos=0;pos<nP;pos++)posDist[pos][ranked[pos]]++;
+    }
+    done=end;
+    prog.textContent=Math.round(done/N*100)+'%';
+    if(done<N){setTimeout(runChunk,0);}
+    else{_renderMassSimResult(posDist,players,N);btn.disabled=false;btn.textContent='&#127922; Re-simular 1.000.000';}
+  }
+  setTimeout(runChunk,0);
+}
+function _renderMassSimResult(posDist,players,N){
+  var nP=players.length;
+  var colors=_simData.colors||{};
+  // Header
+  var html='<div class="mass-sim-sub">'+N.toLocaleString('de-DE')+' simulaciones &mdash; cada celda = % de veces que ese jugador termino en esa posicion</div>';
+  html+='<div class="mass-sim-scroll"><table class="mass-sim-tbl"><thead><tr><th>#</th>';
+  players.forEach(function(p){var c=colors[p]||'#ccc';html+='<th><span class="clr-dot" style="background:'+c+';display:inline-block;margin-right:3px"></span>'+p.split(' ')[0]+'</th>';});
+  html+='</tr></thead><tbody>';
+  var posNames=['p1','p2','p3'];
+  for(var pos=0;pos<nP;pos++){
+    var pc=pos<3?posNames[pos]:'';
+    html+='<tr><td class="mass-sim-pos '+pc+'">'+(pos+1)+'</td>';
+    players.forEach(function(p,pi){
+      var cnt=posDist[pos][pi];
+      var pct=cnt/N*100;
+      // Heat: 0%=dark, 25%=bright gold
+      var alpha=Math.min(1,pct/25);
+      var bg=pct<0.1?'transparent':'rgba(255,215,0,'+alpha.toFixed(2)+')';
+      var fg=alpha>0.5?'#000':'var(--text)';
+      var txt=pct>=0.5?pct.toFixed(1)+'%':pct>=0.05?'<span style="opacity:.45">'+pct.toFixed(1)+'%</span>':'<span style="opacity:.2">'+cnt+'</span>';
+      html+='<td style="background:'+bg+';color:'+fg+'">'+txt+'</td>';
+    });
+    html+='</tr>';
+  }
+  html+='</tbody></table></div>';
+  document.getElementById('mass-sim-result').innerHTML=html;
+}
 function _buildSimMatches(data){return data.knockout_matches.map(function(m,idx){if(!m.has_preds||m.is_tbd){var pat=_DPATS[idx%_DPATS.length];var off=idx%16;var rot=pat.slice(off).concat(pat.slice(0,off));var preds={};data.players.forEach(function(p,i){preds[p]=rot[i%rot.length];});return Object.assign({},m,{match:m.match||_DEMO_NAMES[m.id],is_tbd:false,has_preds:true,predictions:preds});}return m;});}
 function _sign(l,a){return l>a?1:l<a?-1:0;}
 function _calcPts(pred,score,phase){if(!pred||!score)return 0;var pts=PHASE_PTS[phase]||{common:3,exact:7};var pp=pred.split('-').map(Number);if(isNaN(pp[0])||isNaN(pp[1]))return 0;if(_sign(pp[0],pp[1])!==_sign(score.l,score.a))return 0;var exact=(pp[0]===score.l&&pp[1]===score.a);var base=exact?pts.exact:pts.common;if(exact){var predDiff=Math.abs(pp[0]-pp[1]),actualDiff=Math.abs(score.l-score.a);if(predDiff>=3&&actualDiff>=3)base+=2;}return base;}
@@ -701,6 +798,8 @@ function renderSim(data){_simData=data;_simClassif={};_simMatches=_buildSimMatch
 var bp=data.bonus_preds||[];if(bp.length){var bHtml='<hr class="sim-bonus-sep"><div class="sim-bonus-hdr">&#127942; Bonus Pre-Torneo &mdash; <span style="font-weight:400;color:var(--muted)">selecciona quien gana cada categoria</span></div>';bp.forEach(function(b){var opts={};data.players.forEach(function(p){var pred=(b.predictions[p]||'').trim();if(!pred)return;var k=pred.toLowerCase();if(!opts[k]){opts[k]={display:pred,count:0};}opts[k].count++;});var sorted=Object.values(opts).sort(function(a,c){return c.count-a.count;});bHtml+='<div class="sim-bonus-card"><div class="sim-bonus-top"><span class="sim-bonus-lbl">'+b.label+'</span><span class="sim-bonus-val">+'+b.pts_value+' pts</span></div><select class="sim-bonus-sel" data-bid="'+b.id+'"><option value="">— Sin seleccionar —</option>';sorted.forEach(function(o){bHtml+='<option value="'+o.display.toLowerCase().replace(/"/g,'&quot;')+'">'+o.display+' ('+o.count+')</option>';});bHtml+='</select></div>';});var bWrap=document.createElement('div');bWrap.innerHTML=bHtml;document.getElementById('sim-matches').appendChild(bWrap);bWrap.querySelectorAll('.sim-bonus-sel').forEach(function(sel){sel.addEventListener('change',function(){var bid=this.dataset.bid;if(this.value){_simBonusSel[bid]=this.value;this.classList.add('selected');}else{delete _simBonusSel[bid];this.classList.remove('selected');}_updateSimRanking();});});}
 // Auto-fill partidos ya jugados
 _simMatches.forEach(function(m){if(!m.played)return;var act=_inferActual(m);var card=document.querySelector('.sim-card[data-sim-id="'+m.id+'"]');if(!card)return;card.dataset.played='true';if(act&&act.score){var inps=card.querySelectorAll('.sim-inp');inps[0].value=act.score.l;inps[1].value=act.score.a;inps.forEach(function(inp){inp.readOnly=true;inp.style.opacity='.5';});card.classList.add('has-score');var ok=card.querySelector('.sim-ok');if(ok){ok.textContent='✓ Jugado';ok.style.opacity='1';ok.style.color='var(--green)';}if(act.clsSide){_simClassif[m.id]=act.clsSide;card.querySelectorAll('.sim-cls-btn').forEach(function(b){b.classList.toggle('active',b.dataset.side===act.clsSide);b.disabled=true;b.style.opacity='.5';});}}});
+// Boton simular 1M
+document.getElementById('mass-sim-btn').onclick=function(){_runMassiveSimulation();};
 // Boton simular random
 document.getElementById('sim-random-btn').onclick=function(){document.querySelectorAll('.sim-card').forEach(function(card){if(card.dataset.played)return;var id=card.dataset.simId;var inps=card.querySelectorAll('.sim-inp');var l=Math.floor(Math.random()*4),a=Math.floor(Math.random()*4);inps[0].value=l;inps[1].value=a;card.classList.add('has-score');var clsBtns=card.querySelectorAll('.sim-cls-btn:not([disabled])');if(clsBtns.length){var side=l>a?'L':a>l?'V':Math.random()<.5?'L':'V';_simClassif[id]=side;clsBtns.forEach(function(b){b.classList.toggle('active',b.dataset.side===side);});}});_updateSimRanking();};
 _updateSimRanking();}

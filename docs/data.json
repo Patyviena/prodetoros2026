@@ -1,5 +1,5 @@
 {
-  "last_updated": "30/06/2026 13:23",
+  "last_updated": "30/06/2026 20:46",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -95,7 +95,9 @@
     "Sudafrica v Canada",
     "Alemania v Paraguay",
     "Paises Bajos v Marruecos",
-    "Brasil v Japon"
+    "Brasil v Japon",
+    "Francia v Suecia",
+    "Costa de Marfil v Noruega"
   ],
   "group_preds": [
     {
@@ -3057,7 +3059,9 @@
       122,
       122,
       122,
-      126
+      126,
+      130,
+      132
     ],
     "Kovacic": [
       0,
@@ -3136,7 +3140,9 @@
       114,
       114,
       114,
-      118
+      118,
+      122,
+      126
     ],
     "Patru Maqui": [
       0,
@@ -3215,7 +3221,9 @@
       119,
       119,
       126,
-      133
+      133,
+      142,
+      146
     ],
     "Lucas Tkacz": [
       0,
@@ -3294,7 +3302,9 @@
       133,
       133,
       138,
-      138
+      138,
+      142,
+      149
     ],
     "Nico Conti": [
       0,
@@ -3373,7 +3383,9 @@
       138,
       138,
       143,
-      147
+      147,
+      151,
+      153
     ],
     "Fran Garoby": [
       0,
@@ -3452,7 +3464,9 @@
       119,
       119,
       121,
-      121
+      121,
+      125,
+      129
     ],
     "Tomi Marchiano": [
       0,
@@ -3531,7 +3545,9 @@
       131,
       131,
       133,
-      137
+      137,
+      146,
+      153
     ],
     "JZ": [
       0,
@@ -3610,7 +3626,9 @@
       117,
       117,
       122,
-      129
+      129,
+      138,
+      145
     ],
     "Alejo Di Fiori": [
       0,
@@ -3689,7 +3707,9 @@
       119,
       119,
       121,
-      121
+      121,
+      125,
+      132
     ],
     "Nico Gianola": [
       0,
@@ -3768,7 +3788,9 @@
       116,
       116,
       118,
-      125
+      125,
+      134,
+      141
     ],
     "Tomi Samitier": [
       0,
@@ -3847,7 +3869,9 @@
       136,
       136,
       136,
-      140
+      140,
+      144,
+      148
     ],
     "Juan Leoni": [
       0,
@@ -3926,7 +3950,9 @@
       95,
       95,
       102,
-      109
+      109,
+      113,
+      117
     ],
     "Conrado": [
       0,
@@ -4005,7 +4031,9 @@
       114,
       114,
       114,
-      114
+      114,
+      118,
+      125
     ],
     "Pulpo": [
       0,
@@ -4084,7 +4112,9 @@
       105,
       105,
       107,
-      112
+      112,
+      114,
+      114
     ],
     "Fede Lacal": [
       0,
@@ -4163,7 +4193,9 @@
       91,
       98,
       98,
-      98
+      98,
+      107,
+      107
     ],
     "Gian Luttini": [
       0,
@@ -4242,94 +4274,96 @@
       84,
       84,
       84,
-      91
+      91,
+      100,
+      102
     ]
   },
   "ranking": [
     {
       "pos": 1,
       "name": "Nico Conti",
-      "pts": 147
+      "pts": 153
     },
     {
       "pos": 2,
-      "name": "Tomi Samitier",
-      "pts": 140
+      "name": "Tomi Marchiano",
+      "pts": 153
     },
     {
       "pos": 3,
       "name": "Lucas Tkacz",
-      "pts": 138
+      "pts": 149
     },
     {
       "pos": 4,
-      "name": "Tomi Marchiano",
-      "pts": 137
+      "name": "Tomi Samitier",
+      "pts": 148
     },
     {
       "pos": 5,
       "name": "Patru Maqui",
-      "pts": 133
+      "pts": 146
     },
     {
       "pos": 6,
       "name": "JZ",
-      "pts": 129
+      "pts": 145
     },
     {
       "pos": 7,
-      "name": "Epe Roth",
-      "pts": 126
+      "name": "Nico Gianola",
+      "pts": 141
     },
     {
       "pos": 8,
-      "name": "Nico Gianola",
-      "pts": 125
+      "name": "Epe Roth",
+      "pts": 132
     },
     {
       "pos": 9,
-      "name": "Fran Garoby",
-      "pts": 121
+      "name": "Alejo Di Fiori",
+      "pts": 132
     },
     {
       "pos": 10,
-      "name": "Alejo Di Fiori",
-      "pts": 121
+      "name": "Fran Garoby",
+      "pts": 129
     },
     {
       "pos": 11,
       "name": "Kovacic",
-      "pts": 118
+      "pts": 126
     },
     {
       "pos": 12,
       "name": "Conrado",
-      "pts": 114
+      "pts": 125
     },
     {
       "pos": 13,
-      "name": "Pulpo",
-      "pts": 112
+      "name": "Juan Leoni",
+      "pts": 117
     },
     {
       "pos": 14,
-      "name": "Juan Leoni",
-      "pts": 109
+      "name": "Pulpo",
+      "pts": 114
     },
     {
       "pos": 15,
       "name": "Fede Lacal",
-      "pts": 98
+      "pts": 107
     },
     {
       "pos": 16,
       "name": "Gian Luttini",
-      "pts": 91
+      "pts": 102
     }
   ],
   "top3": {
     "Nico Conti": 1,
-    "Tomi Samitier": 2,
+    "Tomi Marchiano": 2,
     "Lucas Tkacz": 3
   },
   "knockout_matches": [
@@ -4596,7 +4630,7 @@
       "match_date": "2026-06-30",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "3-1",
@@ -4612,27 +4646,27 @@
         "Tomi Samitier": "2-0",
         "Juan Leoni": "2-0",
         "Conrado": "3-1",
-        "Pulpo": null,
+        "Pulpo": "3-1",
         "Fede Lacal": "3-0",
         "Gian Luttini": "3-0"
       },
       "points": {
-        "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
-        "Pulpo": 0,
-        "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Epe Roth": 4,
+        "Kovacic": 4,
+        "Patru Maqui": 9,
+        "Lucas Tkacz": 4,
+        "Nico Conti": 4,
+        "Fran Garoby": 4,
+        "Tomi Marchiano": 9,
+        "JZ": 9,
+        "Alejo Di Fiori": 4,
+        "Nico Gianola": 9,
+        "Tomi Samitier": 4,
+        "Juan Leoni": 4,
+        "Conrado": 4,
+        "Pulpo": 2,
+        "Fede Lacal": 9,
+        "Gian Luttini": 9
       },
       "classif": {
         "Epe Roth": "Francia",
@@ -4648,6 +4682,7 @@
         "Tomi Samitier": "Francia",
         "Juan Leoni": "Francia",
         "Conrado": "Francia",
+        "Pulpo": "Francia",
         "Fede Lacal": "Francia",
         "Gian Luttini": "Francia"
       }
@@ -4659,7 +4694,7 @@
       "match_date": "2026-06-30",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "1-1",
@@ -4675,27 +4710,27 @@
         "Tomi Samitier": "0-1",
         "Juan Leoni": "0-1",
         "Conrado": "1-2",
-        "Pulpo": null,
+        "Pulpo": "2-1",
         "Fede Lacal": "2-1",
         "Gian Luttini": "2-2"
       },
       "points": {
-        "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
+        "Epe Roth": 2,
+        "Kovacic": 4,
+        "Patru Maqui": 4,
+        "Lucas Tkacz": 7,
+        "Nico Conti": 2,
+        "Fran Garoby": 4,
+        "Tomi Marchiano": 7,
+        "JZ": 7,
+        "Alejo Di Fiori": 7,
+        "Nico Gianola": 7,
+        "Tomi Samitier": 4,
+        "Juan Leoni": 4,
+        "Conrado": 7,
         "Pulpo": 0,
         "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Gian Luttini": 2
       },
       "classif": {
         "Epe Roth": "Noruega",
@@ -4711,6 +4746,7 @@
         "Tomi Samitier": "Noruega",
         "Juan Leoni": "Noruega",
         "Conrado": "Noruega",
+        "Pulpo": "Costa de Marfil",
         "Fede Lacal": "CoSta de Marfil",
         "Gian Luttini": "Noruega"
       }
@@ -4738,7 +4774,7 @@
         "Tomi Samitier": "1-0",
         "Juan Leoni": "2-1",
         "Conrado": "1-1",
-        "Pulpo": null,
+        "Pulpo": "0-2",
         "Fede Lacal": "2-2",
         "Gian Luttini": "0-1"
       },
@@ -4774,6 +4810,7 @@
         "Tomi Samitier": "Mexico",
         "Juan Leoni": "Mexico",
         "Conrado": "Ecuador",
+        "Pulpo": "Ecuador",
         "Fede Lacal": "Mexico",
         "Gian Luttini": "Ecuador"
       }
@@ -4801,7 +4838,7 @@
         "Tomi Samitier": "1-0",
         "Juan Leoni": "2-1",
         "Conrado": "2-0",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "2-1",
         "Gian Luttini": "3-1"
       },
@@ -4837,6 +4874,7 @@
         "Tomi Samitier": "Inglaterra",
         "Juan Leoni": "Inglaterra",
         "Conrado": "Inglaterra",
+        "Pulpo": "Inglaterra",
         "Fede Lacal": "Inglaterra",
         "Gian Luttini": "Inglaterra"
       }
@@ -4864,7 +4902,7 @@
         "Tomi Samitier": "2-0",
         "Juan Leoni": "2-1",
         "Conrado": "2-1",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "1-2",
         "Gian Luttini": "3-1"
       },
@@ -4900,6 +4938,7 @@
         "Tomi Samitier": "Estados Unidos",
         "Juan Leoni": "Estados Unidos",
         "Conrado": "Estados Unidos",
+        "Pulpo": "Estados Unidos",
         "Fede Lacal": "BoSnia",
         "Gian Luttini": "Estados Unidos"
       }
@@ -4927,7 +4966,7 @@
         "Tomi Samitier": "1-1",
         "Juan Leoni": "1-1",
         "Conrado": "1-0",
-        "Pulpo": null,
+        "Pulpo": "1-0",
         "Fede Lacal": "2-1",
         "Gian Luttini": "2-1"
       },
@@ -4963,6 +5002,7 @@
         "Tomi Samitier": "Senegal",
         "Juan Leoni": "Senegal",
         "Conrado": "Bélgica",
+        "Pulpo": "Belgica",
         "Fede Lacal": "Belgica",
         "Gian Luttini": "Belgica"
       }
@@ -4990,7 +5030,7 @@
         "Tomi Samitier": "1-0",
         "Juan Leoni": "1-2",
         "Conrado": "2-0",
-        "Pulpo": null,
+        "Pulpo": "3-1",
         "Fede Lacal": "1-1",
         "Gian Luttini": "2-2"
       },
@@ -5026,6 +5066,7 @@
         "Tomi Samitier": "Portugal",
         "Juan Leoni": "Croacia",
         "Conrado": "Croacia",
+        "Pulpo": "Portugal",
         "Fede Lacal": "Croacia",
         "Gian Luttini": "Portugal"
       }
@@ -5053,7 +5094,7 @@
         "Tomi Samitier": "2-0",
         "Juan Leoni": "2-1",
         "Conrado": "1-1",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "1-1",
         "Gian Luttini": "3-0"
       },
@@ -5089,6 +5130,7 @@
         "Tomi Samitier": "Espana",
         "Juan Leoni": "Espana",
         "Conrado": "España",
+        "Pulpo": "España",
         "Fede Lacal": "ESpana",
         "Gian Luttini": "España"
       }
@@ -5116,7 +5158,7 @@
         "Tomi Samitier": "1-1",
         "Juan Leoni": "2-2",
         "Conrado": "0-1",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "1-1",
         "Gian Luttini": "1-2"
       },
@@ -5152,6 +5194,7 @@
         "Tomi Samitier": "Algeria",
         "Juan Leoni": "Algeria",
         "Conrado": "Algeria",
+        "Pulpo": "Suiza",
         "Fede Lacal": "Algeria",
         "Gian Luttini": "Algeria"
       }
@@ -5179,7 +5222,7 @@
         "Tomi Samitier": "2-0",
         "Juan Leoni": "4-0",
         "Conrado": "3-0",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "4-1",
         "Gian Luttini": "2-0"
       },
@@ -5215,6 +5258,7 @@
         "Tomi Samitier": "Argentina",
         "Juan Leoni": "Argentina",
         "Conrado": "Argentina",
+        "Pulpo": "Argentina",
         "Fede Lacal": "Argentina",
         "Gian Luttini": "Argentina"
       }
@@ -5242,7 +5286,7 @@
         "Tomi Samitier": "2-0",
         "Juan Leoni": "2-0",
         "Conrado": "2-1",
-        "Pulpo": null,
+        "Pulpo": "2-2",
         "Fede Lacal": "1-1",
         "Gian Luttini": "1-1"
       },
@@ -5278,6 +5322,7 @@
         "Tomi Samitier": "Colombia",
         "Juan Leoni": "Colombia",
         "Conrado": "Colombia",
+        "Pulpo": "Colombia",
         "Fede Lacal": "Ghana",
         "Gian Luttini": "Colombia"
       }
@@ -5305,7 +5350,7 @@
         "Tomi Samitier": "0-1",
         "Juan Leoni": "1-1",
         "Conrado": "1-2",
-        "Pulpo": null,
+        "Pulpo": "2-0",
         "Fede Lacal": "1-1",
         "Gian Luttini": "1-2"
       },
@@ -5341,6 +5386,7 @@
         "Tomi Samitier": "Egipto",
         "Juan Leoni": "Egipto",
         "Conrado": "Egipto",
+        "Pulpo": "Australia",
         "Fede Lacal": "AuStralia",
         "Gian Luttini": "Egipto"
       }
@@ -6120,7 +6166,7 @@
     {
       "id": "B1",
       "label": "Campeon del Mundial",
-      "pts_value": 20,
+      "pts_value": 12,
       "predictions": {
         "Epe Roth": "Argentina",
         "Kovacic": "Francia",
@@ -6161,7 +6207,7 @@
     {
       "id": "B2",
       "label": "Subcampeon",
-      "pts_value": 12,
+      "pts_value": 8,
       "predictions": {
         "Epe Roth": "Francia",
         "Kovacic": "Francia",
@@ -6202,7 +6248,7 @@
     {
       "id": "B3",
       "label": "Goleador del torneo",
-      "pts_value": 12,
+      "pts_value": 8,
       "predictions": {
         "Epe Roth": "Kane",
         "Kovacic": "Mbappe",
@@ -6243,7 +6289,7 @@
     {
       "id": "B4",
       "label": "Sel. mas goles a favor",
-      "pts_value": 8,
+      "pts_value": 5,
       "predictions": {
         "Epe Roth": "España",
         "Kovacic": "Epaña",
@@ -6284,7 +6330,7 @@
     {
       "id": "B6",
       "label": "Sel. mas goles en contra",
-      "pts_value": 8,
+      "pts_value": 5,
       "predictions": {
         "Epe Roth": "Curacao",
         "Kovacic": "Curacao",

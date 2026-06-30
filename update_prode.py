@@ -46,11 +46,11 @@ MATCH_DATES = {
 }
 
 BONUS_CATEGORIES = {
-    "B1": {"label": "Campeon del Mundial",       "pts": 20},
-    "B2": {"label": "Subcampeon",                "pts": 12},
-    "B3": {"label": "Goleador del torneo",       "pts": 12},
-    "B4": {"label": "Sel. mas goles a favor",    "pts":  8},
-    "B6": {"label": "Sel. mas goles en contra",  "pts":  8},
+    "B1": {"label": "Campeon del Mundial",       "pts": 12},
+    "B2": {"label": "Subcampeon",                "pts":  8},
+    "B3": {"label": "Goleador del torneo",       "pts":  8},
+    "B4": {"label": "Sel. mas goles a favor",    "pts":  5},
+    "B6": {"label": "Sel. mas goles en contra",  "pts":  5},
 }
 
 COLOR_PALETTE = {

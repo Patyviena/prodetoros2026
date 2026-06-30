@@ -481,7 +481,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
       <div class="sim-title-block">
         <div class="sim-title"><div class="section-bar" style="background:var(--violet)"></div>Simulacion de Prode</div>
         <div class="sim-subtitle">Ingresa resultados y ve como queda la tabla &nbsp;&middot;&nbsp; Encontra la combinacion para ganar</div>
-        <div style="margin-top:8px;font-size:.72rem;color:var(--gold2);background:rgba(255,149,0,.08);border:1px solid rgba(255,149,0,.2);border-radius:6px;padding:7px 12px;display:inline-block;">&#9889; Partidos jugados auto-completados &nbsp;&middot;&nbsp; &#127942; Bonus pre-torneo incluidos abajo &nbsp;&middot;&nbsp; &#10003; Clasificados incluidos</div>
+        <div style="margin-top:8px;font-size:.72rem;color:var(--gold2);background:rgba(255,149,0,.08);border:1px solid rgba(255,149,0,.2);border-radius:6px;padding:7px 12px;display:inline-block;">&#9889; Jugados auto-completados &nbsp;&middot;&nbsp; &#127942; Bonus abajo &nbsp;&middot;&nbsp; &#10003; Cls incluido &nbsp;&middot;&nbsp; &#128200; Goles: Poisson(&lambda;=1.5, max 4)</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
         <button class="sim-random-btn" id="sim-random-btn">&#127922; Random</button>
@@ -716,6 +716,8 @@ var PHASE_PTS={'16avos':{common:2,exact:5},'Octavos':{common:3,exact:7},'Cuartos
 var _DEMO_NAMES={'P73':'Uruguay vs Mexico','P74':'Argentina vs Ecuador','P75':'Brasil vs Venezuela','P76':'Colombia vs Peru','P77':'USA vs Panama','P78':'Canada vs El Salvador','P79':'Francia vs Marruecos','P80':'Espana vs Suiza','P81':'Alemania vs Escocia','P82':'Portugal vs Turquia','P83':'Inglaterra vs Rep. Checa','P84':'Holanda vs Dinamarca','P85':'Japon vs Australia','P86':'Korea Sur vs Senegal','P87':'Italia vs Polonia','P88':'Croacia vs Rumania'};
 var _DPATS=[['2-0','2-1','1-0','2-0','2-1','1-0','1-1','0-1','2-1','2-0','1-0','0-1','1-1','2-0','1-0','0-1'],['1-0','0-1','1-1','2-1','0-2','1-0','2-0','1-2','1-1','0-1','2-1','1-0','0-2','1-1','2-0','0-1'],['0-1','0-2','1-2','0-1','1-1','0-2','2-1','0-1','1-0','0-2','1-1','0-1','2-0','0-1','1-2','0-1'],['1-1','2-2','0-0','1-1','2-1','0-1','1-1','2-0','0-0','1-2','1-1','0-1','2-1','1-1','0-2','1-1'],['2-1','1-2','2-0','1-1','0-1','2-1','1-0','0-2','1-1','2-1','0-1','1-0','2-0','1-1','0-1','2-1'],['1-0','2-0','0-1','1-0','2-1','1-0','0-1','1-1','1-0','2-0','0-1','2-1','1-0','0-2','1-1','1-0']];
 var _simData=null,_simMatches=[];
+// Poisson(lambda=1.5) capped at 4 goals — CDF precomputado
+function _pois(){var r=Math.random();return r<.2231?0:r<.5578?1:r<.8088?2:r<.9344?3:4;}
 function _runMassiveSimulation(){
   if(!_simData)return;
   var N=1000000,CHUNK=40000;
@@ -728,9 +730,12 @@ function _runMassiveSimulation(){
   // Bonus pts from current selection
   var bonusPts=new Float64Array(nP);
   (_simData.bonus_preds||[]).forEach(function(b){var sel=_simBonusSel[b.id];if(!sel)return;players.forEach(function(p,pi){if((b.predictions[p]||'').trim().toLowerCase()===sel)bonusPts[pi]+=b.pts_value;});});
-  // Pre-compute score tables [matchIdx][scoreIdx 0-15][playerIdx]
-  var scoreTables=unplayed.map(function(m){var t=[];for(var l=0;l<4;l++){for(var a=0;a<4;a++){var row=new Float64Array(nP);players.forEach(function(p,pi){row[pi]=_calcPts(m.predictions[p],{l:l,a:a},m.phase);});t.push(row);}}return t;});
+  // Pre-compute score tables [matchIdx][scoreIdx 0-24][playerIdx] — Poisson max 4 goles
+  var scoreTables=unplayed.map(function(m){var t=[];for(var l=0;l<5;l++){for(var a=0;a<5;a++){var row=new Float64Array(nP);players.forEach(function(p,pi){row[pi]=_calcPts(m.predictions[p],{l:l,a:a},m.phase);});t.push(row);}}return t;});
   // Pre-compute cls tables [matchIdx][0=L,1=V][playerIdx]
+  // hasCls=true  -> partidos con predicciones reales de clasificado (P77-P88)
+  // hasCls=false -> TBD sin predicciones (P89+): se simula 50% por jugador
+  var hasCls=unplayed.map(function(m){return!!(m.classif&&Object.keys(m.classif).some(function(p){return!!m.classif[p];}));});
   var clsTables=unplayed.map(function(m){return['L','V'].map(function(side){var row=new Float64Array(nP);if(m.classif)players.forEach(function(p,pi){if(m.classif[p])row[pi]=_classifBonus(m.classif[p],m.match,side);});return row;});});
   // Position distribution [pos][playerIdx]
   var posDist=[];for(var i=0;i<nP;i++)posDist.push(new Int32Array(nP));
@@ -746,10 +751,16 @@ function _runMassiveSimulation(){
     for(var sim=done;sim<end;sim++){
       for(var pi=0;pi<nP;pi++)simTotals[pi]=basePts[pi]+bonusPts[pi];
       for(var mi=0;mi<nU;mi++){
-        var si=Math.floor(Math.random()*16);
-        var cls=Math.random()<.5?0:1;
-        var sr=scoreTables[mi][si],cr=clsTables[mi][cls];
-        for(var pi=0;pi<nP;pi++)simTotals[pi]+=sr[pi]+cr[pi];
+        var si=_pois()*5+_pois(); // Poisson(1.5) goles local y visitante (0-4 c/u)
+        var cls=Math.floor(Math.random()*2); // 0=L clasifica, 1=V clasifica
+        var sr=scoreTables[mi][si];
+        if(hasCls[mi]){
+          var cr=clsTables[mi][cls];
+          for(var pi=0;pi<nP;pi++)simTotals[pi]+=sr[pi]+cr[pi];
+        } else {
+          // TBD: sin predicciones de clasificado -> +2 aleatorio 50% por jugador
+          for(var pi=0;pi<nP;pi++){simTotals[pi]+=sr[pi];if(Math.random()<.5)simTotals[pi]+=2;}
+        }
       }
       ranked.sort(function(a,b){return simTotals[b]-simTotals[a];});
       for(var pos=0;pos<nP;pos++)posDist[pos][ranked[pos]]++;

@@ -791,7 +791,7 @@ function _renderMassSimResult(posDist,players,N){
       var alpha=Math.min(1,pct/25);
       var bg=pct<0.1?'transparent':'rgba(255,215,0,'+alpha.toFixed(2)+')';
       var fg=alpha>0.5?'#000':'var(--text)';
-      var txt=pct>=0.5?pct.toFixed(1)+'%':pct>=0.05?'<span style="opacity:.45">'+pct.toFixed(1)+'%</span>':'<span style="opacity:.2">'+cnt+'</span>';
+      var txt=pct>=0.5?pct.toFixed(1)+'%':pct>=0.05?'<span style="opacity:.45">'+pct.toFixed(1)+'%</span>':cnt>0?'<span style="opacity:.15">&lt;0.1%</span>':'';
       html+='<td style="background:'+bg+';color:'+fg+'">'+txt+'</td>';
     });
     html+='</tr>';

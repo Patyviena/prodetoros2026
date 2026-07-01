@@ -569,7 +569,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 <script>
 var _reAcc = new RegExp('[\\u0300-\\u036f]', 'g');
 function abbrevTeam(t){var s=t.trim().normalize('NFD').replace(_reAcc,'').replace(/^(RI de |Rep\. de |Rep\. |RD |Estados |Arabia |Nueva )/i,'');return s.substring(0,3).toUpperCase();}
-function abbrevMatch(name){var p=name.split(' vs ');return p.length===2?abbrevTeam(p[0])+'-'+abbrevTeam(p[1]):name.substring(0,7);}
+function abbrevMatch(name){var p=name.split(' vs ');if(p.length<2)p=name.split(' v ');return p.length===2?abbrevTeam(p[0])+'-'+abbrevTeam(p[1]):name.substring(0,7);}
 function resultType(score){var p=score.split('-').map(Number);if(isNaN(p[0])||isNaN(p[1]))return'tie';return p[0]>p[1]?'local':p[0]<p[1]?'away':'tie';}
 function formDotClass(pts){if(!pts)return'miss';if(pts>=7)return'bonus';if(pts>=5)return'exact';return'common';}
 function _pick(arr){return arr[Math.floor(Math.random()*arr.length)];}

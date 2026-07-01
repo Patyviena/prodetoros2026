@@ -1,5 +1,5 @@
 {
-  "last_updated": "01/07/2026 15:08",
+  "last_updated": "01/07/2026 20:03",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -99,7 +99,8 @@
     "Francia v Suecia",
     "Costa de Marfil v Noruega",
     "Mexico v Ecuador",
-    "Inglaterra v Congo"
+    "Inglaterra v Congo",
+    "Belgica v Senegal"
   ],
   "group_preds": [
     {
@@ -3065,6 +3066,7 @@
       130,
       132,
       132,
+      136,
       136
     ],
     "Kovacic": [
@@ -3148,7 +3150,8 @@
       122,
       126,
       130,
-      137
+      137,
+      142
     ],
     "Patru Maqui": [
       0,
@@ -3231,7 +3234,8 @@
       142,
       146,
       146,
-      150
+      150,
+      152
     ],
     "Lucas Tkacz": [
       0,
@@ -3314,6 +3318,7 @@
       142,
       149,
       153,
+      157,
       157
     ],
     "Nico Conti": [
@@ -3397,7 +3402,8 @@
       151,
       153,
       157,
-      161
+      161,
+      165
     ],
     "Fran Garoby": [
       0,
@@ -3480,7 +3486,8 @@
       125,
       129,
       133,
-      137
+      137,
+      139
     ],
     "Tomi Marchiano": [
       0,
@@ -3563,7 +3570,8 @@
       146,
       153,
       155,
-      162
+      162,
+      164
     ],
     "JZ": [
       0,
@@ -3646,7 +3654,8 @@
       138,
       145,
       145,
-      149
+      149,
+      151
     ],
     "Alejo Di Fiori": [
       0,
@@ -3729,7 +3738,8 @@
       125,
       132,
       132,
-      136
+      136,
+      138
     ],
     "Nico Gianola": [
       0,
@@ -3812,6 +3822,7 @@
       134,
       141,
       145,
+      149,
       149
     ],
     "Tomi Samitier": [
@@ -3895,7 +3906,8 @@
       144,
       148,
       152,
-      156
+      156,
+      158
     ],
     "Juan Leoni": [
       0,
@@ -3978,7 +3990,8 @@
       113,
       117,
       121,
-      128
+      128,
+      130
     ],
     "Conrado": [
       0,
@@ -4061,7 +4074,8 @@
       118,
       125,
       125,
-      129
+      129,
+      131
     ],
     "Pulpo": [
       0,
@@ -4144,7 +4158,8 @@
       114,
       114,
       114,
-      118
+      118,
+      120
     ],
     "Fede Lacal": [
       0,
@@ -4227,7 +4242,8 @@
       107,
       107,
       109,
-      116
+      116,
+      118
     ],
     "Gian Luttini": [
       0,
@@ -4310,39 +4326,40 @@
       100,
       102,
       102,
-      106
+      106,
+      108
     ]
   },
   "ranking": [
     {
       "pos": 1,
-      "name": "Tomi Marchiano",
-      "pts": 162
+      "name": "Nico Conti",
+      "pts": 165
     },
     {
       "pos": 2,
-      "name": "Nico Conti",
-      "pts": 161
+      "name": "Tomi Marchiano",
+      "pts": 164
     },
     {
       "pos": 3,
+      "name": "Tomi Samitier",
+      "pts": 158
+    },
+    {
+      "pos": 4,
       "name": "Lucas Tkacz",
       "pts": 157
     },
     {
-      "pos": 4,
-      "name": "Tomi Samitier",
-      "pts": 156
-    },
-    {
       "pos": 5,
       "name": "Patru Maqui",
-      "pts": 150
+      "pts": 152
     },
     {
       "pos": 6,
       "name": "JZ",
-      "pts": 149
+      "pts": 151
     },
     {
       "pos": 7,
@@ -4352,53 +4369,53 @@
     {
       "pos": 8,
       "name": "Kovacic",
-      "pts": 137
+      "pts": 142
     },
     {
       "pos": 9,
       "name": "Fran Garoby",
-      "pts": 137
+      "pts": 139
     },
     {
       "pos": 10,
-      "name": "Epe Roth",
-      "pts": 136
+      "name": "Alejo Di Fiori",
+      "pts": 138
     },
     {
       "pos": 11,
-      "name": "Alejo Di Fiori",
+      "name": "Epe Roth",
       "pts": 136
     },
     {
       "pos": 12,
       "name": "Conrado",
-      "pts": 129
+      "pts": 131
     },
     {
       "pos": 13,
       "name": "Juan Leoni",
-      "pts": 128
+      "pts": 130
     },
     {
       "pos": 14,
       "name": "Pulpo",
-      "pts": 118
+      "pts": 120
     },
     {
       "pos": 15,
       "name": "Fede Lacal",
-      "pts": 116
+      "pts": 118
     },
     {
       "pos": 16,
       "name": "Gian Luttini",
-      "pts": 106
+      "pts": 108
     }
   ],
   "top3": {
-    "Tomi Marchiano": 1,
-    "Nico Conti": 2,
-    "Lucas Tkacz": 3
+    "Nico Conti": 1,
+    "Tomi Marchiano": 2,
+    "Tomi Samitier": 3
   },
   "knockout_matches": [
     {
@@ -4984,7 +5001,7 @@
       "match_date": "2026-07-01",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "1-2",
@@ -5006,21 +5023,21 @@
       },
       "points": {
         "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
+        "Kovacic": 5,
+        "Patru Maqui": 2,
         "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
+        "Nico Conti": 4,
+        "Fran Garoby": 2,
+        "Tomi Marchiano": 2,
+        "JZ": 2,
+        "Alejo Di Fiori": 2,
         "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
-        "Pulpo": 0,
-        "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Tomi Samitier": 2,
+        "Juan Leoni": 2,
+        "Conrado": 2,
+        "Pulpo": 2,
+        "Fede Lacal": 2,
+        "Gian Luttini": 2
       },
       "classif": {
         "Epe Roth": "Senegal",

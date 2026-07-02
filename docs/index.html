@@ -828,11 +828,28 @@ function _inferActual(m){
   if(parts.length<2)return null;
   var score={l:+parts[0],a:+parts[1]};
   var clsSide=null;
-  if(m.classif&&m.classif[topPlayer]){
+  if(m.classif){
     var teams=m.match.split(' v ');
     var lT=(teams[0]||'').trim().toLowerCase().slice(0,4);
-    var cls=m.classif[topPlayer].toLowerCase().slice(0,4);
-    clsSide=(cls===lT)?'L':'V';
+    // Verificar si el top-player tambien acerto el clasificado
+    // (sus pts reales > pts solo por el score)
+    var scorePtsOnly=_calcPts(m.predictions[topPlayer],score,m.phase);
+    var clsPlayer=null;
+    if((m.points[topPlayer]||0)>scorePtsOnly&&m.classif[topPlayer]){
+      clsPlayer=topPlayer;
+    } else {
+      // Top-player no acerto el cls → buscar alguien cuyo pts == score_pts + 2
+      clsPlayer=players.find(function(p){
+        if(!m.classif[p])return false;
+        var pPts=m.points[p]||0;
+        var pSc=_calcPts(m.predictions[p],score,m.phase);
+        return pPts>0&&pPts===pSc+2;
+      })||null;
+    }
+    if(clsPlayer){
+      var cls=m.classif[clsPlayer].toLowerCase().slice(0,4);
+      clsSide=(cls===lT)?'L':'V';
+    }
   }
   return{score:score,clsSide:clsSide};
 }

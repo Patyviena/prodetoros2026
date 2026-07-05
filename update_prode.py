@@ -291,6 +291,20 @@ def parse_data(csv_text: str) -> dict:
             "earned":      earned,
         })
 
+    # Ko_preds: partidos eliminatorios jugados, formato equivalente a group_preds
+    ko_preds = [
+        {
+            "id":          m["id"],
+            "match":       m["match"],
+            "phase":       m["phase"],
+            "pts":         m["points"],
+            "predictions": m["predictions"],
+            "classif":     m.get("classif"),
+        }
+        for m in knockout_matches
+        if m["played"]
+    ]
+
     return {
         "last_updated":     datetime.now().strftime("%d/%m/%Y %H:%M"),
         "players":          players,
@@ -301,6 +315,7 @@ def parse_data(csv_text: str) -> dict:
         "ranking":          ranking,
         "top3":             top3,
         "knockout_matches": knockout_matches,
+        "ko_preds":         ko_preds,
         "colors":           COLOR_PALETTE,
         "bonus_preds":      bonus_preds,
     }

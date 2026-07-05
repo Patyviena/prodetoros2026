@@ -240,6 +240,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .badge-desc{font-size:.75rem;color:var(--muted);line-height:1.5;}
 .badge-winner{font-size:1rem;font-weight:700;margin-top:8px;}
 .badge-stat{font-size:.78rem;color:var(--muted);}
+.badges-section-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:28px 0 14px;display:flex;align-items:center;gap:8px;}
+.badges-section-lbl:first-child{margin-top:0;}
+.badges-section-lbl.ko{color:var(--cyan);}
+.badges-section-sub{font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;color:var(--muted);}
+.badge-card.ko-badge{border-color:rgba(0,229,255,.12);}
+.badge-card.ko-badge:hover{border-color:var(--cyan);}
+.dif-section-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:28px 0 14px;}
+.dif-section-lbl.ko{color:var(--cyan);}
+.matrix-phase-hdr{padding:8px 0 4px!important;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);text-align:left!important;background:var(--bg)!important;border-bottom:1px solid var(--border)!important;}
+.matrix-phase-hdr.ko{color:var(--cyan);}
 /* Matriz de predicciones */
 .matrix-wrap{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 .matrix-wrap::-webkit-scrollbar{height:5px;}
@@ -522,7 +532,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
   <div class="tool-content" id="badges-content" style="display:none">
     <div class="tool-header">
       <div class="tool-title"><div class="section-bar" style="background:var(--gold)"></div>Premios</div>
-      <div class="tool-subtitle">Estadisticas destacadas de la fase de grupos — calculadas automaticamente</div>
+      <div class="tool-subtitle">Fase de grupos y eliminatorio — estadisticas calculadas automaticamente</div>
     </div>
     <div class="tool-body" id="badges-body"></div>
   </div>
@@ -889,85 +899,108 @@ function _fmtLine(txt,data){
   return out;
 }
 function _genRelato(data){
-  var rk=data.ranking, n=rk.length;
-  var ldr=rk[0],sec=rk[1],trd=rk[2],lst=rk[n-1],slst=rk[n-2];
-  var g12=ldr.pts-sec.pts, g23=sec.pts-trd.pts, gBot=ldr.pts-lst.pts;
-  var played=data.group_total||data.matches_played.length;
-  var koStarted=data.knockout_matches&&data.knockout_matches.some(function(m){return m.played;});
-  var koPhase=koStarted?'Fase eliminatoria en curso.':'Primera jornada eliminatoria arrancando hoy.';
-
+  var rk=data.ranking,n=rk.length;
+  var ldr=rk[0],sec=rk[1],trd=rk[2],lst=rk[n-1];
+  var g12=ldr.pts-sec.pts,gBot=ldr.pts-lst.pts;
+  var players=data.players,N=players.length;
+  var ko=data.knockout_matches||[];
+  var koPlayed=ko.filter(function(m){return m.played;});
+  // Detect current phase (last phase that has played matches)
+  var curPhase='Grupos';
+  ['16avos','Octavos','Cuartos','Semis','3er Puesto','Final'].forEach(function(ph){
+    if(koPlayed.some(function(m){return m.phase===ph;}))curPhase=ph;
+  });
+  function phMs(ph){return koPlayed.filter(function(m){return m.phase===ph;});}
+  var ph16=phMs('16avos'),phOct=phMs('Octavos'),phCua=phMs('Cuartos'),phSem=phMs('Semis');
+  function sumPts(ms){var r={};players.forEach(function(p){r[p]=0;});ms.forEach(function(m){players.forEach(function(p){r[p]+=(m.points[p]||0);});});return r;}
+  var koPts=sumPts(koPlayed),pts16=sumPts(ph16),ptsOct=sumPts(phOct);
+  function topOf(d){return players.slice().sort(function(a,b){return d[b]-d[a];})[0];}
+  function botOf(d){return players.slice().sort(function(a,b){return d[a]-d[b];})[0];}
+  var upsets=koPlayed.filter(function(m){return players.filter(function(p){return(m.points[p]||0)>0;}).length<=Math.floor(N*0.3);});
   var formD=rk.map(function(r){
     var hist=data.history[r.name]||[0],d=[];
     for(var i=1;i<hist.length;i++)d.push(hist[i]-hist[i-1]);
-    var tot=d.length||1;
-    return{
-      name:r.name,pos:r.pos,pts:r.pts,
-      last5:d.slice(-5).reduce(function(a,b){return a+b;},0),
-      exactos:d.filter(function(x){return x>=5;}).length,
-      exactosB:d.filter(function(x){return x===7;}).length,
-      avg:Math.round(r.pts/tot*10)/10,
-      total:d.length
-    };
+    return{name:r.name,pts:r.pts,last5:d.slice(-5).reduce(function(a,b){return a+b;},0)};
   });
-  var sorted_avg=formD.slice().sort(function(a,b){return b.avg-a.avg;});
   var bf=formD.slice().sort(function(a,b){return b.last5-a.last5;})[0];
-  var mx=formD.slice().sort(function(a,b){return(b.exactos+b.exactosB)-(a.exactos+a.exactosB);})[0];
-  var mxTot=mx?(mx.exactos+mx.exactosB):0;
-
   var lines=[];
-
-  // Apertura: contexto del torneo, sin euforia
-  lines.push(_pick([
-    'Fase de grupos cerrada: '+played+'/72 partidos registrados en el sistema. '+koPhase+' Este es el primer Mundial con formato de 48 selecciones — la fase de grupos genero el doble de partidos que en 2018.',
-    played+' partidos de grupos procesados (72 en total). '+koPhase+' A partir de aca los puntos no son lineales: un exacto en 16avos vale 5, en cuartos escala, y en la final llega a 10.',
-    'Grupos completados. '+koPhase+' El prode entra en la etapa donde la estructura de puntos cambia: cada fase multiplica el valor de los aciertos, y el clasificado agrega +2 independientemente del resultado.',
-  ]));
-
-  // Liderazgo: análisis frío
-  var ldrFd=formD.find(function(f){return f.name===ldr.name;});
-  if(g12===0){
-    lines.push(ldr.name+' y '+sec.name+' igualados en la cima con '+ldr.pts+' pts. Empate exacto después de '+played+' partidos. El primer partido eliminatorio los va a separar — o no.');
-  } else if(g12===1){
-    lines.push(ldr.name+' encabeza con '+ldr.pts+' pts, un punto arriba de '+sec.name+'. Diferencia mínima: cualquier exacto en el eliminatorio la borra. El margen actual equivale a menos de la mitad de un resultado común (2 pts).');
-  } else if(g12<=5){
-    lines.push(ldr.name+' lidera con '+ldr.pts+' pts. Ventaja de '+g12+' sobre '+sec.name+' ('+sec.pts+'). En términos del eliminatorio, eso es entre uno y dos resultados comunes — aun insuficiente para considerarse seguro.');
+  // Apertura: contexto de fase actual
+  if(curPhase==='Grupos'){
+    lines.push('Fase de grupos en curso. El eliminatorio aun no arranco — este relato refleja el estado de los '+data.matches_played.length+' partidos de grupos registrados.');
+  } else if(curPhase==='16avos'){
+    var done16=ph16.length===16;
+    lines.push(_pick([
+      (done16?'16avos de final completados (16/16). ':'16avos en curso: '+ph16.length+'/16 jugados. ')+'El primer filtro eliminatorio del Mundial 2026 — este formato de 48 selecciones lo estrena como fase oficial. Exacto vale 5pts, acertar la direccion da 2pts, clasificado +2.',
+      (done16?'16avos cerrados. ':'16avos: '+ph16.length+' de 16 jugados. ')+'Primera fase knock-out del torneo mas grande de la historia. Los 32 mejores del grupo de 48 avanzaron hasta aca — empieza el cuadro definitivo.',
+    ]));
+  } else if(curPhase==='Octavos'){
+    var doneOct=phOct.length===8;
+    lines.push(_pick([
+      (doneOct?'Octavos completados. ':'Octavos en curso: '+phOct.length+'/8 jugados. ')+'Los 16avos ya definieron quienes sobrevivieron. En Octavos el valor sube: exacto 7pts, acertar la direccion 3pts, clasificado +2.',
+      (doneOct?'Octavos cerrados — el torneo entra en Cuartos de final. ':'Octavos: '+phOct.length+'/8 jugados. ')+'Cada partido que pasa es un resultado que ya no se puede recuperar en el prode.',
+    ]));
+  } else if(curPhase==='Cuartos'){
+    var doneCua=phCua.length===4;
+    lines.push((doneCua?'Cuartos de final completados. ':'Cuartos en curso: '+phCua.length+'/4 jugados. ')+'Solo 8 equipos quedan en el torneo. Los partidos restantes concentran el mayor valor puntual de toda la competicion.');
+  } else if(curPhase==='Semis'){
+    lines.push((phSem.length===2?'Semifinales completadas. ':'Semis en curso: '+phSem.length+'/2 jugados. ')+'Cuatro equipos y dos llaves. El prode llega a su tramo definitivo.');
   } else {
-    lines.push(ldr.name+' cierra la fase de grupos en el primer puesto con '+ldr.pts+' pts y '+g12+' de ventaja sobre '+sec.name+'. Promedio de '+ldrFd.avg+' pts por partido en grupos — el '+(sorted_avg[0].name===ldr.name?'mayor':'uno de los mayores')+' del prode. La ventaja es real pero no definitiva.');
+    lines.push('La final ya se jugo. El torneo cerro. Este relato resume el Prode Toros 2026 completo.');
   }
-
-  // Podio
-  var g23str=g23===0?'igualados':(g23+' pt'+(g23!==1?'s':''));
-  lines.push('Podio provisional: '+ldr.name+' ('+ldr.pts+'), '+sec.name+' ('+sec.pts+'), '+trd.name+' ('+trd.pts+'). Entre 2do y 3ro: '+g23str+'. Con 16 partidos de 16avos más las fases siguientes, ningún lugar del podio está consolidado.');
-
-  // Forma reciente
+  // Ranking actual
+  if(g12===0){
+    lines.push(ldr.name+' y '+sec.name+' igualados en la cima con '+ldr.pts+' pts cada uno. Empate exacto — el proximo partido los separa, o no.');
+  } else if(g12<=3){
+    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, solo '+g12+' arriba de '+sec.name+' ('+sec.pts+'). Diferencia minima: cualquier exacto en el eliminatorio la borra. Podio: '+trd.name+' en 3ro con '+trd.pts+'.');
+  } else if(g12<=10){
+    lines.push(ldr.name+' en la cima con '+ldr.pts+' pts y '+g12+' de margen sobre '+sec.name+' ('+sec.pts+'). Ventaja que equivale a uno o dos resultados comunes. Podio: '+trd.name+' en 3ro con '+trd.pts+'.');
+  } else {
+    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, '+g12+' por delante de '+sec.name+' ('+sec.pts+'). La ventaja es real pero el eliminatorio tiene volumen para reconfigurar la tabla. Podio: '+sec.name+', '+trd.name+'.');
+  }
+  // Analisis por fase knockout
+  if(koPlayed.length>0){
+    if(ph16.length>0){
+      var t16=topOf(pts16),b16=botOf(pts16);
+      if(ph16.length===16){
+        lines.push('16avos completos: '+t16+' fue el mejor de la fase con '+pts16[t16]+' pts; '+b16+' el mas bajo con '+pts16[b16]+'. Diferencia de '+(pts16[t16]-pts16[b16])+' pts generada solo en los 16avos — el primer paso de divergencia en el cuadro.');
+      } else {
+        lines.push('16avos ('+ph16.length+'/16 jugados): '+t16+' lidera la fase con '+pts16[t16]+' pts, '+b16+' con '+pts16[b16]+'. Restan '+(16-ph16.length)+' partidos de la primera ronda.');
+      }
+    }
+    if(phOct.length>0){
+      var tOct=topOf(ptsOct),bOct=botOf(ptsOct);
+      if(phOct.length===8){
+        lines.push('Octavos cerrados: '+tOct+' domino la fase con '+ptsOct[tOct]+' pts; '+bOct+' con '+ptsOct[bOct]+'. Diferencia acumulada en Octavos: '+(ptsOct[tOct]-ptsOct[bOct])+' pts.');
+      } else {
+        lines.push('Octavos en curso ('+phOct.length+'/8): '+tOct+' lidera la fase con '+ptsOct[tOct]+' pts; '+bOct+' con '+ptsOct[bOct]+'. Restan '+(8-phOct.length)+' partido'+(8-phOct.length!==1?'s':'')+' de esta ronda.');
+      }
+    }
+    var koLdr=topOf(koPts);
+    lines.push(_pick([
+      koLdr+' lidera el eliminatorio acumulando '+koPts[koLdr]+' pts desde los 16avos. El desempeno en el KO es la variable nueva del prode — quien acierta clasificados y marcadores exactos aqui es quien define la tabla.',
+      'Mejor rendimiento en partidos eliminatorios hasta ahora: '+koLdr+' con '+koPts[koLdr]+' pts en el KO. Cada jornada del eliminatorio mueve la tabla mas que tres jornadas de grupos.',
+    ]));
+    if(upsets.length>0){
+      lines.push('Sorpresa'+(upsets.length>1?'s':'')+' del eliminatorio: '+upsets.map(function(m){return m.match;}).join(', ')+'. '+(upsets.length>1?'En esos partidos':'Ahi')+' menos del 30% acerto la direccion — los puntos quedaron concentrados en pocos jugadores.');
+    }
+  }
+  // Forma reciente (ultimas 5 jornadas combinadas)
   if(bf&&bf.last5>0){
     lines.push(_pick([
-      bf.name+' tuvo el mejor cierre de grupos: '+bf.last5+' pts en los últimos 5 partidos. Ese rendimiento final puede indicar que calibró bien los equipos hacia el final — dato relevante de cara al eliminatorio.',
-      'Últimos 5 partidos del grupo: '+bf.name+' lidera con '+bf.last5+' pts. La tendencia al alza al final de la fase puede tener continuidad en 16avos si los equipos que pronosticó avanzaron.',
+      bf.name+' tiene el mejor rendimiento en los ultimos 5 partidos con '+bf.last5+' pts. Momento de forma que puede ser clave en las fases que quedan.',
+      'Ultimas 5 jornadas: '+bf.name+' en racha con '+bf.last5+' pts. La forma reciente es el indicador mas fresco del estado del prode en este momento.',
     ]));
   }
-
-  // Exactos — métrica de calidad
-  if(mxTot>0){
-    lines.push(_pick([
-      'Métrica de precisión: '+mx.name+' acumula '+mxTot+' exactos en grupos ('+mx.exactos+' simples, '+mx.exactosB+' con bonus de diferencia). Clavar un marcador exacto requiere acierto en ganador, goles locales y goles visitantes simultáneamente — la tasa de exactos es el mejor indicador de calidad predictiva.',
-      mx.name+' lidera en exactos con '+mxTot+' en la fase de grupos. En un Mundial con 72 partidos, la probabilidad de acertar un marcador exacto al azar ronda el 3-5% por partido. '+mxTot+' exactos en '+played+' partidos supera ampliamente esa línea base.',
-    ]));
-  }
-
-  // Fondo de tabla: análisis de remontada
+  // Fondo de tabla
   lines.push(_pick([
-    lst.name+' cierra la tabla con '+lst.pts+' pts, a '+gBot+' del líder. Para llegar al podio necesita una combinación específica: que los de arriba fallen en el eliminatorio mientras él acierta. No imposible, pero requiere divergencia simultánea en múltiples partidos.',
-    'El puesto '+n+' lo tiene '+lst.name+' con '+lst.pts+' pts. La brecha con el líder es '+gBot+'. El potencial máximo teórico del eliminatorio (si se acierta todo con clasificados) puede mover la tabla en +80 pts o más — la matemática del formato favorece las remontadas, aunque en la práctica la consistencia se mantiene.',
+    lst.name+' cierra la tabla con '+lst.pts+' pts, a '+gBot+' del lider. La matematica del eliminatorio todavia permite una remontada — necesita exactos y clasificados correctos mientras los de arriba fallan.',
+    'Puesto '+n+': '+lst.name+' con '+lst.pts+' pts. La brecha con el lider es '+gBot+'. El volumen de puntos del eliminatorio puede mover la tabla, pero requiere divergencia simultanea en multiples partidos.',
   ]));
-
-  // Cierre contextual
+  // Cierre
   lines.push(_pick([
-    'El formato de puntos escala por fase: 16avos (2/5+2cls), octavos (3/7+2cls), cuartos (4/10+2cls), semis y final con valores aún mayores. La primera fecha eliminatoria ya está en juego. Actualizar después de cada jornada.',
-    'Los $400.000 siguen abiertos. La ventaja acumulada en grupos pesa, pero el eliminatorio tiene suficiente volumen de puntos como para reconfigurar la tabla. Próxima lectura relevante: después de los 16avos.',
-    'Con '+n+' jugadores, la dispersión de puntajes sugiere que la competencia es ajustada. El eliminatorio va a amplificar las diferencias de quienes pronosticaron bien los clasificados — esa es la variable nueva e impredecible de esta edición.',
+    'Estructura de puntos: 16avos (2/5+2cls), Octavos (3/7+2cls), Cuartos (3/7+2cls), Semis (3/7+2cls), Final (5/10+2cls). Cada fase pesa mas que la anterior — la decision del prode se concentra al final.',
+    'Los $400.000 en juego. El que acierta los clasificados y los marcadores exactos en los cruces finales es quien define el prode — no necesariamente el que mejor fue en grupos.',
   ]));
-
   return lines;
 }
 function _relateNow(){
@@ -1179,14 +1212,13 @@ function renderRelator(data){_relatorData=data;document.getElementById('relator-
 function renderBadges(data){
   var players=data.players,colors=data.colors,N=players.length;
   var gp=data.group_preds||[];
-  // Compute per-player stats
   var st={};
   players.forEach(function(p){
     var hist=data.history[p]||[0],d=[];
     for(var i=1;i<hist.length;i++)d.push(hist[i]-hist[i-1]);
-    var n=d.length||1, pts=data.ranking.find(function(r){return r.name===p;}).pts;
-    var mean=pts/n;
-    var variance=d.reduce(function(s,x){return s+(x-mean)*(x-mean);},0)/n;
+    var tot=d.length||1, pts=data.ranking.find(function(r){return r.name===p;}).pts;
+    var mean=pts/tot;
+    var variance=d.reduce(function(s,x){return s+(x-mean)*(x-mean);},0)/tot;
     var hardPts=0,hardN=0;
     gp.forEach(function(m){
       var ac=players.filter(function(q){return(m.pts[q]||0)>0;}).length;
@@ -1209,7 +1241,7 @@ function renderBadges(data){
     {icon:'&#129396;',name:'El Sufridor',desc:'Mas partidos sin puntuar — el que mas pago el plato',key:'misses',asc:false,fmt:function(v){return v+' misses';}},
     {icon:'&#129504;',name:'El Analitico',desc:'Mayor promedio de puntos por partido jugado',key:'avg',asc:false,fmt:function(v){return v.toFixed(2)+' pts/partido';}},
   ];
-  var html='<div class="badges-grid">';
+  var html='<div class="badges-section-lbl">Fase de Grupos</div><div class="badges-grid">';
   defs.forEach(function(def){
     var sorted=players.slice().sort(function(a,b){
       return def.asc?(st[a][def.key]-st[b][def.key]):(st[b][def.key]-st[a][def.key]);
@@ -1224,13 +1256,54 @@ function renderBadges(data){
     html+='</div>';
   });
   html+='</div>';
+  // Seccion Eliminatorio
+  var kp=data.ko_preds||[];
+  if(kp.length>0){
+    var koTot={},koDirOk={},koSurpPts={},koExactN={};
+    players.forEach(function(p){koTot[p]=0;koDirOk[p]=0;koSurpPts[p]=0;koExactN[p]=0;});
+    var koEt={'16avos':5,'Octavos':7,'Cuartos':7,'Semis':7,'3er Puesto':7,'Final':10};
+    kp.forEach(function(m){
+      var correct=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
+      var isSurp=correct<=Math.floor(N*0.3);
+      var et=koEt[m.phase]||5;
+      players.forEach(function(p){
+        var pts=m.pts[p]||0;
+        koTot[p]+=pts;
+        if(pts>0)koDirOk[p]++;
+        if(isSurp)koSurpPts[p]+=pts;
+        if(pts>=et)koExactN[p]++;
+      });
+    });
+    function koBest(obj){return players.slice().sort(function(a,b){return obj[b]-obj[a];})[0];}
+    var koDefs=[
+      {icon:'&#127942;',name:'Rey del Eliminatorio',desc:'Mas puntos acumulados en partidos KO hasta ahora ('+kp.length+' jugados)',obj:koTot,fmt:function(p){return koTot[p]+' pts en KO';}},
+      {icon:'&#128175;',name:'El Sorpresero',desc:'Mas puntos en partidos donde &le;30% acerto la direccion',obj:koSurpPts,fmt:function(p){return koSurpPts[p]+' pts en sorpresas';}},
+      {icon:'&#127919;',name:'Certero en KO',desc:'Mas veces que acerto la direccion del resultado en el eliminatorio',obj:koDirOk,fmt:function(p){return koDirOk[p]+'/'+kp.length+' direcciones OK';}},
+      {icon:'&#129354;',name:'Exacto en KO',desc:'Mas marcadores exactos en el cuadro eliminatorio',obj:koExactN,fmt:function(p){return koExactN[p]+' exacto'+(koExactN[p]!==1?'s':'')+' KO';}},
+    ];
+    html+='<div class="badges-section-lbl ko">&#9889; Eliminatorio <span class="badges-section-sub">'+kp.length+' partido'+(kp.length!==1?'s':'')+' jugados</span></div>';
+    html+='<div class="badges-grid">';
+    koDefs.forEach(function(def){
+      var winner=koBest(def.obj),c=colors[winner]||'#ccc';
+      html+='<div class="badge-card ko-badge">';
+      html+='<div class="badge-icon">'+def.icon+'</div>';
+      html+='<div class="badge-title">'+def.name+'</div>';
+      html+='<div class="badge-desc">'+def.desc+'</div>';
+      html+='<div class="badge-winner" style="color:'+c+'">'+winner+'</div>';
+      html+='<div class="badge-stat">'+def.fmt(winner)+'</div>';
+      html+='</div>';
+    });
+    html+='</div>';
+  }
   document.getElementById('badges-body').innerHTML=html;
 }
 
 function renderMatrix(data){
-  var players=data.players,colors=data.colors,gp=data.group_preds||[];
-  if(!gp.length){document.getElementById('matrix-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos de predicciones de grupos.</p>';return;}
+  var players=data.players,colors=data.colors,N=players.length;
+  var gp=data.group_preds||[],kp=data.ko_preds||[];
+  if(!gp.length&&!kp.length){document.getElementById('matrix-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos de predicciones.</p>';return;}
   var abbr=function(n){return n.split(' ')[0].substring(0,7);};
+  var koEt={'16avos':5,'Octavos':7,'Cuartos':7,'Semis':7,'3er Puesto':7,'Final':10};
   var html='<div class="matrix-legend">';
   html+='<span class="mx-leg"><span class="mx-leg-dot" style="background:rgba(63,185,80,.4)"></span>Exacto</span>';
   html+='<span class="mx-leg"><span class="mx-leg-dot" style="background:rgba(255,215,0,.3)"></span>Comun</span>';
@@ -1241,52 +1314,68 @@ function renderMatrix(data){
   html+='<th class="matrix-match-col">Partido</th><th class="matrix-res-col">Resultado</th>';
   players.forEach(function(p){html+='<th class="matrix-player-col" title="'+p+'" style="color:'+(colors[p]||'#ccc')+'">'+abbr(p)+'</th>';});
   html+='</tr></thead><tbody>';
-  gp.forEach(function(m){
-    var N=players.length;
-    var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
-    var diffCls=ac<=Math.floor(N*0.3)?'diff-hard':ac<=Math.floor(N*0.5)?'diff-med':'';
-    var actualRes=null;
-    players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=5&&m.predictions[p])actualRes=m.predictions[p];});
-    html+='<tr class="'+diffCls+'">';
-    html+='<td class="matrix-match-name" title="'+m.match+'">'+m.match.replace(/ vs /g,' v ').substring(0,22)+(m.match.length>22?'&#8230;':'')+'</td>';
-    html+='<td class="matrix-actual">'+(actualRes||'?')+'</td>';
-    players.forEach(function(p){
-      var pred=m.predictions[p],pts=m.pts[p]||0;
-      var cls=pts>=5?'mx-exact':pts>=2?'mx-common':'mx-miss';
-      html+='<td class="matrix-cell '+cls+'" title="'+p+': '+(pred||'—')+' ('+pts+'pts)">'+(pred||'—')+'</td>';
+  function buildRows(matches,headerLabel,hdrCls){
+    var out='<tr><td colspan="'+(N+2)+'" class="matrix-phase-hdr'+(hdrCls?' '+hdrCls:'')+'">'+headerLabel+'</td></tr>';
+    matches.forEach(function(m){
+      var et=m.phase?koEt[m.phase]||5:5;
+      var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
+      var diffCls=ac<=Math.floor(N*0.3)?'diff-hard':ac<=Math.floor(N*0.5)?'diff-med':'';
+      var actualRes=null;
+      players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=et&&m.predictions[p])actualRes=m.predictions[p];});
+      out+='<tr class="'+diffCls+'">';
+      out+='<td class="matrix-match-name" title="'+m.match+'">'+m.match.replace(/ vs /g,' v ').substring(0,22)+(m.match.length>22?'&#8230;':'')+'</td>';
+      out+='<td class="matrix-actual">'+(actualRes||'?')+'</td>';
+      players.forEach(function(p){
+        var pred=m.predictions[p],pts=m.pts[p]||0;
+        var cls=pts>=et?'mx-exact':pts>0?'mx-common':'mx-miss';
+        out+='<td class="matrix-cell '+cls+'" title="'+p+': '+(pred||'—')+' ('+pts+'pts)">'+(pred||'—')+'</td>';
+      });
+      out+='</tr>';
     });
-    html+='</tr>';
-  });
+    return out;
+  }
+  if(gp.length)html+=buildRows(gp,'Fase de Grupos ('+gp.length+')','');
+  if(kp.length)html+=buildRows(kp,'&#9889; Eliminatorio ('+kp.length+')','ko');
   html+='</tbody></table></div>';
   document.getElementById('matrix-body').innerHTML=html;
 }
 
 function renderDifficulty(data){
-  var players=data.players,gp=data.group_preds||[],N=players.length;
-  if(!gp.length){document.getElementById('dificultad-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos.</p>';return;}
-  var matches=gp.map(function(m){
-    var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
-    var ex=players.filter(function(p){return(m.pts[p]||0)>=5;}).length;
-    var actualRes=null;
-    players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=5&&m.predictions[p])actualRes=m.predictions[p];});
-    return{id:m.id,match:m.match,ac:ac,ex:ex,pct:ac/N,actualRes:actualRes};
-  }).sort(function(a,b){return a.ac-b.ac;});
-  var html='<table class="dif-table"><thead><tr>';
-  html+='<th>#</th><th>Partido</th><th>Resultado</th><th>Acertaron</th><th>Exactos</th><th>Dificultad</th>';
-  html+='</tr></thead><tbody>';
-  matches.forEach(function(m,i){
-    var barW=Math.round((1-m.pct)*100);
-    var label=m.pct<=0.25?'&#128308; Muy dificil':m.pct<=0.5?'&#128992; Dificil':m.pct<=0.75?'&#128993; Moderado':'&#128994; Facil';
-    html+='<tr>';
-    html+='<td><span class="dif-rank-badge">'+(i+1)+'</span></td>';
-    html+='<td class="dif-match">'+m.match+'</td>';
-    html+='<td class="dif-result">'+(m.actualRes||'—')+'</td>';
-    html+='<td class="dif-num">'+m.ac+'/'+N+'</td>';
-    html+='<td class="dif-num">'+m.ex+'</td>';
-    html+='<td class="dif-bar-cell"><div class="dif-bar"><div class="dif-fill" style="width:'+barW+'%"></div></div><span class="dif-label">'+label+'</span></td>';
-    html+='</tr>';
-  });
-  html+='</tbody></table>';
+  var players=data.players,gp=data.group_preds||[],kp=data.ko_preds||[],N=players.length;
+  if(!gp.length&&!kp.length){document.getElementById('dificultad-body').innerHTML='<p style="color:var(--muted);padding:20px">Sin datos.</p>';return;}
+  var koEt={'16avos':5,'Octavos':7,'Cuartos':7,'Semis':7,'3er Puesto':7,'Final':10};
+  function buildDifSection(matches,sectionLbl,lblCls){
+    var rows=matches.map(function(m){
+      var et=m.phase?koEt[m.phase]||5:5;
+      var ac=players.filter(function(p){return(m.pts[p]||0)>0;}).length;
+      var ex=players.filter(function(p){return(m.pts[p]||0)>=et;}).length;
+      var actualRes=null;
+      players.forEach(function(p){if(!actualRes&&(m.pts[p]||0)>=et&&m.predictions[p])actualRes=m.predictions[p];});
+      return{match:m.match,phase:m.phase||'Grupos',ac:ac,ex:ex,pct:ac/N,actualRes:actualRes};
+    }).sort(function(a,b){return a.ac-b.ac;});
+    var html='<div class="dif-section-lbl'+(lblCls?' '+lblCls:'')+'">'+sectionLbl+'</div>';
+    html+='<table class="dif-table"><thead><tr>';
+    html+='<th>#</th><th>Partido</th><th>Fase</th><th>Resultado</th><th>Acertaron</th><th>Exactos</th><th>Dificultad</th>';
+    html+='</tr></thead><tbody>';
+    rows.forEach(function(m,i){
+      var barW=Math.round((1-m.pct)*100);
+      var label=m.pct<=0.25?'&#128308; Muy dificil':m.pct<=0.5?'&#128992; Dificil':m.pct<=0.75?'&#128993; Moderado':'&#128994; Facil';
+      html+='<tr>';
+      html+='<td><span class="dif-rank-badge">'+(i+1)+'</span></td>';
+      html+='<td class="dif-match">'+m.match+'</td>';
+      html+='<td class="dif-result" style="font-size:.7rem;color:var(--muted)">'+m.phase+'</td>';
+      html+='<td class="dif-result">'+(m.actualRes||'—')+'</td>';
+      html+='<td class="dif-num">'+m.ac+'/'+N+'</td>';
+      html+='<td class="dif-num">'+m.ex+'</td>';
+      html+='<td class="dif-bar-cell"><div class="dif-bar"><div class="dif-fill" style="width:'+barW+'%"></div></div><span class="dif-label">'+label+'</span></td>';
+      html+='</tr>';
+    });
+    html+='</tbody></table>';
+    return html;
+  }
+  var html='';
+  if(gp.length)html+=buildDifSection(gp,'Fase de Grupos','');
+  if(kp.length)html+=buildDifSection(kp,'&#9889; Eliminatorio','ko');
   document.getElementById('dificultad-body').innerHTML=html;
 }
 

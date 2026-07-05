@@ -1,5 +1,5 @@
 {
-  "last_updated": "04/07/2026 14:52",
+  "last_updated": "05/07/2026 14:33",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -104,7 +104,10 @@
     "Belgica v Senegal",
     "Portugal v Croacia",
     "Espana v Austria",
-    "Suiza v Algeria"
+    "Suiza v Algeria",
+    "Argentina v Cabo Verde",
+    "Colombia v Ghana",
+    "Australia v Egipto"
   ],
   "group_preds": [
     {
@@ -3075,7 +3078,10 @@
       140,
       147,
       151,
-      151
+      151,
+      153,
+      157,
+      159
     ],
     "Kovacic": [
       0,
@@ -3163,7 +3169,10 @@
       146,
       153,
       157,
-      161
+      161,
+      163,
+      167,
+      167
     ],
     "Patru Maqui": [
       0,
@@ -3251,7 +3260,10 @@
       159,
       161,
       165,
-      167
+      167,
+      169,
+      173,
+      175
     ],
     "Lucas Tkacz": [
       0,
@@ -3339,7 +3351,10 @@
       164,
       166,
       170,
-      172
+      172,
+      174,
+      178,
+      185
     ],
     "Nico Conti": [
       0,
@@ -3427,7 +3442,10 @@
       172,
       176,
       180,
-      182
+      182,
+      184,
+      191,
+      193
     ],
     "Fran Garoby": [
       0,
@@ -3515,7 +3533,10 @@
       146,
       148,
       152,
-      156
+      156,
+      158,
+      162,
+      164
     ],
     "Tomi Marchiano": [
       0,
@@ -3603,7 +3624,10 @@
       171,
       178,
       182,
-      186
+      186,
+      188,
+      195,
+      200
     ],
     "JZ": [
       0,
@@ -3691,7 +3715,10 @@
       158,
       158,
       167,
-      171
+      171,
+      173,
+      177,
+      184
     ],
     "Alejo Di Fiori": [
       0,
@@ -3779,7 +3806,10 @@
       142,
       149,
       153,
-      157
+      157,
+      159,
+      163,
+      165
     ],
     "Nico Gianola": [
       0,
@@ -3867,7 +3897,10 @@
       153,
       153,
       157,
-      157
+      157,
+      159,
+      159,
+      161
     ],
     "Tomi Samitier": [
       0,
@@ -3955,7 +3988,10 @@
       165,
       169,
       173,
-      173
+      173,
+      175,
+      179,
+      181
     ],
     "Juan Leoni": [
       0,
@@ -4043,7 +4079,10 @@
       134,
       134,
       138,
-      138
+      138,
+      140,
+      144,
+      151
     ],
     "Conrado": [
       0,
@@ -4131,7 +4170,10 @@
       135,
       137,
       139,
-      139
+      139,
+      141,
+      145,
+      147
     ],
     "Pulpo": [
       0,
@@ -4219,7 +4261,10 @@
       127,
       131,
       135,
-      142
+      142,
+      144,
+      146,
+      146
     ],
     "Fede Lacal": [
       0,
@@ -4307,7 +4352,10 @@
       118,
       118,
       120,
-      120
+      120,
+      122,
+      122,
+      127
     ],
     "Gian Luttini": [
       0,
@@ -4395,95 +4443,98 @@
       112,
       114,
       123,
-      123
+      123,
+      125,
+      127,
+      129
     ]
   },
   "ranking": [
     {
       "pos": 1,
       "name": "Tomi Marchiano",
-      "pts": 186
+      "pts": 200
     },
     {
       "pos": 2,
       "name": "Nico Conti",
-      "pts": 182
+      "pts": 193
     },
     {
       "pos": 3,
-      "name": "Tomi Samitier",
-      "pts": 173
+      "name": "Lucas Tkacz",
+      "pts": 185
     },
     {
       "pos": 4,
-      "name": "Lucas Tkacz",
-      "pts": 172
+      "name": "JZ",
+      "pts": 184
     },
     {
       "pos": 5,
-      "name": "JZ",
-      "pts": 171
+      "name": "Tomi Samitier",
+      "pts": 181
     },
     {
       "pos": 6,
       "name": "Patru Maqui",
-      "pts": 167
+      "pts": 175
     },
     {
       "pos": 7,
       "name": "Kovacic",
-      "pts": 161
+      "pts": 167
     },
     {
       "pos": 8,
       "name": "Alejo Di Fiori",
-      "pts": 157
+      "pts": 165
     },
     {
       "pos": 9,
-      "name": "Nico Gianola",
-      "pts": 157
+      "name": "Fran Garoby",
+      "pts": 164
     },
     {
       "pos": 10,
-      "name": "Fran Garoby",
-      "pts": 156
+      "name": "Nico Gianola",
+      "pts": 161
     },
     {
       "pos": 11,
       "name": "Epe Roth",
-      "pts": 151
+      "pts": 159
     },
     {
       "pos": 12,
-      "name": "Pulpo",
-      "pts": 142
+      "name": "Juan Leoni",
+      "pts": 151
     },
     {
       "pos": 13,
       "name": "Conrado",
-      "pts": 139
+      "pts": 147
     },
     {
       "pos": 14,
-      "name": "Juan Leoni",
-      "pts": 138
+      "name": "Pulpo",
+      "pts": 146
     },
     {
       "pos": 15,
       "name": "Gian Luttini",
-      "pts": 123
+      "pts": 129
     },
     {
       "pos": 16,
       "name": "Fede Lacal",
-      "pts": 120
+      "pts": 127
     }
   ],
   "top3": {
     "Tomi Marchiano": 1,
     "Nico Conti": 2,
-    "Tomi Samitier": 3
+    "Lucas Tkacz": 3
   },
   "knockout_matches": [
     {
@@ -5325,7 +5376,7 @@
       "match_date": "2026-07-03",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "3-0",
@@ -5346,22 +5397,22 @@
         "Gian Luttini": "2-0"
       },
       "points": {
-        "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
-        "Pulpo": 0,
-        "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Epe Roth": 2,
+        "Kovacic": 2,
+        "Patru Maqui": 2,
+        "Lucas Tkacz": 2,
+        "Nico Conti": 2,
+        "Fran Garoby": 2,
+        "Tomi Marchiano": 2,
+        "JZ": 2,
+        "Alejo Di Fiori": 2,
+        "Nico Gianola": 2,
+        "Tomi Samitier": 2,
+        "Juan Leoni": 2,
+        "Conrado": 2,
+        "Pulpo": 2,
+        "Fede Lacal": 2,
+        "Gian Luttini": 2
       },
       "classif": {
         "Epe Roth": "Argentina",
@@ -5389,7 +5440,7 @@
       "match_date": "2026-07-03",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "3-1",
@@ -5410,22 +5461,22 @@
         "Gian Luttini": "1-1"
       },
       "points": {
-        "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
+        "Epe Roth": 4,
+        "Kovacic": 4,
+        "Patru Maqui": 4,
+        "Lucas Tkacz": 4,
+        "Nico Conti": 7,
+        "Fran Garoby": 4,
+        "Tomi Marchiano": 7,
+        "JZ": 4,
+        "Alejo Di Fiori": 4,
         "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
-        "Pulpo": 0,
+        "Tomi Samitier": 4,
+        "Juan Leoni": 4,
+        "Conrado": 4,
+        "Pulpo": 2,
         "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Gian Luttini": 2
       },
       "classif": {
         "Epe Roth": "Colombia",
@@ -5453,7 +5504,7 @@
       "match_date": "2026-07-03",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "1-2",
@@ -5474,22 +5525,22 @@
         "Gian Luttini": "1-2"
       },
       "points": {
-        "Epe Roth": 0,
+        "Epe Roth": 2,
         "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
+        "Patru Maqui": 2,
+        "Lucas Tkacz": 7,
+        "Nico Conti": 2,
+        "Fran Garoby": 2,
+        "Tomi Marchiano": 5,
+        "JZ": 7,
+        "Alejo Di Fiori": 2,
+        "Nico Gianola": 2,
+        "Tomi Samitier": 2,
+        "Juan Leoni": 7,
+        "Conrado": 2,
         "Pulpo": 0,
-        "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Fede Lacal": 5,
+        "Gian Luttini": 2
       },
       "classif": {
         "Epe Roth": "Egipto",
@@ -5513,9 +5564,9 @@
     {
       "id": "P89",
       "phase": "Octavos",
-      "match": "Gan. 16avos P1 vs P2",
+      "match": "Canada v Marruecos",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5560,9 +5611,9 @@
     {
       "id": "P90",
       "phase": "Octavos",
-      "match": "Gan. 16avos P3 vs P4",
+      "match": "Paraguay v Francia",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5607,9 +5658,9 @@
     {
       "id": "P91",
       "phase": "Octavos",
-      "match": "Gan. 16avos P5 vs P6",
+      "match": "Brasil v Noruega",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5654,9 +5705,9 @@
     {
       "id": "P92",
       "phase": "Octavos",
-      "match": "Gan. 16avos P7 vs P8",
+      "match": "Mexico v Inglaterra",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5701,9 +5752,9 @@
     {
       "id": "P93",
       "phase": "Octavos",
-      "match": "Gan. 16avos P9 vs P10",
+      "match": "Portugal v Espana",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5748,9 +5799,9 @@
     {
       "id": "P94",
       "phase": "Octavos",
-      "match": "Gan. 16avos P11 vs P12",
+      "match": "Estados Unidos v Belgica",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5795,9 +5846,9 @@
     {
       "id": "P95",
       "phase": "Octavos",
-      "match": "Gan. 16avos P13 vs P14",
+      "match": "Argentina v Egipto",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,
@@ -5842,9 +5893,9 @@
     {
       "id": "P96",
       "phase": "Octavos",
-      "match": "Gan. 16avos P15 vs P16",
+      "match": "suiza v colombia",
       "match_date": "",
-      "is_tbd": true,
+      "is_tbd": false,
       "has_preds": false,
       "played": false,
       "show_preds": false,

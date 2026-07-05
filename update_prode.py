@@ -25,7 +25,7 @@ GID_CLASSIF = "2141517289"  # Tab: TABLA Clasificados
 # Actualizar cuando termine cada fase.
 MATCHES_PLAYED_UP_TO = 72
 
-# Fechas de los 16avos (YYYY-MM-DD). Corregir si hay error.
+# Fechas de 16avos y Octavos (YYYY-MM-DD). Corregir si hay error.
 MATCH_DATES = {
     "P73": "2026-06-28",  # Sudafrica v Canada
     "P74": "2026-06-29",  # Alemania v Paraguay
@@ -43,6 +43,15 @@ MATCH_DATES = {
     "P86": "2026-07-03",  # Argentina v Cabo Verde
     "P87": "2026-07-03",  # Colombia v Ghana
     "P88": "2026-07-03",  # Australia v Egipto
+    # Octavos de final
+    "P89": "2026-07-03",  # Canada v Marruecos
+    "P90": "2026-07-03",  # Paraguay v Francia
+    "P91": "2026-07-05",  # Brasil v Noruega
+    "P92": "2026-07-05",  # Mexico v Inglaterra
+    "P93": "2026-07-06",
+    "P94": "2026-07-06",
+    "P95": "2026-07-07",
+    "P96": "2026-07-07",
 }
 
 BONUS_CATEGORIES = {

@@ -1,5 +1,5 @@
 {
-  "last_updated": "05/07/2026 19:31",
+  "last_updated": "06/07/2026 21:44",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -110,7 +110,9 @@
     "Australia v Egipto",
     "Canada v Marruecos",
     "Paraguay v Francia",
-    "Brasil v Noruega"
+    "Brasil v Noruega",
+    "Mexico v Inglaterra",
+    "Portugal v Espana"
   ],
   "group_preds": [
     {
@@ -3087,7 +3089,9 @@
       159,
       171,
       176,
-      176
+      176,
+      178,
+      183
     ],
     "Kovacic": [
       0,
@@ -3181,7 +3185,9 @@
       167,
       172,
       177,
-      177
+      177,
+      182,
+      182
     ],
     "Patru Maqui": [
       0,
@@ -3275,7 +3281,9 @@
       175,
       180,
       185,
-      185
+      185,
+      190,
+      195
     ],
     "Lucas Tkacz": [
       0,
@@ -3369,7 +3377,9 @@
       185,
       190,
       195,
-      195
+      195,
+      197,
+      199
     ],
     "Nico Conti": [
       0,
@@ -3463,7 +3473,9 @@
       193,
       198,
       203,
-      203
+      203,
+      205,
+      207
     ],
     "Fran Garoby": [
       0,
@@ -3557,7 +3569,9 @@
       164,
       169,
       174,
-      183
+      183,
+      188,
+      190
     ],
     "Tomi Marchiano": [
       0,
@@ -3651,7 +3665,9 @@
       200,
       205,
       210,
-      210
+      210,
+      212,
+      217
     ],
     "JZ": [
       0,
@@ -3745,7 +3761,9 @@
       184,
       189,
       194,
-      194
+      194,
+      196,
+      205
     ],
     "Alejo Di Fiori": [
       0,
@@ -3839,7 +3857,9 @@
       165,
       170,
       175,
-      175
+      175,
+      180,
+      189
     ],
     "Nico Gianola": [
       0,
@@ -3933,7 +3953,9 @@
       161,
       166,
       171,
-      180
+      180,
+      180,
+      185
     ],
     "Tomi Samitier": [
       0,
@@ -4027,7 +4049,9 @@
       181,
       186,
       191,
-      193
+      193,
+      193,
+      198
     ],
     "Juan Leoni": [
       0,
@@ -4121,7 +4145,9 @@
       151,
       156,
       161,
-      161
+      161,
+      163,
+      168
     ],
     "Conrado": [
       0,
@@ -4215,7 +4241,9 @@
       147,
       152,
       157,
-      159
+      159,
+      164,
+      169
     ],
     "Pulpo": [
       0,
@@ -4309,7 +4337,9 @@
       146,
       151,
       151,
-      151
+      151,
+      156,
+      156
     ],
     "Fede Lacal": [
       0,
@@ -4403,7 +4433,9 @@
       127,
       127,
       127,
-      129
+      129,
+      131,
+      131
     ],
     "Gian Luttini": [
       0,
@@ -4497,95 +4529,97 @@
       129,
       134,
       139,
-      139
+      139,
+      144,
+      153
     ]
   },
   "ranking": [
     {
       "pos": 1,
       "name": "Tomi Marchiano",
-      "pts": 210
+      "pts": 217
     },
     {
       "pos": 2,
       "name": "Nico Conti",
-      "pts": 203
+      "pts": 207
     },
     {
       "pos": 3,
-      "name": "Lucas Tkacz",
-      "pts": 195
+      "name": "JZ",
+      "pts": 205
     },
     {
       "pos": 4,
-      "name": "JZ",
-      "pts": 194
+      "name": "Lucas Tkacz",
+      "pts": 199
     },
     {
       "pos": 5,
       "name": "Tomi Samitier",
-      "pts": 193
+      "pts": 198
     },
     {
       "pos": 6,
       "name": "Patru Maqui",
-      "pts": 185
+      "pts": 195
     },
     {
       "pos": 7,
       "name": "Fran Garoby",
-      "pts": 183
+      "pts": 190
     },
     {
       "pos": 8,
-      "name": "Nico Gianola",
-      "pts": 180
+      "name": "Alejo Di Fiori",
+      "pts": 189
     },
     {
       "pos": 9,
-      "name": "Kovacic",
-      "pts": 177
+      "name": "Nico Gianola",
+      "pts": 185
     },
     {
       "pos": 10,
       "name": "Epe Roth",
-      "pts": 176
+      "pts": 183
     },
     {
       "pos": 11,
-      "name": "Alejo Di Fiori",
-      "pts": 175
+      "name": "Kovacic",
+      "pts": 182
     },
     {
       "pos": 12,
-      "name": "Juan Leoni",
-      "pts": 161
+      "name": "Conrado",
+      "pts": 169
     },
     {
       "pos": 13,
-      "name": "Conrado",
-      "pts": 159
+      "name": "Juan Leoni",
+      "pts": 168
     },
     {
       "pos": 14,
       "name": "Pulpo",
-      "pts": 151
+      "pts": 156
     },
     {
       "pos": 15,
       "name": "Gian Luttini",
-      "pts": 139
+      "pts": 153
     },
     {
       "pos": 16,
       "name": "Fede Lacal",
-      "pts": 129
+      "pts": 131
     }
   ],
   "top3": {
     "Tomi Marchiano": 1,
     "Nico Conti": 2,
-    "Lucas Tkacz": 3
+    "JZ": 3
   },
   "knockout_matches": [
     {
@@ -5811,7 +5845,7 @@
       "match_date": "2026-07-05",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
+      "played": true,
       "show_preds": true,
       "predictions": {
         "Epe Roth": "1-1",
@@ -5832,22 +5866,22 @@
         "Gian Luttini": "1-2"
       },
       "points": {
-        "Epe Roth": 0,
-        "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
+        "Epe Roth": 2,
+        "Kovacic": 5,
+        "Patru Maqui": 5,
+        "Lucas Tkacz": 2,
+        "Nico Conti": 2,
+        "Fran Garoby": 5,
+        "Tomi Marchiano": 2,
+        "JZ": 2,
+        "Alejo Di Fiori": 5,
         "Nico Gianola": 0,
         "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
-        "Pulpo": 0,
-        "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Juan Leoni": 2,
+        "Conrado": 5,
+        "Pulpo": 5,
+        "Fede Lacal": 2,
+        "Gian Luttini": 5
       },
       "classif": {
         "Epe Roth": "Inglaterra",
@@ -5875,8 +5909,8 @@
       "match_date": "2026-07-06",
       "is_tbd": false,
       "has_preds": true,
-      "played": false,
-      "show_preds": false,
+      "played": true,
+      "show_preds": true,
       "predictions": {
         "Epe Roth": "1-3",
         "Kovacic": "1-1",
@@ -5896,22 +5930,22 @@
         "Gian Luttini": "0-1"
       },
       "points": {
-        "Epe Roth": 0,
+        "Epe Roth": 5,
         "Kovacic": 0,
-        "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
-        "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
-        "Tomi Samitier": 0,
-        "Juan Leoni": 0,
-        "Conrado": 0,
+        "Patru Maqui": 5,
+        "Lucas Tkacz": 2,
+        "Nico Conti": 2,
+        "Fran Garoby": 2,
+        "Tomi Marchiano": 5,
+        "JZ": 9,
+        "Alejo Di Fiori": 9,
+        "Nico Gianola": 5,
+        "Tomi Samitier": 5,
+        "Juan Leoni": 5,
+        "Conrado": 5,
         "Pulpo": 0,
         "Fede Lacal": 0,
-        "Gian Luttini": 0
+        "Gian Luttini": 9
       },
       "classif": {
         "Epe Roth": "Espana",
@@ -5940,7 +5974,7 @@
       "is_tbd": false,
       "has_preds": true,
       "played": false,
-      "show_preds": false,
+      "show_preds": true,
       "predictions": {
         "Epe Roth": "2-2",
         "Kovacic": "3-1",
@@ -7297,6 +7331,90 @@
         "Pulpo": "3-1",
         "Fede Lacal": "1-1",
         "Gian Luttini": "2-1"
+      },
+      "classif": null
+    },
+    {
+      "id": "P92",
+      "match": "Mexico v Inglaterra",
+      "phase": "Octavos",
+      "pts": {
+        "Epe Roth": 2,
+        "Kovacic": 5,
+        "Patru Maqui": 5,
+        "Lucas Tkacz": 2,
+        "Nico Conti": 2,
+        "Fran Garoby": 5,
+        "Tomi Marchiano": 2,
+        "JZ": 2,
+        "Alejo Di Fiori": 5,
+        "Nico Gianola": 0,
+        "Tomi Samitier": 0,
+        "Juan Leoni": 2,
+        "Conrado": 5,
+        "Pulpo": 5,
+        "Fede Lacal": 2,
+        "Gian Luttini": 5
+      },
+      "predictions": {
+        "Epe Roth": "1-1",
+        "Kovacic": "1-2",
+        "Patru Maqui": "1-2",
+        "Lucas Tkacz": "1-0",
+        "Nico Conti": "1-1",
+        "Fran Garoby": "1-2",
+        "Tomi Marchiano": "1-1",
+        "JZ": "1-1",
+        "Alejo Di Fiori": "1-2",
+        "Nico Gianola": "2-1",
+        "Tomi Samitier": "1-0",
+        "Juan Leoni": "1-1",
+        "Conrado": "1-2",
+        "Pulpo": "0-1",
+        "Fede Lacal": "2-2",
+        "Gian Luttini": "1-2"
+      },
+      "classif": null
+    },
+    {
+      "id": "P93",
+      "match": "Portugal v Espana",
+      "phase": "Octavos",
+      "pts": {
+        "Epe Roth": 5,
+        "Kovacic": 0,
+        "Patru Maqui": 5,
+        "Lucas Tkacz": 2,
+        "Nico Conti": 2,
+        "Fran Garoby": 2,
+        "Tomi Marchiano": 5,
+        "JZ": 9,
+        "Alejo Di Fiori": 9,
+        "Nico Gianola": 5,
+        "Tomi Samitier": 5,
+        "Juan Leoni": 5,
+        "Conrado": 5,
+        "Pulpo": 0,
+        "Fede Lacal": 0,
+        "Gian Luttini": 9
+      },
+      "predictions": {
+        "Epe Roth": "1-3",
+        "Kovacic": "1-1",
+        "Patru Maqui": "1-2",
+        "Lucas Tkacz": "1-1",
+        "Nico Conti": "1-1",
+        "Fran Garoby": "1-1",
+        "Tomi Marchiano": "1-2",
+        "JZ": "0-1",
+        "Alejo Di Fiori": "0-1",
+        "Nico Gianola": "1-3",
+        "Tomi Samitier": "0-2",
+        "Juan Leoni": "1-2",
+        "Conrado": "1-3",
+        "Pulpo": "2-2",
+        "Fede Lacal": "1-1",
+        "Gian Luttini": "0-1"
       },
       "classif": null
     }

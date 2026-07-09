@@ -1,5 +1,5 @@
 {
-  "last_updated": "09/07/2026 13:47",
+  "last_updated": "09/07/2026 13:56",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -6229,10 +6229,10 @@
         "JZ": "2-1",
         "Alejo Di Fiori": "2-1",
         "Nico Gianola": "2-1",
-        "Tomi Samitier": null,
+        "Tomi Samitier": "1-1",
         "Juan Leoni": "1-1",
         "Conrado": "2-2",
-        "Pulpo": "1-1",
+        "Pulpo": "0-2",
         "Fede Lacal": "4-2",
         "Gian Luttini": "4-1"
       },
@@ -6265,6 +6265,7 @@
         "JZ": "Francia",
         "Alejo Di Fiori": "Francia",
         "Nico Gianola": "Francia",
+        "Tomi Samitier": "Marruecos",
         "Juan Leoni": "Francia",
         "Conrado": "Marruecos",
         "Pulpo": "Marruecos",
@@ -6292,10 +6293,10 @@
         "JZ": "1-0",
         "Alejo Di Fiori": "1-1",
         "Nico Gianola": "2-0",
-        "Tomi Samitier": null,
+        "Tomi Samitier": "1-0",
         "Juan Leoni": "2-1",
         "Conrado": "1-2",
-        "Pulpo": "1-0",
+        "Pulpo": null,
         "Fede Lacal": "0-1",
         "Gian Luttini": "0-1"
       },
@@ -6328,9 +6329,9 @@
         "JZ": "Espana",
         "Alejo Di Fiori": "Belgica",
         "Nico Gianola": "Espana",
+        "Tomi Samitier": "Espana",
         "Juan Leoni": "Espana",
         "Conrado": "Belgica",
-        "Pulpo": "Espana",
         "Fede Lacal": "Belgica",
         "Gian Luttini": "Belgica"
       }
@@ -6355,10 +6356,10 @@
         "JZ": "1-2",
         "Alejo Di Fiori": "2-2",
         "Nico Gianola": "1-2",
-        "Tomi Samitier": null,
+        "Tomi Samitier": "1-2",
         "Juan Leoni": "1-2",
         "Conrado": "2-3",
-        "Pulpo": "1-2",
+        "Pulpo": null,
         "Fede Lacal": "4-2",
         "Gian Luttini": "2-1"
       },
@@ -6391,9 +6392,9 @@
         "JZ": "Inglaterra",
         "Alejo Di Fiori": "Inglaterra",
         "Nico Gianola": "Inglaterra",
+        "Tomi Samitier": "Inglaterra",
         "Juan Leoni": "Inglaterra",
         "Conrado": "Inglaterra",
-        "Pulpo": "Inglaterra",
         "Fede Lacal": "Noruega",
         "Gian Luttini": "Noruega"
       }
@@ -6418,10 +6419,10 @@
         "JZ": "2-0",
         "Alejo Di Fiori": "2-1",
         "Nico Gianola": "2-0",
-        "Tomi Samitier": null,
+        "Tomi Samitier": "2-0",
         "Juan Leoni": "1-0",
         "Conrado": "3-2",
-        "Pulpo": "2-0",
+        "Pulpo": null,
         "Fede Lacal": "4-3",
         "Gian Luttini": "2-1"
       },
@@ -6454,9 +6455,9 @@
         "JZ": "Argentina",
         "Alejo Di Fiori": "Argentina",
         "Nico Gianola": "Argentina",
+        "Tomi Samitier": "Argentina",
         "Juan Leoni": "Argentina",
         "Conrado": "Argentina",
-        "Pulpo": "Argentina",
         "Fede Lacal": "Argentina",
         "Gian Luttini": "Argentina"
       }
@@ -6517,9 +6518,9 @@
         "JZ": "Inglaterra",
         "Alejo Di Fiori": "Inglaterra",
         "Nico Gianola": "Inglaterra",
+        "Tomi Samitier": "Inglaterra",
         "Juan Leoni": "Inglaterra",
         "Conrado": "Inglaterra",
-        "Pulpo": "Inglaterra",
         "Fede Lacal": "Noruega",
         "Gian Luttini": "Noruega"
       }
@@ -6580,9 +6581,9 @@
         "JZ": "Argentina",
         "Alejo Di Fiori": "Argentina",
         "Nico Gianola": "Argentina",
+        "Tomi Samitier": "Argentina",
         "Juan Leoni": "Argentina",
         "Conrado": "Argentina",
-        "Pulpo": "Argentina",
         "Fede Lacal": "Argentina",
         "Gian Luttini": "Argentina"
       }

@@ -48,10 +48,15 @@ MATCH_DATES = {
     "P90": "2026-07-03",  # Paraguay v Francia
     "P91": "2026-07-05",  # Brasil v Noruega
     "P92": "2026-07-05",  # Mexico v Inglaterra
-    "P93": "2026-07-06",
-    "P94": "2026-07-06",
-    "P95": "2026-07-07",
-    "P96": "2026-07-07",
+    "P93": "2026-07-06",  # Portugal v Espana
+    "P94": "2026-07-06",  # Estados Unidos v Belgica
+    "P95": "2026-07-07",  # Argentina v Egipto
+    "P96": "2026-07-07",  # Suiza v Colombia
+    # Cuartos de final
+    "P97":  "2026-07-07",
+    "P98":  "2026-07-07",
+    "P99":  "2026-07-08",
+    "P100": "2026-07-08",
 }
 
 BONUS_CATEGORIES = {

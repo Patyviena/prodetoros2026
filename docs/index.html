@@ -17,13 +17,13 @@ html{scroll-behavior:smooth;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden;}
 .sidebar{width:230px;flex-shrink:0;background:var(--bg-card);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh;position:fixed;left:0;top:0;z-index:100;}
 .sidebar-brand{padding:22px 20px 18px;border-bottom:1px solid var(--border);}
-.brand-label{font-size:.62rem;font-weight:700;color:var(--cyan);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:4px;}
+.brand-label{font-size:.62rem;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:4px;}
 .brand-title{font-size:1.4rem;font-weight:800;color:var(--text);line-height:1.1;}
 .sidebar-nav{padding:10px 0;flex:1;overflow-y:auto;}
 .nav-section{padding:14px 20px 6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);}
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);font-size:.88rem;font-weight:500;transition:all .15s;cursor:pointer;border:none;border-left:3px solid transparent;background:none;width:100%;text-align:left;}
 .nav-item:hover{color:var(--text);background:rgba(255,255,255,.04);}
-.nav-item.active{color:var(--cyan);border-left-color:var(--cyan);background:rgba(0,229,255,.05);}
+.nav-item.active{color:var(--gold);border-left-color:var(--gold);background:rgba(255,215,0,.05);}
 .nav-item.sim-nav.active{color:var(--violet);border-left-color:var(--violet);background:rgba(179,136,255,.05);}
 .nav-item.relator-nav.active{color:var(--pink);border-left-color:var(--pink);background:rgba(255,64,129,.05);}
 .nav-icon{font-size:.9rem;width:18px;text-align:center;flex-shrink:0;}
@@ -43,7 +43,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .content-section:last-child{border-bottom:none;padding-bottom:80px;}
 .section-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;gap:16px;}
 .section-title{font-size:1.15rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;}
-.section-bar{width:3px;height:18px;background:var(--cyan);border-radius:2px;flex-shrink:0;}
+.section-bar{width:3px;height:18px;background:var(--gold);border-radius:2px;flex-shrink:0;}
 .section-desc{font-size:.76rem;color:var(--muted);margin-top:5px;padding-left:19px;}
 .rank-table{width:100%;border-collapse:collapse;}
 .rank-table th{padding:8px 14px;text-align:right;font-size:.67rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);font-weight:600;white-space:nowrap;}
@@ -76,8 +76,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .rk-form-dot.bonus{background:var(--gold2);}
 .chart-outer{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;height:520px;position:relative;}
 .chart-mobile-legend{display:none;}
-.reset-zoom-btn{background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.3);color:var(--cyan);border-radius:6px;padding:6px 14px;font-size:.73rem;cursor:pointer;transition:all .2s;letter-spacing:.5px;white-space:nowrap;}
-.reset-zoom-btn:hover{background:rgba(0,229,255,.14);}
+.reset-zoom-btn{background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.3);color:var(--gold);border-radius:6px;padding:6px 14px;font-size:.73rem;cursor:pointer;transition:all .2s;letter-spacing:.5px;white-space:nowrap;}
+.reset-zoom-btn:hover{background:rgba(255,215,0,.14);}
 .bracket-wrap{overflow-x:auto;padding-bottom:8px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.bracket-wrap::-webkit-scrollbar{height:5px;}.bracket-wrap::-webkit-scrollbar-track{background:transparent;}.bracket-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}.bracket-wrap::-webkit-scrollbar-thumb:hover{background:var(--muted);}
 .bracket{display:flex;align-items:stretch;position:relative;height:860px;gap:24px;min-width:max-content;padding:0 4px;}
 .br-col{display:flex;flex-direction:column;width:172px;flex-shrink:0;}
@@ -88,9 +88,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .bm.locked{border-style:dashed;border-color:rgba(125,133,144,.35);}
 .bm.locked .bm-match{color:var(--muted);}
 .bm-lock{font-size:.72rem;color:var(--muted);margin-top:4px;opacity:.6;}
-.bm.clickable{cursor:pointer;border-color:rgba(0,229,255,.22);}
-.bm.clickable:hover{background:rgba(0,229,255,.07);border-color:rgba(0,229,255,.6);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,229,255,.1);}
-.bm.selected{background:rgba(0,229,255,.12);border-color:var(--cyan);box-shadow:0 0 0 1px rgba(0,229,255,.25);}
+.bm.clickable{cursor:pointer;border-color:rgba(255,215,0,.22);}
+.bm.clickable:hover{background:rgba(255,215,0,.07);border-color:rgba(255,215,0,.6);transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,215,0,.1);}
+.bm.selected{background:rgba(255,215,0,.12);border-color:var(--gold);box-shadow:0 0 0 1px rgba(255,215,0,.25);}
 .bm.played{border-color:rgba(63,185,80,.28);}
 .bm.played.clickable:hover{border-color:var(--green);background:rgba(63,185,80,.07);}
 .bm.played.selected{background:rgba(63,185,80,.1);border-color:var(--green);}
@@ -101,7 +101,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .bm-match.tbd-name{color:var(--muted);font-weight:400;}
 .bm-dots{display:flex;gap:3px;margin-top:3px;}
 .bd{width:5px;height:5px;border-radius:50%;background:var(--border);}
-.bd.on{background:var(--cyan);}
+.bd.on{background:var(--gold);}
 .bd.on.played{background:var(--green);}
 #bracket-svg{position:absolute;top:0;left:0;pointer-events:none;overflow:visible;}
 .pred-detail{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;margin-top:24px;display:none;animation:fadeIn .2s;}
@@ -118,7 +118,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .pred-groups{display:flex;flex-wrap:wrap;gap:10px;}
 .pg{background:var(--bg-card2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;min-width:120px;}
 .pg-score{font-size:1.05rem;font-weight:700;margin-bottom:2px;}
-.pg-score.local{color:var(--cyan);}
+.pg-score.local{color:var(--gold);}
 .pg-score.away{color:var(--pink);}
 .pg-score.tie{color:var(--violet);}
 .pg-count{font-size:.67rem;color:var(--muted);margin-bottom:5px;}
@@ -177,13 +177,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-cls-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:5px;padding:3px 9px;font-size:.67rem;cursor:pointer;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;}
 .sim-cls-btn:hover{border-color:var(--cyan);color:var(--cyan);}
 .sim-cls-btn.active{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
-.pg-classif{font-size:.65rem;color:var(--cyan);margin-left:4px;}
+.pg-classif{font-size:.65rem;color:var(--gold);margin-left:4px;}
+.finale-banner{background:linear-gradient(135deg,rgba(255,215,0,.09),rgba(255,149,0,.04));border:1px solid rgba(255,215,0,.25);border-radius:8px;padding:9px 12px;margin-bottom:10px;text-align:center;animation:goldPulse 3s ease-in-out infinite;}
+.finale-banner-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+.finale-banner-sub{font-size:.58rem;color:var(--muted);}
 .relator-content{margin-left:230px;flex:1;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 /* Seccion Fases y Bonus (feed principal) */
 .phase-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;}
 .phase-tab{padding:6px 16px;border-radius:20px;font-size:.73rem;font-weight:600;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;}
 .phase-tab:hover{color:var(--text);border-color:var(--muted);}
-.phase-tab.active{background:var(--cyan);color:var(--bg);border-color:var(--cyan);}
+.phase-tab.active{background:var(--gold);color:var(--bg);border-color:var(--gold);}
 .phase-tab.done{border-color:var(--green);}
 .phase-tab.done.active{background:var(--green);color:var(--bg);border-color:var(--green);}
 .phase-tab.upcoming{opacity:.4;}
@@ -396,6 +399,10 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     </nav>
     <div class="sidebar-footer">
       <div class="footer-updated" id="footer-updated"></div>
+      <div class="finale-banner">
+        <div class="finale-banner-title">&#9917; Cuartos de Final</div>
+        <div class="finale-banner-sub">8 equipos &middot; recta final</div>
+      </div>
       <div class="leader-card" id="leader-card"></div>
     </div>
   </aside>
@@ -539,7 +546,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 
   <div class="tool-content" id="matrix-content" style="display:none">
     <div class="tool-header">
-      <div class="tool-title"><div class="section-bar" style="background:var(--cyan)"></div>Matriz de Predicciones</div>
+      <div class="tool-title"><div class="section-bar" style="background:var(--gold)"></div>Matriz de Predicciones</div>
       <div class="tool-subtitle">Que predijo cada uno en cada partido jugado — verde=exacto, amarillo=comun, rojo=fallo</div>
     </div>
     <div class="tool-body" id="matrix-body"></div>
@@ -913,7 +920,7 @@ function _genRelato(data){
   function phMs(ph){return koPlayed.filter(function(m){return m.phase===ph;});}
   var ph16=phMs('16avos'),phOct=phMs('Octavos'),phCua=phMs('Cuartos'),phSem=phMs('Semis');
   function sumPts(ms){var r={};players.forEach(function(p){r[p]=0;});ms.forEach(function(m){players.forEach(function(p){r[p]+=(m.points[p]||0);});});return r;}
-  var koPts=sumPts(koPlayed),pts16=sumPts(ph16),ptsOct=sumPts(phOct);
+  var koPts=sumPts(koPlayed),pts16=sumPts(ph16),ptsOct=sumPts(phOct),ptsCua=sumPts(phCua);
   function topOf(d){return players.slice().sort(function(a,b){return d[b]-d[a];})[0];}
   function botOf(d){return players.slice().sort(function(a,b){return d[a]-d[b];})[0];}
   var upsets=koPlayed.filter(function(m){return players.filter(function(p){return(m.points[p]||0)>0;}).length<=Math.floor(N*0.3);});
@@ -941,7 +948,16 @@ function _genRelato(data){
     ]));
   } else if(curPhase==='Cuartos'){
     var doneCua=phCua.length===4;
-    lines.push((doneCua?'Cuartos de final completados. ':'Cuartos en curso: '+phCua.length+'/4 jugados. ')+'Solo 8 equipos quedan en el torneo. Los partidos restantes concentran el mayor valor puntual de toda la competicion.');
+    // Build list of 8 remaining teams from all Cuartos matches (played + unplayed)
+    var cuaAll=ko.filter(function(m){return m.phase==='Cuartos';});
+    var teams8=[];
+    cuaAll.forEach(function(m){var pts=m.match.split(' v ');if(pts.length===2){teams8.push(pts[0].trim(),pts[1].trim());}});
+    var teams8txt=teams8.length===8?teams8.join(', '):'los 8 clasificados';
+    lines.push(_pick([
+      (doneCua?'Cuartos de final completados (4/4). ':'CUARTOS DE FINAL — '+phCua.length+'/4 partidos jugados. ')+'De 48 selecciones llegaron 8: '+teams8txt+'. Esto es la recta final.',
+      (doneCua?'Cuartos cerrados. ':'Cuartos en curso: '+phCua.length+' de 4. ')+'Los 8 mejores del Mundial 2026. '+teams8txt+'. El prode entra en su tramo mas valioso.',
+    ]));
+    lines.push('Los Octavos depararon sorpresas: Noruega elimino a Brasil, Belgica despacho a Estados Unidos, Espana supero a Portugal. Tres de las selecciones mas grandes del torneo afuera — la tabla del prode se movio bastante.');
   } else if(curPhase==='Semis'){
     lines.push((phSem.length===2?'Semifinales completadas. ':'Semis en curso: '+phSem.length+'/2 jugados. ')+'Cuatro equipos y dos llaves. El prode llega a su tramo definitivo.');
   } else {
@@ -975,6 +991,14 @@ function _genRelato(data){
         lines.push('Octavos en curso ('+phOct.length+'/8): '+tOct+' lidera la fase con '+ptsOct[tOct]+' pts; '+bOct+' con '+ptsOct[bOct]+'. Restan '+(8-phOct.length)+' partido'+(8-phOct.length!==1?'s':'')+' de esta ronda.');
       }
     }
+    if(phCua.length>0){
+      var tCua=topOf(ptsCua),bCua=botOf(ptsCua);
+      if(phCua.length===4){
+        lines.push('Cuartos cerrados: '+tCua+' fue el mejor de la fase con '+ptsCua[tCua]+' pts; '+bCua+' el mas bajo con '+ptsCua[bCua]+'. Diferencia generada solo en Cuartos: '+(ptsCua[tCua]-ptsCua[bCua])+' pts.');
+      } else {
+        lines.push('Cuartos en curso ('+phCua.length+'/4): '+tCua+' lidera la fase con '+ptsCua[tCua]+' pts; '+bCua+' con '+ptsCua[bCua]+'. Cada resultado puede reshapear la tabla de manera drastica.');
+      }
+    }
     var koLdr=topOf(koPts);
     lines.push(_pick([
       koLdr+' lidera el eliminatorio acumulando '+koPts[koLdr]+' pts desde los 16avos. El desempeno en el KO es la variable nueva del prode — quien acierta clasificados y marcadores exactos aqui es quien define la tabla.',
@@ -998,8 +1022,8 @@ function _genRelato(data){
   ]));
   // Cierre
   lines.push(_pick([
-    'Estructura de puntos: 16avos (2/5+2cls), Octavos (3/7+2cls), Cuartos (3/7+2cls), Semis (3/7+2cls), Final (5/10+2cls). Cada fase pesa mas que la anterior — la decision del prode se concentra al final.',
-    'Los $400.000 en juego. El que acierta los clasificados y los marcadores exactos en los cruces finales es quien define el prode — no necesariamente el que mejor fue en grupos.',
+    'Estructura de puntos restantes: Cuartos (3/7+2cls), Semis (3/7+2cls), Final (5/10+2cls). Los ultimos 7 partidos del torneo tienen mas peso puntual que toda la fase de grupos. El prode se decide ahora.',
+    'Los $400.000 en juego. Cuartos, Semis y Final — 7 partidos que pueden cambiar todo. El que acierta exactos y clasificados en esta recta manda la tabla, sin importar lo que hizo en grupos.',
   ]));
   return lines;
 }

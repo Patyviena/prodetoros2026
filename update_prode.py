@@ -57,6 +57,9 @@ MATCH_DATES = {
     "P98":  "2026-07-07",
     "P99":  "2026-07-08",
     "P100": "2026-07-08",
+    # Semifinales
+    "P101": "2026-07-14",  # Francia v Espana (hoy)
+    # P102 bloqueado hasta que todos manden prediccion
 }
 
 BONUS_CATEGORIES = {

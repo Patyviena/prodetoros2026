@@ -16,9 +16,9 @@ html = r'''<!DOCTYPE html>
 html{scroll-behavior:smooth;}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden;}
 .sidebar{width:230px;flex-shrink:0;background:var(--bg-card);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh;position:fixed;left:0;top:0;z-index:100;}
-.sidebar-brand{padding:22px 20px 18px;border-bottom:1px solid var(--border);}
+.sidebar-brand{padding:22px 20px 18px;border-bottom:1px solid rgba(255,215,0,.18);background:linear-gradient(180deg,rgba(255,215,0,.04) 0%,transparent 100%);}
 .brand-label{font-size:.62rem;font-weight:700;color:var(--gold);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:4px;}
-.brand-title{font-size:1.4rem;font-weight:800;color:var(--text);line-height:1.1;}
+.brand-title{font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--text) 30%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;}
 .sidebar-nav{padding:10px 0;flex:1;overflow-y:auto;}
 .nav-section{padding:14px 20px 6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);}
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);font-size:.88rem;font-weight:500;transition:all .15s;cursor:pointer;border:none;border-left:3px solid transparent;background:none;width:100%;text-align:left;}
@@ -66,7 +66,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .rk-stat.gold2{color:var(--gold2);font-weight:600;}
 .rk-win{font-size:.88rem;font-variant-numeric:tabular-nums;font-weight:600;color:var(--muted);}
 .rk-win-hi{color:var(--gold);}
-.rk-win-mid{color:var(--cyan);}
+.rk-win-mid{color:var(--gold2);}
 .rk-win-lo{color:var(--border);font-weight:400;}
 .rk-form{display:flex;gap:3px;justify-content:flex-end;}
 .rk-form-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
@@ -144,7 +144,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-phase-lbl:first-child{margin-top:0;}
 .sim-phase-pts{font-weight:400;color:var(--muted);font-size:.57rem;letter-spacing:0;}
 .sim-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:13px 14px;margin-bottom:8px;transition:border-color .15s;}
-.sim-card.has-score{border-color:rgba(0,229,255,.3);}
+.sim-card.has-score{border-color:rgba(255,215,0,.3);}
 .sim-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
 .sim-card-name{font-size:.82rem;font-weight:600;line-height:1.3;flex:1;}
 .sim-card-id{font-size:.6rem;color:var(--muted);flex-shrink:0;padding-top:1px;}
@@ -175,8 +175,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-cls-row{display:flex;align-items:center;gap:5px;margin-top:8px;}
 .sim-cls-lbl{font-size:.62rem;color:var(--muted);white-space:nowrap;}
 .sim-cls-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:5px;padding:3px 9px;font-size:.67rem;cursor:pointer;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:110px;}
-.sim-cls-btn:hover{border-color:var(--cyan);color:var(--cyan);}
-.sim-cls-btn.active{background:rgba(0,229,255,.12);border-color:var(--cyan);color:var(--cyan);font-weight:600;}
+.sim-cls-btn:hover{border-color:var(--gold);color:var(--gold);}
+.sim-cls-btn.active{background:rgba(255,215,0,.1);border-color:var(--gold);color:var(--gold);font-weight:600;}
 .pg-classif{font-size:.65rem;color:var(--gold);margin-left:4px;}
 .finale-banner{background:linear-gradient(135deg,rgba(255,215,0,.09),rgba(255,149,0,.04));border:1px solid rgba(255,215,0,.25);border-radius:8px;padding:9px 12px;margin-bottom:10px;text-align:center;animation:goldPulse 3s ease-in-out infinite;}
 .finale-banner-title{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
@@ -245,14 +245,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .badge-stat{font-size:.78rem;color:var(--muted);}
 .badges-section-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:28px 0 14px;display:flex;align-items:center;gap:8px;}
 .badges-section-lbl:first-child{margin-top:0;}
-.badges-section-lbl.ko{color:var(--cyan);}
+.badges-section-lbl.ko{color:var(--gold);}
 .badges-section-sub{font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;color:var(--muted);}
-.badge-card.ko-badge{border-color:rgba(0,229,255,.12);}
-.badge-card.ko-badge:hover{border-color:var(--cyan);}
+.badge-card.ko-badge{border-color:rgba(255,215,0,.15);}
+.badge-card.ko-badge:hover{border-color:var(--gold);}
 .dif-section-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin:28px 0 14px;}
-.dif-section-lbl.ko{color:var(--cyan);}
+.dif-section-lbl.ko{color:var(--gold);}
 .matrix-phase-hdr{padding:8px 0 4px!important;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);text-align:left!important;background:var(--bg)!important;border-bottom:1px solid var(--border)!important;}
-.matrix-phase-hdr.ko{color:var(--cyan);}
+.matrix-phase-hdr.ko{color:var(--gold);}
 /* Matriz de predicciones */
 .matrix-wrap{overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
 .matrix-wrap::-webkit-scrollbar{height:5px;}
@@ -294,16 +294,16 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .relator-body{flex:1;overflow-y:scroll;padding:36px 64px 60px;scrollbar-width:none;max-width:820px;}
 .relator-body::-webkit-scrollbar{display:none;}
 .relator-line{padding:16px 20px 16px 22px;margin-bottom:12px;border-left:3px solid var(--border);border-radius:0 8px 8px 0;background:var(--bg-card);font-size:.93rem;line-height:1.8;animation:slideRelator .35s ease both;}
-.relator-line:first-child{border-left-color:var(--pink);font-size:1.06rem;font-weight:600;background:rgba(255,64,129,.05);}
+.relator-line:first-child{border-left-color:var(--gold);font-size:1.06rem;font-weight:600;background:rgba(255,215,0,.05);}
 .relator-line:last-child{border-left-color:var(--gold);background:rgba(255,215,0,.04);font-style:italic;}
 @keyframes slideRelator{from{opacity:0;transform:translateX(-10px);}to{opacity:1;transform:none;}}
 #loading{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);gap:12px;font-size:.95rem;color:var(--muted);}
-.spinner{width:24px;height:24px;border:2.5px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .7s linear infinite;}
+.spinner{width:24px;height:24px;border:2.5px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
 /* Section dots */
 .s-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:50;}
 .s-dot{width:9px;height:9px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .22s;}
-.s-dot.active{background:var(--cyan);transform:scale(1.45);}
+.s-dot.active{background:var(--gold);transform:scale(1.45);}
 .s-dot:hover:not(.active){background:var(--muted);}
 /* Sim lock */
 .sim-content{position:relative;}
@@ -326,8 +326,8 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .mass-sim-area{border-top:2px solid var(--border);padding:24px 40px 40px;flex-shrink:0;}
 .mass-sim-trigger{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap;}
 .mass-sim-title-row{font-size:1rem;font-weight:700;color:var(--text);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
-.mass-sim-btn{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.3);color:var(--cyan);border-radius:8px;padding:9px 20px;font-size:.84rem;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:all .2s;}
-.mass-sim-btn:hover:not(:disabled){background:rgba(0,229,255,.15);}
+.mass-sim-btn{background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.3);color:var(--gold);border-radius:8px;padding:9px 20px;font-size:.84rem;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:all .2s;}
+.mass-sim-btn:hover:not(:disabled){background:rgba(255,215,0,.15);}
 .mass-sim-btn:disabled{opacity:.55;cursor:wait;}
 .mass-sim-prog{font-size:.85rem;font-weight:700;color:var(--gold);min-width:40px;}
 .mass-sim-note{font-size:.7rem;color:var(--muted);}
@@ -344,7 +344,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .mobile-bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-top:1px solid var(--border);z-index:200;height:58px;}
 .mob-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 2px;color:var(--muted);font-size:.56rem;border:none;background:none;cursor:pointer;gap:3px;height:100%;}
 .mob-btn .mi{font-size:1.1rem;}
-.mob-btn.active{color:var(--cyan);}
+.mob-btn.active{color:var(--gold);}
 /* Hide rank columns on mobile */
 .rk-hide-mob{}
 @media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:20px 14px 28px;}.relator-body,.tool-body{padding:20px 14px 62px;}.tool-header{padding:20px 14px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;}.mobile-bnav::-webkit-scrollbar{display:none;}.mob-btn{min-width:54px;flex:0 0 auto;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:300px;padding:12px;}.chart-mobile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px 0;}.cml-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);}.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.rk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.rk-table-wrap::-webkit-scrollbar{height:4px;}.rk-table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}.rank-table{font-size:.75rem;min-width:520px;}.rank-table th,.rank-table td{padding:8px 8px;}.rk-pts{font-size:.88rem;}.rk-form{gap:2px;}.rk-form-dot{width:6px;height:6px;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}.phase-name{width:120px;}.bonus-name{width:120px;}.day-match-name{min-width:120px;}}
@@ -400,8 +400,8 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     <div class="sidebar-footer">
       <div class="footer-updated" id="footer-updated"></div>
       <div class="finale-banner">
-        <div class="finale-banner-title">&#9917; Cuartos de Final</div>
-        <div class="finale-banner-sub">8 equipos &middot; recta final</div>
+        <div class="finale-banner-title">&#11088; Semifinales</div>
+        <div class="finale-banner-sub">4 equipos &middot; se viene la final</div>
       </div>
       <div class="leader-card" id="leader-card"></div>
     </div>
@@ -948,30 +948,51 @@ function _genRelato(data){
     ]));
   } else if(curPhase==='Cuartos'){
     var doneCua=phCua.length===4;
-    // Build list of 8 remaining teams from all Cuartos matches (played + unplayed)
-    var cuaAll=ko.filter(function(m){return m.phase==='Cuartos';});
-    var teams8=[];
-    cuaAll.forEach(function(m){var pts=m.match.split(' v ');if(pts.length===2){teams8.push(pts[0].trim(),pts[1].trim());}});
-    var teams8txt=teams8.length===8?teams8.join(', '):'los 8 clasificados';
-    lines.push(_pick([
-      (doneCua?'Cuartos de final completados (4/4). ':'CUARTOS DE FINAL — '+phCua.length+'/4 partidos jugados. ')+'De 48 selecciones llegaron 8: '+teams8txt+'. Esto es la recta final.',
-      (doneCua?'Cuartos cerrados. ':'Cuartos en curso: '+phCua.length+' de 4. ')+'Los 8 mejores del Mundial 2026. '+teams8txt+'. El prode entra en su tramo mas valioso.',
-    ]));
-    lines.push('Los Octavos depararon sorpresas: Noruega elimino a Brasil, Belgica despacho a Estados Unidos, Espana supero a Portugal. Tres de las selecciones mas grandes del torneo afuera — la tabla del prode se movio bastante.');
+    // Exactos en Cuartos
+    var cuaExactCnt={};
+    players.forEach(function(p){cuaExactCnt[p]=0;});
+    phCua.forEach(function(m){players.forEach(function(p){if((m.points[p]||0)>=7)cuaExactCnt[p]++;});});
+    var cuaExactos=players.filter(function(p){return cuaExactCnt[p]>0;});
+    if(doneCua){
+      lines.push(_pick([
+        'CUARTOS DE FINAL COMPLETADOS. Francia, Espana, Inglaterra y Argentina avanzan a Semifinales. Cuatro potencias, dos llaves, y el prode llega a su tramo definitivo.',
+        'Cuartos cerrados. Semis definidas: Francia vs Espana, e Inglaterra vs Argentina. De 48 selecciones, quedan 4. Esto es el Mundial.',
+      ]));
+      if(cuaExactos.length>0){
+        var exactoStrs=cuaExactos.map(function(p){return p+' ('+cuaExactCnt[p]+' exacto'+(cuaExactCnt[p]>1?'s':'')+')'});
+        lines.push('Exactos en Cuartos: '+exactoStrs.join(', ')+'. A 7 pts por exacto mas 2 por clasificado — esos aciertos reordenaron la tabla de manera decisiva.');
+      }
+      lines.push('El torneo sorprendio en el camino: Noruega elimino a Brasil, Belgica a USA, Espana a Portugal. La tabla del prode absorbio esas divergencias. Quien apostaba a los favoritos clásicos sufrio; quien leyó el torneo, escalo.');
+    } else {
+      lines.push('Cuartos en curso: '+phCua.length+'/4 jugados. Solo 8 equipos quedan. Cada resultado puede mover la tabla mas que diez jornadas de grupos.');
+    }
   } else if(curPhase==='Semis'){
-    lines.push((phSem.length===2?'Semifinales completadas. ':'Semis en curso: '+phSem.length+'/2 jugados. ')+'Cuatro equipos y dos llaves. El prode llega a su tramo definitivo.');
+    var doneSem=phSem.length===2;
+    var semExactCnt={};
+    players.forEach(function(p){semExactCnt[p]=0;});
+    phSem.forEach(function(m){players.forEach(function(p){if((m.points[p]||0)>=7)semExactCnt[p]++;});});
+    var semExactos=players.filter(function(p){return semExactCnt[p]>0;});
+    lines.push(_pick([
+      (doneSem?'SEMIFINALES COMPLETADAS. ':'Semis en curso: '+phSem.length+'/2 jugados. ')+'Francia, Espana, Inglaterra y Argentina — las cuatro mejores del torneo. El prode llega al tramo definitivo. Un exacto en Semis o Final puede decidir todo.',
+      (doneSem?'Semis cerradas. ':'Semis: '+phSem.length+' de 2 jugados. ')+'Cuatro potencias y dos llaves. El siguiente resultado puede cambiar el prode de manera irreversible.',
+    ]));
+    if(semExactos.length>0){
+      var semExStr=semExactos.map(function(p){return p+' ('+semExactCnt[p]+' exacto'+(semExactCnt[p]>1?'s':'')+')'});
+      lines.push('Exactos en Semis: '+semExStr.join(', ')+'. A 7 pts cada uno — aciertos que pueden subvertir la tabla completa.');
+    }
   } else {
     lines.push('La final ya se jugo. El torneo cerro. Este relato resume el Prode Toros 2026 completo.');
   }
   // Ranking actual
+  var rk4=rk.slice(0,4).map(function(r){return r.name+' '+r.pts;}).join(' · ');
   if(g12===0){
-    lines.push(ldr.name+' y '+sec.name+' igualados en la cima con '+ldr.pts+' pts cada uno. Empate exacto — el proximo partido los separa, o no.');
-  } else if(g12<=3){
-    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, solo '+g12+' arriba de '+sec.name+' ('+sec.pts+'). Diferencia minima: cualquier exacto en el eliminatorio la borra. Podio: '+trd.name+' en 3ro con '+trd.pts+'.');
-  } else if(g12<=10){
-    lines.push(ldr.name+' en la cima con '+ldr.pts+' pts y '+g12+' de margen sobre '+sec.name+' ('+sec.pts+'). Ventaja que equivale a uno o dos resultados comunes. Podio: '+trd.name+' en 3ro con '+trd.pts+'.');
+    lines.push(ldr.name+' y '+sec.name+' igualados en la cima con '+ldr.pts+' pts. Empate exacto — el proximo partido los separa o los mantiene juntos. '+trd.name+' acecha en 3ro con '+trd.pts+'.');
+  } else if(g12<=5){
+    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, solo '+g12+' sobre '+sec.name+' ('+sec.pts+'). Con 3 partidos restantes (Semis + Final + 3ero), un exacto vale 7 o 10 pts. La diferencia se borra en un partido. Top 4: '+rk4+'.');
+  } else if(g12<=15){
+    lines.push(ldr.name+' en la cima con '+ldr.pts+' pts y '+g12+' sobre '+sec.name+' ('+sec.pts+'). Ventaja real, pero en Semis y Final hay 24-30 pts en juego — nada esta definido. Top 4: '+rk4+'.');
   } else {
-    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, '+g12+' por delante de '+sec.name+' ('+sec.pts+'). La ventaja es real pero el eliminatorio tiene volumen para reconfigurar la tabla. Podio: '+sec.name+', '+trd.name+'.');
+    lines.push(ldr.name+' lidera con '+ldr.pts+' pts, '+g12+' sobre '+sec.name+' ('+sec.pts+'). Margen solido, pero los ultimos partidos concentran los puntos maximos del torneo. Top 4: '+rk4+'.');
   }
   // Analisis por fase knockout
   if(koPlayed.length>0){
@@ -1017,13 +1038,14 @@ function _genRelato(data){
   }
   // Fondo de tabla
   lines.push(_pick([
-    lst.name+' cierra la tabla con '+lst.pts+' pts, a '+gBot+' del lider. La matematica del eliminatorio todavia permite una remontada — necesita exactos y clasificados correctos mientras los de arriba fallan.',
-    'Puesto '+n+': '+lst.name+' con '+lst.pts+' pts. La brecha con el lider es '+gBot+'. El volumen de puntos del eliminatorio puede mover la tabla, pero requiere divergencia simultanea en multiples partidos.',
+    lst.name+' cierra la tabla con '+lst.pts+' pts, a '+gBot+' del lider. En Semis y Final todavia hay mas de 30 pts disponibles — la remontada matematica existe, pero requiere exactos propios y fallos de los de arriba en simultaneo.',
+    'Puesto '+n+': '+lst.name+' con '+lst.pts+' pts. La diferencia es '+gBot+'. El volumen de la recta final puede subvertir la tabla, pero hay que acertar exactos mientras los lideres fallan.',
   ]));
   // Cierre
+  var ptsRestantes=(curPhase==='Semis'||curPhase==='Final')?'Semis (3/7+2cls), 3er puesto (3/7+2cls), Final (5/10+2cls)':'Semis (3/7+2cls), 3er puesto (3/7+2cls), Final (5/10+2cls)';
   lines.push(_pick([
-    'Estructura de puntos restantes: Cuartos (3/7+2cls), Semis (3/7+2cls), Final (5/10+2cls). Los ultimos 7 partidos del torneo tienen mas peso puntual que toda la fase de grupos. El prode se decide ahora.',
-    'Los $400.000 en juego. Cuartos, Semis y Final — 7 partidos que pueden cambiar todo. El que acierta exactos y clasificados en esta recta manda la tabla, sin importar lo que hizo en grupos.',
+    'Quedan 3 partidos: Semis x2 y Final. En total hasta 34 pts disponibles por un jugador con exactos. Los $400.000 se juegan en estos 3 cruces — el prode puede cambiar de dueno en la Final.',
+    'Semis y Final — los partidos mas valiosos del torneo. Exacto en Final vale 10 pts, clasificado +2. Un Toros que acierto poco en grupos puede cerrar la diferencia aqui. Esto no termino.',
   ]));
   return lines;
 }

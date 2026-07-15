@@ -1,5 +1,5 @@
 {
-  "last_updated": "14/07/2026 19:04",
+  "last_updated": "15/07/2026 13:38",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -6618,11 +6618,11 @@
       "id": "P102",
       "phase": "Semis",
       "match": "Gan. Ctos. P3 vs P4",
-      "match_date": "",
+      "match_date": "2026-07-15",
       "is_tbd": false,
       "has_preds": true,
       "played": false,
-      "show_preds": false,
+      "show_preds": true,
       "predictions": {
         "Epe Roth": "1-1",
         "Kovacic": "2-2",
@@ -6630,7 +6630,7 @@
         "Lucas Tkacz": "0-2",
         "Nico Conti": "1-1",
         "Fran Garoby": "1-2",
-        "Tomi Marchiano": null,
+        "Tomi Marchiano": "2-1",
         "JZ": "1-2",
         "Alejo Di Fiori": "1-1",
         "Nico Gianola": "1-2",
@@ -6666,6 +6666,7 @@
         "Lucas Tkacz": "Argentina",
         "Nico Conti": "Inglaterra",
         "Fran Garoby": "Argentina",
+        "Tomi Marchiano": "Inglaterra",
         "JZ": "Argentina",
         "Alejo Di Fiori": "Argentina",
         "Nico Gianola": "Argentina",

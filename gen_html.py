@@ -754,7 +754,7 @@ ko.filter(function(m){return m.played;}).forEach(function(m){
   if(matchEl)matchEl.insertAdjacentElement('afterend',el);
 });}
 
-﻿var _CHANCE_PLAYERS=['Tomi Marchiano','Nico Conti','JZ','Patru Maqui','Lucas Tkacz','Tomi Samitier','Nico Gianola','Fran Garoby','Alejo Di Fiori'];
+var _CHANCE_PLAYERS=['Tomi Marchiano','Nico Conti','JZ','Patru Maqui','Lucas Tkacz','Tomi Samitier','Nico Gianola','Fran Garoby','Alejo Di Fiori'];
 var _CALC_PH={'3er Puesto':{common:3,exact:7,gol:3,cls:2},'Final':{common:5,exact:10,gol:5,cls:2}};
 var _CALC_MATCHES=[{id:'P103',phase:'3er Puesto',label:'P103 — 3er Puesto: Francia v Inglaterra',teams:['Francia','Inglaterra']},{id:'P104',phase:'Final',label:'P104 — Gran Final ★: Argentina v España',teams:['Argentina','España']}];
 var _calcData=null,_calcBonusPicks={},_calcBonus={};

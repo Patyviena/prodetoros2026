@@ -60,6 +60,9 @@ MATCH_DATES = {
     # Semifinales
     "P101": "2026-07-14",  # Francia v Espana
     "P102": "2026-07-15",  # Argentina v Inglaterra (habilitado al cargar todas las preds)
+    # 3er Puesto y Final — habilitar cuando lleguen las predicciones
+    "P103": "2026-07-19",  # 3er Puesto: Francia v Inglaterra
+    "P104": "2026-07-20",  # Final: Argentina v Espana
 }
 
 BONUS_CATEGORIES = {
@@ -69,6 +72,11 @@ BONUS_CATEGORIES = {
     "B4": {"label": "Sel. mas goles a favor",    "pts":  5},
     "B6": {"label": "Sel. mas goles en contra",  "pts":  5},
 }
+
+# Resultados finales de bonus. B2 se deriva de B1 automaticamente (perdedor de Final).
+# Usar nombres normalizados sin acento (comparacion es accent-insensitive).
+# Ejemplo cuando se conozcan:  "B1": "Argentina",  "B3": "Mbappe",  "B4": "Espana"
+BONUS_RESULTS: dict = {}
 
 COLOR_PALETTE = {
     "Tomi Samitier":  "#FF5733",
@@ -298,6 +306,39 @@ def parse_data(csv_text: str) -> dict:
             "predictions": preds,
             "earned":      earned,
         })
+
+    # Aplicar BONUS_RESULTS — sobreescribe 'earned' segun resultado real conocido
+    if BONUS_RESULTS:
+        import unicodedata as _ud
+        def _norm_bonus(s):
+            return _ud.normalize("NFKD", str(s)).encode("ascii", "ignore").decode("ascii").strip().lower()
+
+        b1_winner = BONUS_RESULTS.get("B1", "")
+        b2_winner = ""
+        if b1_winner:
+            normed = _norm_bonus(b1_winner)
+            b2_winner = "espana" if normed == "argentina" else "argentina"
+
+        for b in bonus_preds:
+            bid = b["id"]
+            if bid == "B2":
+                result_norm = b2_winner
+            else:
+                result_norm = _norm_bonus(BONUS_RESULTS.get(bid, ""))
+            if not result_norm:
+                continue
+            for player in players:
+                pred_norm = _norm_bonus(b["predictions"].get(player, ""))
+                if pred_norm == result_norm:
+                    b["earned"][player] = b["pts_value"]
+
+    # Recomputar ranking incluyendo bonus ganados
+    bonus_earned = {p: sum(b["earned"].get(p, 0) for b in bonus_preds) for p in players}
+    if any(v > 0 for v in bonus_earned.values()):
+        total_with_bonus = {p: final_pts[p] + bonus_earned[p] for p in players}
+        sorted_players   = sorted(players, key=lambda p: -total_with_bonus[p])
+        ranking = [{"pos": i + 1, "name": p, "pts": total_with_bonus[p]} for i, p in enumerate(sorted_players)]
+        top3    = {r["name"]: r["pos"] for r in ranking if r["pos"] <= 3}
 
     # Ko_preds: partidos eliminatorios jugados, formato equivalente a group_preds
     ko_preds = [

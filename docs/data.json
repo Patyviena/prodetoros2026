@@ -1,5 +1,5 @@
 {
-  "last_updated": "16/07/2026 11:19",
+  "last_updated": "16/07/2026 12:18",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -6699,7 +6699,7 @@
       "id": "P103",
       "phase": "3er Puesto",
       "match": "Perdedor Semi 1 vs Semi 2",
-      "match_date": "",
+      "match_date": "2026-07-19",
       "is_tbd": true,
       "has_preds": false,
       "played": false,
@@ -6746,7 +6746,7 @@
       "id": "P104",
       "phase": "Final",
       "match": "Gran Final",
-      "match_date": "",
+      "match_date": "2026-07-20",
       "is_tbd": true,
       "has_preds": false,
       "played": false,

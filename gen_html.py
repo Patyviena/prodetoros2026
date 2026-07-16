@@ -24,7 +24,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;color:var(--muted);font-size:.88rem;font-weight:500;transition:all .15s;cursor:pointer;border:none;border-left:3px solid transparent;background:none;width:100%;text-align:left;}
 .nav-item:hover{color:var(--text);background:rgba(255,255,255,.04);}
 .nav-item.active{color:var(--gold);border-left-color:var(--gold);background:rgba(255,215,0,.05);}
-.nav-item.sim-nav.active{color:var(--violet);border-left-color:var(--violet);background:rgba(179,136,255,.05);}
+.nav-item.calc-nav.active{color:var(--gold);border-left-color:var(--gold);background:rgba(255,215,0,.05);}
 .nav-item.relator-nav.active{color:var(--pink);border-left-color:var(--pink);background:rgba(255,64,129,.05);}
 .nav-icon{font-size:.9rem;width:18px;text-align:center;flex-shrink:0;}
 .nav-divider{height:1px;background:var(--border);margin:8px 0;}
@@ -156,7 +156,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-s
 .sim-ok{font-size:.68rem;color:var(--green);margin-left:8px;opacity:0;transition:opacity .2s;}
 .sim-card.has-score .sim-ok{opacity:1;}
 .sim-pred-cnt{font-size:.63rem;color:var(--muted);margin-top:6px;}
-.sim-rank-row{display:grid;grid-template-columns:32px 1fr 60px 60px 70px 40px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(48,54,61,.4);gap:4px;}
+.sim-rank-row{display:grid;grid-template-columns:32px 1fr 48px 44px 44px 52px 54px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(48,54,61,.4);gap:4px;}
 .sim-rank-row:last-child{border-bottom:none;}
 .sim-rank-pos{font-size:.82rem;font-weight:700;color:var(--muted);text-align:center;}
 .sim-rank-pos.p1{color:var(--gold);}
@@ -340,6 +340,31 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .mass-sim-pos.p2{color:var(--silver);}
 .mass-sim-pos.p3{color:var(--bronze);}
 .mass-sim-sub{font-size:.7rem;color:var(--muted);margin-bottom:14px;}
+/* Calculadora Final */
+.calc-match-block{padding:14px 0 10px;border-bottom:1px solid var(--border);}
+.calc-match-block:last-child{border-bottom:none;}
+.calc-match-title{font-size:.78rem;font-weight:700;color:var(--gold);letter-spacing:.3px;margin-bottom:10px;}
+.calc-section-lbl{font-size:.6rem;font-weight:700;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin:8px 0 5px;}
+.calc-res-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;flex-wrap:wrap;}
+.calc-team{font-size:.72rem;color:var(--text);font-weight:500;min-width:52px;}
+.calc-sep{color:var(--muted);font-size:.85rem;flex-shrink:0;}
+.calc-score-inp{width:38px;background:var(--bg-card2);border:1px solid var(--border);border-radius:5px;color:var(--text);padding:4px 5px;font-size:.8rem;text-align:center;-moz-appearance:textfield;outline:none;}
+.calc-score-inp::-webkit-inner-spin-button,.calc-score-inp::-webkit-outer-spin-button{-webkit-appearance:none;}
+.calc-score-inp:focus{border-color:rgba(255,215,0,.5);}
+.calc-cls-sel{background:var(--bg-card2);border:1px solid var(--border);border-radius:5px;color:var(--text);padding:3px 5px;font-size:.7rem;outline:none;}
+.calc-pred-grid{display:flex;flex-direction:column;gap:3px;}
+.calc-pred-row{display:flex;align-items:center;gap:4px;}
+.calc-pred-name{width:54px;font-size:.7rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:0;}
+.calc-p-inp{width:32px;}
+.calc-cls-sm{font-size:.62rem;padding:2px 3px;}
+.calc-bonus-block{padding:14px 0 6px;}
+.calc-bonus-btns{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:4px;}
+.calc-bon-btn{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:6px;color:var(--muted);padding:4px 10px;font-size:.71rem;cursor:pointer;transition:all .15s;}
+.calc-bon-btn.active{background:rgba(255,215,0,.1);border-color:var(--gold);color:var(--gold);font-weight:600;}
+.calc-bon-btn:hover:not(.active){border-color:rgba(255,215,0,.35);color:var(--text);}
+.calc-pos-num{color:var(--green);}
+.calc-total-winner{color:var(--gold);}
+.sim-rank-first{background:rgba(255,215,0,.04);border-radius:4px;}
 /* Mobile bottom nav */
 .mobile-bnav{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--bg-card);border-top:1px solid var(--border);z-index:200;height:58px;}
 .mob-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 2px;color:var(--muted);font-size:.56rem;border:none;background:none;cursor:pointer;gap:3px;height:100%;}
@@ -379,8 +404,8 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
       </button>
       <div class="nav-divider"></div>
       <div class="nav-section">Herramientas</div>
-      <button class="nav-item sim-nav" data-panel="sim">
-        <span class="nav-icon">&#128274;</span>Simulacion de Prode
+      <button class="nav-item calc-nav" data-panel="sim">
+        <span class="nav-icon">&#127942;</span>Calculadora Final
       </button>
       <button class="nav-item relator-nav" data-panel="relator">
         <span class="nav-icon">&#127908;</span>Relator de Prode
@@ -400,8 +425,8 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     <div class="sidebar-footer">
       <div class="footer-updated" id="footer-updated"></div>
       <div class="finale-banner">
-        <div class="finale-banner-title">&#11088; Semifinales</div>
-        <div class="finale-banner-sub">4 equipos &middot; se viene la final</div>
+        <div class="finale-banner-title">&#127942; Gran Final</div>
+        <div class="finale-banner-sub">Argentina v Espa&ntilde;a &middot; $400.000</div>
       </div>
       <div class="leader-card" id="leader-card"></div>
     </div>
@@ -496,32 +521,17 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
   <div class="sim-content" id="sim-content" style="display:none">
     <div class="sim-header">
       <div class="sim-title-block">
-        <div class="sim-title"><div class="section-bar" style="background:var(--violet)"></div>Simulacion de Prode</div>
-        <div class="sim-subtitle">Ingresa resultados y ve como queda la tabla &nbsp;&middot;&nbsp; Encontra la combinacion para ganar</div>
-        <div style="margin-top:8px;font-size:.72rem;color:var(--gold2);background:rgba(255,149,0,.08);border:1px solid rgba(255,149,0,.2);border-radius:6px;padding:7px 12px;display:inline-block;">&#9889; Jugados auto-completados &nbsp;&middot;&nbsp; &#127942; Bonus abajo &nbsp;&middot;&nbsp; &#10003; Cls incluido &nbsp;&middot;&nbsp; &#128200; Goles: Poisson(&lambda;=1.5, max 4)</div>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-        <button class="sim-random-btn" id="sim-random-btn">&#127922; Random</button>
-        <button class="sim-reset-btn" id="sim-reset-btn">&#8635; Reiniciar</button>
+        <div class="sim-title"><div class="section-bar"></div>Calculadora Final</div>
+        <div class="sim-subtitle">Ingresa predicciones y resultado hipotetico &nbsp;&middot;&nbsp; Solo jugadores con chance matematica (max &gt; 270 pts)</div>
+        <div style="margin-top:8px;font-size:.72rem;color:var(--gold2);background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.18);border-radius:6px;padding:7px 12px;display:inline-block;">&#127942; P103 y P104 pendientes de predicciones &nbsp;&middot;&nbsp; Bonus: Campeon, Goleador, Mas goles activos &nbsp;&middot;&nbsp; Max posible Tomi: 270 pts</div>
       </div>
     </div>
     <div class="sim-body">
-      <div class="sim-left" id="sim-matches"></div>
+      <div class="sim-left" id="calc-left-panel" style="width:430px;max-width:430px"></div>
       <div class="sim-right">
-        <div class="sim-right-header">Tabla proyectada</div>
-        <div class="sim-rank-header">
-          <span style="text-align:center">#</span><span>Jugador</span><span>Actual</span><span>+Sim</span><span>Total</span><span>&#916;</span>
-        </div>
-        <div id="sim-rank-list"></div>
+        <div class="sim-right-header">Contendientes al titulo &#127942;</div>
+        <div id="calc-rank-list"></div>
       </div>
-    </div>
-    <div class="mass-sim-area">
-      <div class="mass-sim-trigger">
-        <button class="mass-sim-btn" id="mass-sim-btn">&#127922; Simular 1.000.000</button>
-        <span class="mass-sim-prog" id="mass-sim-prog"></span>
-        <span class="mass-sim-note">Distribucion estadistica de posiciones finales &nbsp;&middot;&nbsp; incluye bonus seleccionados arriba</span>
-      </div>
-      <div id="mass-sim-result"></div>
     </div>
   </div>
 
@@ -574,7 +584,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
     <button class="mob-btn" data-target="section-bracket"><span class="mi">&#9917;</span>Bracket</button>
     <button class="mob-btn" data-target="section-fases"><span class="mi">&#128197;</span>Fases</button>
     <button class="mob-btn" data-target="section-bonus"><span class="mi">&#11088;</span>Bonus</button>
-    <button class="mob-btn" data-panel="sim"><span class="mi">&#127922;</span>Sim.</button>
+    <button class="mob-btn" data-panel="sim"><span class="mi">&#127942;</span>Final</button>
     <button class="mob-btn" data-panel="relator"><span class="mi">&#127908;</span>Relator</button>
     <button class="mob-btn" data-panel="badges"><span class="mi">&#127941;</span>Premios</button>
     <button class="mob-btn" data-panel="matrix"><span class="mi">&#128202;</span>Preds.</button>
@@ -744,155 +754,19 @@ ko.filter(function(m){return m.played;}).forEach(function(m){
   if(matchEl)matchEl.insertAdjacentElement('afterend',el);
 });}
 
-var PHASE_PTS={'16avos':{common:2,exact:5,goleada:2},'Octavos':{common:3,exact:7,goleada:3},'Cuartos':{common:3,exact:7,goleada:3},'Semis':{common:3,exact:7,goleada:3},'3er Puesto':{common:3,exact:7,goleada:3},'Final':{common:5,exact:10,goleada:5}};
-var _DEMO_NAMES={'P73':'Uruguay vs Mexico','P74':'Argentina vs Ecuador','P75':'Brasil vs Venezuela','P76':'Colombia vs Peru','P77':'USA vs Panama','P78':'Canada vs El Salvador','P79':'Francia vs Marruecos','P80':'Espana vs Suiza','P81':'Alemania vs Escocia','P82':'Portugal vs Turquia','P83':'Inglaterra vs Rep. Checa','P84':'Holanda vs Dinamarca','P85':'Japon vs Australia','P86':'Korea Sur vs Senegal','P87':'Italia vs Polonia','P88':'Croacia vs Rumania'};
-var _DPATS=[['2-0','2-1','1-0','2-0','2-1','1-0','1-1','0-1','2-1','2-0','1-0','0-1','1-1','2-0','1-0','0-1'],['1-0','0-1','1-1','2-1','0-2','1-0','2-0','1-2','1-1','0-1','2-1','1-0','0-2','1-1','2-0','0-1'],['0-1','0-2','1-2','0-1','1-1','0-2','2-1','0-1','1-0','0-2','1-1','0-1','2-0','0-1','1-2','0-1'],['1-1','2-2','0-0','1-1','2-1','0-1','1-1','2-0','0-0','1-2','1-1','0-1','2-1','1-1','0-2','1-1'],['2-1','1-2','2-0','1-1','0-1','2-1','1-0','0-2','1-1','2-1','0-1','1-0','2-0','1-1','0-1','2-1'],['1-0','2-0','0-1','1-0','2-1','1-0','0-1','1-1','1-0','2-0','0-1','2-1','1-0','0-2','1-1','1-0']];
-var _simData=null,_simMatches=[];
-// Poisson(lambda=1.5) capped at 4 goals — CDF precomputado
-function _pois(){var r=Math.random();return r<.2231?0:r<.5578?1:r<.8088?2:r<.9344?3:4;}
-function _runMassiveSimulation(){
-  if(!_simData)return;
-  var N=1000000,CHUNK=40000;
-  var players=_simData.players,nP=players.length;
-  var unplayed=_simMatches.filter(function(m){return!m.played;});
-  var nU=unplayed.length;
-  // Base pts (actual ranking, already includes played knockout pts)
-  var basePts=new Float64Array(nP);
-  players.forEach(function(p,pi){var r=_simData.ranking.find(function(r){return r.name===p;});basePts[pi]=r?r.pts:0;});
-  // Bonus pts from current selection
-  var bonusPts=new Float64Array(nP);
-  (_simData.bonus_preds||[]).forEach(function(b){var sel=_simBonusSel[b.id];if(!sel)return;players.forEach(function(p,pi){if((b.predictions[p]||'').trim().toLowerCase()===sel)bonusPts[pi]+=b.pts_value;});});
-  // Pre-compute score tables [matchIdx][scoreIdx 0-24][playerIdx] — Poisson max 4 goles
-  var scoreTables=unplayed.map(function(m){var t=[];for(var l=0;l<5;l++){for(var a=0;a<5;a++){var row=new Float64Array(nP);players.forEach(function(p,pi){row[pi]=_calcPts(m.predictions[p],{l:l,a:a},m.phase);});t.push(row);}}return t;});
-  // Pre-compute cls tables [matchIdx][0=L,1=V][playerIdx]
-  // hasCls=true  -> partidos con predicciones reales de clasificado
-  // hasCls=false -> TBD sin predicciones: se simula 50% por jugador
-  var hasCls=unplayed.map(function(m){return!!(m.classif&&Object.keys(m.classif).some(function(p){return!!m.classif[p];}));});
-  var clsTables=unplayed.map(function(m){return['L','V'].map(function(side){var row=new Float64Array(nP);if(m.classif)players.forEach(function(p,pi){if(m.classif[p])row[pi]=_classifBonus(m.classif[p],m.match,side);});return row;});});
-  // Position distribution [pos][playerIdx]
-  var posDist=[];for(var i=0;i<nP;i++)posDist.push(new Int32Array(nP));
-  var simTotals=new Float64Array(nP);
-  var ranked=[];for(var i=0;i<nP;i++)ranked.push(i);
-  var done=0;
-  var btn=document.getElementById('mass-sim-btn');
-  var prog=document.getElementById('mass-sim-prog');
-  btn.disabled=true;prog.textContent='0%';
-  document.getElementById('mass-sim-result').innerHTML='';
-  function runChunk(){
-    var end=Math.min(done+CHUNK,N);
-    for(var sim=done;sim<end;sim++){
-      for(var pi=0;pi<nP;pi++)simTotals[pi]=basePts[pi]+bonusPts[pi];
-      for(var mi=0;mi<nU;mi++){
-        var si=_pois()*5+_pois(); // Poisson(1.5) goles local y visitante (0-4 c/u)
-        var cls=Math.floor(Math.random()*2); // 0=L clasifica, 1=V clasifica
-        var sr=scoreTables[mi][si];
-        if(hasCls[mi]){
-          var cr=clsTables[mi][cls];
-          for(var pi=0;pi<nP;pi++)simTotals[pi]+=sr[pi]+cr[pi];
-        } else {
-          // TBD: sin predicciones de clasificado -> +2 aleatorio 50% por jugador
-          for(var pi=0;pi<nP;pi++){simTotals[pi]+=sr[pi];if(Math.random()<.5)simTotals[pi]+=2;}
-        }
-      }
-      ranked.sort(function(a,b){return simTotals[b]-simTotals[a];});
-      for(var pos=0;pos<nP;pos++)posDist[pos][ranked[pos]]++;
-    }
-    done=end;
-    prog.textContent=Math.round(done/N*100)+'%';
-    if(done<N){setTimeout(runChunk,0);}
-    else{_renderMassSimResult(posDist,players,N);btn.disabled=false;btn.textContent='&#127922; Re-simular 1.000.000';}
-  }
-  setTimeout(runChunk,0);
-}
-function _renderMassSimResult(posDist,players,N){
-  var nP=players.length;
-  var colors=_simData.colors||{};
-  // Header
-  var html='<div class="mass-sim-sub">'+N.toLocaleString('de-DE')+' simulaciones &mdash; cada celda = % de veces que ese jugador termino en esa posicion</div>';
-  html+='<div class="mass-sim-scroll"><table class="mass-sim-tbl"><thead><tr><th>#</th>';
-  players.forEach(function(p){var c=colors[p]||'#ccc';html+='<th><span class="clr-dot" style="background:'+c+';display:inline-block;margin-right:3px"></span>'+p.split(' ')[0]+'</th>';});
-  html+='</tr></thead><tbody>';
-  var posNames=['p1','p2','p3'];
-  for(var pos=0;pos<nP;pos++){
-    var pc=pos<3?posNames[pos]:'';
-    html+='<tr><td class="mass-sim-pos '+pc+'">'+(pos+1)+'</td>';
-    players.forEach(function(p,pi){
-      var cnt=posDist[pos][pi];
-      var pct=cnt/N*100;
-      // Heat: 0%=dark, 25%=bright gold
-      var alpha=Math.min(1,pct/25);
-      var bg=pct<0.1?'transparent':'rgba(255,215,0,'+alpha.toFixed(2)+')';
-      var fg=alpha>0.5?'#000':'var(--text)';
-      var txt=pct>=0.5?pct.toFixed(1)+'%':pct>=0.05?'<span style="opacity:.45">'+pct.toFixed(1)+'%</span>':cnt>0?'<span style="opacity:.15">&lt;0.1%</span>':'';
-      html+='<td style="background:'+bg+';color:'+fg+'">'+txt+'</td>';
-    });
-    html+='</tr>';
-  }
-  html+='</tbody></table></div>';
-  document.getElementById('mass-sim-result').innerHTML=html;
-}
-function _buildSimMatches(data){return data.knockout_matches.map(function(m,idx){if(!m.has_preds||m.is_tbd){var pat=_DPATS[idx%_DPATS.length];var off=idx%16;var rot=pat.slice(off).concat(pat.slice(0,off));var preds={};data.players.forEach(function(p,i){preds[p]=rot[i%rot.length];});return Object.assign({},m,{match:m.match||_DEMO_NAMES[m.id],is_tbd:false,has_preds:true,predictions:preds});}return m;});}
-function _sign(l,a){return l>a?1:l<a?-1:0;}
-function _calcPts(pred,score,phase){if(!pred||!score)return 0;var pts=PHASE_PTS[phase]||{common:3,exact:7};var pp=pred.split('-').map(Number);if(isNaN(pp[0])||isNaN(pp[1]))return 0;if(_sign(pp[0],pp[1])!==_sign(score.l,score.a))return 0;var exact=(pp[0]===score.l&&pp[1]===score.a);var base=exact?pts.exact:pts.common;if(exact){var predDiff=Math.abs(pp[0]-pp[1]),actualDiff=Math.abs(score.l-score.a);if(predDiff>=3&&actualDiff>=3)base+=(pts.goleada||2);}return base;}
-function _getScores(){var sc={};document.querySelectorAll('.sim-card').forEach(function(card){var id=card.dataset.simId;var inps=card.querySelectorAll('.sim-inp');var lv=inps[0]?inps[0].value.trim():'',av=inps[1]?inps[1].value.trim():'';if(lv!==''&&av!==''&&!isNaN(+lv)&&!isNaN(+av)){sc[id]={l:+lv,a:+av};card.classList.add('has-score');}else{card.classList.remove('has-score');}});return sc;}
-function _updateSimRanking(){if(!_simData)return;var scores=_getScores();var simPts={};_simData.players.forEach(function(p){simPts[p]=0;});_simMatches.forEach(function(m){if(m.played)return;var sc=scores[m.id],clsSide=_simClassif[m.id];if(!sc&&!clsSide)return;_simData.players.forEach(function(p){if(sc)simPts[p]+=_calcPts(m.predictions[p],sc,m.phase);if(clsSide&&m.classif&&m.classif[p])simPts[p]+=_classifBonus(m.classif[p],m.match,clsSide);});});(_simData.bonus_preds||[]).forEach(function(b){var sel=_simBonusSel[b.id];if(!sel)return;_simData.players.forEach(function(p){if((b.predictions[p]||'').trim().toLowerCase()===sel)simPts[p]+=b.pts_value;});});var proj=_simData.ranking.map(function(r){return{name:r.name,cur:r.pts,sim:simPts[r.name]||0,curPos:r.pos,total:r.pts+(simPts[r.name]||0)};});proj.sort(function(a,b){return b.total-a.total||(a.name>b.name?1:-1);});var pc3=['p1','p2','p3'];document.getElementById('sim-rank-list').innerHTML=proj.map(function(r,i){var pp=i+1,pc=pp<=3?pc3[pp-1]:'';var delta=r.curPos-pp;var dH=delta>0?'<span style="color:var(--green)">&#9650;'+delta+'</span>':delta<0?'<span style="color:var(--pink)">&#9660;'+Math.abs(delta)+'</span>':'<span style="color:var(--muted)">&mdash;</span>';var sH=r.sim>0?'<span style="color:var(--green)">+'+r.sim+'</span>':'<span style="color:var(--muted)">+0</span>';var c=_simData.colors[r.name]||'#888';return'<div class="sim-rank-row"><div class="sim-rank-pos '+pc+'">'+pp+'</div><div class="sim-rank-name"><span class="clr-dot" style="background:'+c+'"></span>'+r.name+'</div><div class="sim-rank-num">'+r.cur+'</div><div class="sim-rank-num">'+sH+'</div><div class="sim-rank-total '+pc+'">'+r.total+'</div><div class="sim-rank-delta">'+dH+'</div></div>';}).join('');}
-function renderSim(data){_simData=data;_simClassif={};_simMatches=_buildSimMatches(data);var phOrd=['16avos','Octavos','Cuartos','Semis','Final','3er Puesto'],phMap={};_simMatches.forEach(function(m){if(!phMap[m.phase])phMap[m.phase]=[];phMap[m.phase].push(m);});var html='';phOrd.forEach(function(phase){var ms=phMap[phase];if(!ms||!ms.length)return;var meta=PHASE_META[phase]||{label:phase.toUpperCase(),color:'#00e5ff'};var pts=PHASE_PTS[phase]||{common:3,exact:7};html+='<div class="sim-phase-lbl" style="color:'+meta.color+'">'+meta.label+'<span class="sim-phase-pts">com. '+pts.common+'pts &middot; exacto '+pts.exact+'pts &middot; cls. +2pts</span></div>';ms.forEach(function(m){var predCnt=data.players.filter(function(p){return!!m.predictions[p];}).length;var clsCnt=m.classif?Object.keys(m.classif).length:0;var teams=m.match.split(' v '),localT=teams[0]||'Local',visitT=teams.length>1?teams[1]:'Visitante';var clsRow=clsCnt>0?'<div class="sim-cls-row"><span class="sim-cls-lbl">Pasa:</span><button class="sim-cls-btn" data-cls-id="'+m.id+'" data-side="L">'+localT+'</button><button class="sim-cls-btn" data-cls-id="'+m.id+'" data-side="V">'+visitT+'</button></div>':'';html+='<div class="sim-card" data-sim-id="'+m.id+'"><div class="sim-card-top"><div class="sim-card-name">'+m.match+'</div><div class="sim-card-id">'+m.id+'</div></div><div class="sim-score-row"><input type="number" min="0" max="20" class="sim-inp" placeholder="?"><span class="sim-sep">&#8722;</span><input type="number" min="0" max="20" class="sim-inp" placeholder="?"><span class="sim-ok">&#10003; ok</span></div>'+clsRow+'<div class="sim-pred-cnt">'+predCnt+'/'+data.players.length+' preds'+(clsCnt>0?' &middot; '+clsCnt+' cls.':'')+'</div></div>';});});document.getElementById('sim-matches').innerHTML=html;document.querySelectorAll('.sim-inp').forEach(function(inp){inp.addEventListener('input',_updateSimRanking);});document.querySelectorAll('.sim-cls-btn').forEach(function(btn){btn.addEventListener('click',function(){var id=this.dataset.clsId,side=this.dataset.side;if(_simClassif[id]===side){delete _simClassif[id];document.querySelectorAll('.sim-cls-btn[data-cls-id="'+id+'"]').forEach(function(b){b.classList.remove('active');});}else{_simClassif[id]=side;document.querySelectorAll('.sim-cls-btn[data-cls-id="'+id+'"]').forEach(function(b){b.classList.toggle('active',b.dataset.side===side);});}  _updateSimRanking();});});document.getElementById('sim-reset-btn').onclick=function(){document.querySelectorAll('.sim-inp:not([readonly])').forEach(function(inp){inp.value='';});document.querySelectorAll('.sim-card').forEach(function(c){if(!c.dataset.played)c.classList.remove('has-score');});document.querySelectorAll('.sim-cls-btn:not([disabled])').forEach(function(b){b.classList.remove('active');});Object.keys(_simClassif).forEach(function(id){if(!_simMatches.find(function(m){return m.id===id&&m.played;}))delete _simClassif[id];});_simBonusSel={};document.querySelectorAll('.sim-bonus-sel').forEach(function(s){s.value='';s.classList.remove('selected');});_updateSimRanking();};
-// Seccion bonus pre-torneo
-var bp=data.bonus_preds||[];if(bp.length){var bHtml='<hr class="sim-bonus-sep"><div class="sim-bonus-hdr">&#127942; Bonus Pre-Torneo &mdash; <span style="font-weight:400;color:var(--muted)">selecciona quien gana cada categoria</span></div>';bp.forEach(function(b){var opts={};data.players.forEach(function(p){var pred=(b.predictions[p]||'').trim();if(!pred)return;var k=pred.toLowerCase();if(!opts[k]){opts[k]={display:pred,count:0};}opts[k].count++;});var sorted=Object.values(opts).sort(function(a,c){return c.count-a.count;});bHtml+='<div class="sim-bonus-card"><div class="sim-bonus-top"><span class="sim-bonus-lbl">'+b.label+'</span><span class="sim-bonus-val">+'+b.pts_value+' pts</span></div><select class="sim-bonus-sel" data-bid="'+b.id+'"><option value="">— Sin seleccionar —</option>';sorted.forEach(function(o){bHtml+='<option value="'+o.display.toLowerCase().replace(/"/g,'&quot;')+'">'+o.display+' ('+o.count+')</option>';});bHtml+='</select></div>';});var bWrap=document.createElement('div');bWrap.innerHTML=bHtml;document.getElementById('sim-matches').appendChild(bWrap);bWrap.querySelectorAll('.sim-bonus-sel').forEach(function(sel){sel.addEventListener('change',function(){var bid=this.dataset.bid;if(this.value){_simBonusSel[bid]=this.value;this.classList.add('selected');}else{delete _simBonusSel[bid];this.classList.remove('selected');}_updateSimRanking();});});}
-// Auto-fill partidos ya jugados
-_simMatches.forEach(function(m){if(!m.played)return;var act=_inferActual(m);var card=document.querySelector('.sim-card[data-sim-id="'+m.id+'"]');if(!card)return;card.dataset.played='true';if(act&&act.score){var inps=card.querySelectorAll('.sim-inp');inps[0].value=act.score.l;inps[1].value=act.score.a;inps.forEach(function(inp){inp.readOnly=true;inp.style.opacity='.5';});card.classList.add('has-score');var ok=card.querySelector('.sim-ok');if(ok){ok.textContent='✓ Jugado';ok.style.opacity='1';ok.style.color='var(--green)';}if(act.clsSide){_simClassif[m.id]=act.clsSide;card.querySelectorAll('.sim-cls-btn').forEach(function(b){b.classList.toggle('active',b.dataset.side===act.clsSide);b.disabled=true;b.style.opacity='.5';});}}});
-// Boton simular 1M
-document.getElementById('mass-sim-btn').onclick=function(){_runMassiveSimulation();};
-// Boton simular random
-document.getElementById('sim-random-btn').onclick=function(){document.querySelectorAll('.sim-card').forEach(function(card){if(card.dataset.played)return;var id=card.dataset.simId;var inps=card.querySelectorAll('.sim-inp');var l=Math.floor(Math.random()*4),a=Math.floor(Math.random()*4);inps[0].value=l;inps[1].value=a;card.classList.add('has-score');var clsBtns=card.querySelectorAll('.sim-cls-btn:not([disabled])');if(clsBtns.length){var side=l>a?'L':a>l?'V':Math.random()<.5?'L':'V';_simClassif[id]=side;clsBtns.forEach(function(b){b.classList.toggle('active',b.dataset.side===side);});}});_updateSimRanking();};
-_updateSimRanking();}
-
-var _simClassif={};
-var _simBonusSel={};
-function _inferActual(m){
-  var players=_simData?_simData.players:[];
-  var maxPts=0;
-  players.forEach(function(p){if((m.points[p]||0)>maxPts)maxPts=m.points[p]||0;});
-  if(maxPts===0)return null;
-  var topPlayer=players.find(function(p){return(m.points[p]||0)===maxPts;});
-  if(!topPlayer||!m.predictions[topPlayer])return null;
-  var parts=m.predictions[topPlayer].split('-');
-  if(parts.length<2)return null;
-  var score={l:+parts[0],a:+parts[1]};
-  var clsSide=null;
-  if(m.classif){
-    var teams=m.match.split(' v ');
-    var lT=(teams[0]||'').trim().toLowerCase().slice(0,4);
-    // Verificar si el top-player tambien acerto el clasificado
-    // (sus pts reales > pts solo por el score)
-    var scorePtsOnly=_calcPts(m.predictions[topPlayer],score,m.phase);
-    var clsPlayer=null;
-    if((m.points[topPlayer]||0)>scorePtsOnly&&m.classif[topPlayer]){
-      clsPlayer=topPlayer;
-    } else {
-      // Top-player no acerto el cls → buscar alguien cuyo pts == score_pts + 2
-      clsPlayer=players.find(function(p){
-        if(!m.classif[p])return false;
-        var pPts=m.points[p]||0;
-        var pSc=_calcPts(m.predictions[p],score,m.phase);
-        return pPts>0&&pPts===pSc+2;
-      })||null;
-    }
-    if(clsPlayer){
-      var cls=m.classif[clsPlayer].toLowerCase().slice(0,4);
-      clsSide=(cls===lT)?'L':'V';
-    }
-  }
-  return{score:score,clsSide:clsSide};
-}
-function _normalizeTeam(s){return s.trim().toLowerCase().normalize('NFD').replace(_reAcc,'');}
-function _classifBonus(playerPred,matchName,actualSide){
-  if(!playerPred)return 0;
-  var parts=matchName.split(' v ');
-  if(parts.length<2)return 0;
-  var actualTeam=actualSide==='L'?parts[0].trim():parts[1].trim();
-  return _normalizeTeam(playerPred)===_normalizeTeam(actualTeam)?2:0;
-}
+﻿var _CHANCE_PLAYERS=['Tomi Marchiano','Nico Conti','JZ','Patru Maqui','Lucas Tkacz','Tomi Samitier','Nico Gianola','Fran Garoby','Alejo Di Fiori'];
+var _CALC_PH={'3er Puesto':{common:3,exact:7,gol:3,cls:2},'Final':{common:5,exact:10,gol:5,cls:2}};
+var _CALC_MATCHES=[{id:'P103',phase:'3er Puesto',label:'P103 — 3er Puesto: Francia v Inglaterra',teams:['Francia','Inglaterra']},{id:'P104',phase:'Final',label:'P104 — Gran Final ★: Argentina v España',teams:['Argentina','España']}];
+var _calcData=null,_calcBonusPicks={},_calcBonus={};
+function _normStr(s){return(s||'').trim().toLowerCase().replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i').replace(/ó/g,'o').replace(/ú/g,'u').replace(/ñ/g,'n').replace(/Á/g,'a').replace(/É/g,'e').replace(/Í/g,'i').replace(/Ó/g,'o').replace(/Ú/g,'u').replace(/Ñ/g,'n');}
+function _calcPid(p){return p.replace(/[^a-zA-Z]/g,'');}
+function _calcMatchPts(ps,pr,isFinal){if(ps===null||pr===null||ps===''||pr==='')return 0;var p=isFinal?_CALC_PH['Final']:_CALC_PH['3er Puesto'];var pp=String(ps).split('-').map(Number),rp=String(pr).split('-').map(Number);if(pp.some(isNaN)||rp.some(isNaN))return 0;var pDir=pp[0]>pp[1]?1:pp[0]<pp[1]?-1:0,rDir=rp[0]>rp[1]?1:rp[0]<rp[1]?-1:0;if(pDir!==rDir)return 0;var pts=pp[0]===rp[0]&&pp[1]===rp[1]?p.exact:p.common;if(Math.abs(pp[0]-pp[1])>=3&&Math.abs(rp[0]-rp[1])>=3)pts+=p.gol;return pts;}
+function _calcClsPts(predCls,realCls,isFinal){var p=isFinal?_CALC_PH['Final']:_CALC_PH['3er Puesto'];return(predCls&&realCls&&_normStr(predCls)===_normStr(realCls))?p.cls:0;}
+function _calcBonusForPlayer(player){var picks=_calcBonusPicks[player]||{};var pts=0;var s1=_calcBonus['B1']||'';if(s1&&picks['B1']&&_normStr(picks['B1'])===_normStr(s1))pts+=12;if(s1){var sub=_normStr(s1)==='argentina'?'espana':'argentina';if(picks['B2']&&_normStr(picks['B2'])===sub)pts+=8;}var s3=_calcBonus['B3']||'';if(s3&&picks['B3']&&_normStr(picks['B3'])===_normStr(s3))pts+=8;var s4=_calcBonus['B4']||'';if(s4&&picks['B4']&&_normStr(picks['B4'])===_normStr(s4))pts+=5;return pts;}
+function _calcUpdate(){if(!_calcData)return;function gv(id){var el=document.getElementById(id);return el?el.value:'';}function gi(id){var v=parseInt(gv(id));return isNaN(v)?null:v;}var p103={},p104={},pb={};_CHANCE_PLAYERS.forEach(function(player){var pid=_calcPid(player);var r1g1=gi('P103-r1'),r1g2=gi('P103-r2'),r1cls=gv('P103-rcls');var p1g1=gi('P103-p-'+pid+'-1'),p1g2=gi('P103-p-'+pid+'-2'),p1cls=gv('P103-p-'+pid+'-cls');var m103=0;if(r1g1!==null&&r1g2!==null&&p1g1!==null&&p1g2!==null)m103+=_calcMatchPts(p1g1+'-'+p1g2,r1g1+'-'+r1g2,false);m103+=_calcClsPts(p1cls,r1cls,false);p103[player]=m103;var r4g1=gi('P104-r1'),r4g2=gi('P104-r2'),r4cls=gv('P104-rcls');var p4g1=gi('P104-p-'+pid+'-1'),p4g2=gi('P104-p-'+pid+'-2'),p4cls=gv('P104-p-'+pid+'-cls');var m104=0;if(r4g1!==null&&r4g2!==null&&p4g1!==null&&p4g2!==null)m104+=_calcMatchPts(p4g1+'-'+p4g2,r4g1+'-'+r4g2,true);m104+=_calcClsPts(p4cls,r4cls,true);p104[player]=m104;pb[player]=_calcBonusForPlayer(player);});function basePts(p){var r=(_calcData.ranking||[]).find(function(r){return r.name===p;});return r?r.pts:0;}var sorted=_CHANCE_PLAYERS.slice().sort(function(a,b){return(basePts(b)+p103[b]+p104[b]+pb[b])-(basePts(a)+p103[a]+p104[a]+pb[a]);});var medals=['\u{1F3C5}','\u{1F948}','\u{1F949}'];var html='<div class="sim-rank-row" style="font-size:.58rem;font-weight:700;color:var(--muted);text-transform:uppercase;padding-bottom:6px;border-bottom:2px solid var(--border);margin-bottom:4px"><span></span><span>Jugador</span><span style="text-align:right">Base</span><span style="text-align:right">P103</span><span style="text-align:right">P104</span><span style="text-align:right">Bonus</span><span style="text-align:right">Total</span></div>';sorted.forEach(function(player,i){var base=basePts(player),p3=p103[player],p4=p104[player],pbo=pb[player],tot=base+p3+p4+pbo;var pos=i<3?medals[i]:(i+1)+'';var pc=i<3?['p1','p2','p3'][i]:'';var c=(_calcData.colors||{})[player]||'#888';html+='<div class="sim-rank-row'+(i===0?' sim-rank-first':'')+'"><div class="sim-rank-pos '+pc+'">'+pos+'</div><div class="sim-rank-name"><span class="clr-dot" style="background:'+c+'"></span>'+player.split(' ')[0]+'</div><div class="sim-rank-num">'+base+'</div><div class="sim-rank-num '+(p3>0?'calc-pos-num':'')+'">'+((p3>0)?'+'+p3:(p3<0?String(p3):'&#x2014;'))+'</div><div class="sim-rank-num '+(p4>0?'calc-pos-num':'')+'">'+((p4>0)?'+'+p4:(p4<0?String(p4):'&#x2014;'))+'</div><div class="sim-rank-num '+(pbo>0?'calc-pos-num':'')+'">'+((pbo>0)?'+'+pbo:'&#x2014;')+'</div><div class="sim-rank-total '+pc+(i===0?' calc-total-winner':'')+'" style="text-align:right">'+tot+'</div></div>';});document.getElementById('calc-rank-list').innerHTML=html;}
+function _calcBonusPick(bid,val){_calcBonus[bid]=val||'';document.querySelectorAll('[data-cbid="'+bid+'"]').forEach(function(b){b.classList.toggle('active',b.dataset.cbval===(val||''));});_calcUpdate();}
+function _buildCalcPanel(data){var panel=document.getElementById('calc-left-panel');if(!panel)return;var html='';_CALC_MATCHES.forEach(function(m){html+='<div class="calc-match-block"><div class="calc-match-title">'+m.label+'</div>';html+='<div class="calc-section-lbl">Resultado hipotético</div><div class="calc-res-row"><span class="calc-team">'+m.teams[0]+'</span><input type="number" class="calc-score-inp" id="'+m.id+'-r1" min="0" max="15" placeholder="0" oninput="_calcUpdate()"><span class="calc-sep"> − </span><input type="number" class="calc-score-inp" id="'+m.id+'-r2" min="0" max="15" placeholder="0" oninput="_calcUpdate()"><span class="calc-team">'+m.teams[1]+'</span><select class="calc-cls-sel" id="'+m.id+'-rcls" onchange="_calcUpdate()" style="margin-left:8px"><option value="">— Gan.</option>';m.teams.forEach(function(t){html+='<option value="'+t+'">'+t+'</option>';});html+='</select></div>';html+='<div class="calc-section-lbl">Predicción de cada jugador</div><div class="calc-pred-grid">';_CHANCE_PLAYERS.forEach(function(player){var pid=_calcPid(player),pShort=player.split(' ')[0];html+='<div class="calc-pred-row"><span class="calc-pred-name" title="'+player+'">'+pShort+'</span><input type="number" class="calc-score-inp calc-p-inp" id="'+m.id+'-p-'+pid+'-1" min="0" max="15" placeholder="?" oninput="_calcUpdate()"><span class="calc-sep"> − </span><input type="number" class="calc-score-inp calc-p-inp" id="'+m.id+'-p-'+pid+'-2" min="0" max="15" placeholder="?" oninput="_calcUpdate()"><select class="calc-cls-sel calc-cls-sm" id="'+m.id+'-p-'+pid+'-cls" onchange="_calcUpdate()"><option value="">—</option>';m.teams.forEach(function(t){html+='<option value="'+t+'">'+t.substring(0,4)+'</option>';});html+='</select></div>';});html+='</div></div>';});html+='<div class="calc-bonus-block"><div class="calc-match-title">✨ Bonus pre-torneo</div>';var bonusDefs=[{bid:"B1",lbl:"Campeón (+12 pts)",opts:["Argentina","España"]},{bid:"B3",lbl:"Goleador (+8 pts)",opts:["Kane","Mbappe","Julian Alvarez","Messi"]},{bid:"B4",lbl:"Más goles a favor (+5 pts)",opts:["Argentina","España","Francia"]}];bonusDefs.forEach(function(bd){html+='<div class="calc-section-lbl">'+bd.bid+' — '+bd.lbl+'</div><div class="calc-bonus-btns" style="margin-bottom:8px">';bd.opts.forEach(function(opt){html+='<button class="calc-bon-btn" data-cbid="'+bd.bid+'" data-cbval="'+opt+'">'+opt.split(" ")[0]+'</button>';});html+='<button class="calc-bon-btn active" data-cbid="'+bd.bid+'" data-cbval="">—</button></div>';});html+='<div style="margin-top:6px;font-size:.6rem;color:var(--muted)">B2 Subcampeón se deriva automáticamente. B5/B6: nadie puede ganarlos.</div></div>';panel.innerHTML=html;panel.querySelectorAll('[data-cbid]').forEach(function(btn){btn.addEventListener('click',function(){_calcBonusPick(this.dataset.cbid,this.dataset.cbval);});});}
+function renderCalcFinal(data){_calcData=data;_calcBonusPicks={};(data.bonus_preds||[]).forEach(function(b){Object.keys(b.predictions).forEach(function(player){if(!_calcBonusPicks[player])_calcBonusPicks[player]={};_calcBonusPicks[player][b.id]=b.predictions[player]||'';});});_buildCalcPanel(data);_calcUpdate();}
 
 // ---- RELATOR ----
 var _relatorData=null;
@@ -972,16 +846,27 @@ function _genRelato(data){
     players.forEach(function(p){semExactCnt[p]=0;});
     phSem.forEach(function(m){players.forEach(function(p){if((m.points[p]||0)>=7)semExactCnt[p]++;});});
     var semExactos=players.filter(function(p){return semExactCnt[p]>0;});
-    lines.push(_pick([
-      (doneSem?'SEMIFINALES COMPLETADAS. ':'Semis en curso: '+phSem.length+'/2 jugados. ')+'Francia, Espana, Inglaterra y Argentina — las cuatro mejores del torneo. El prode llega al tramo definitivo. Un exacto en Semis o Final puede decidir todo.',
-      (doneSem?'Semis cerradas. ':'Semis: '+phSem.length+' de 2 jugados. ')+'Cuatro potencias y dos llaves. El siguiente resultado puede cambiar el prode de manera irreversible.',
-    ]));
-    if(semExactos.length>0){
-      var semExStr=semExactos.map(function(p){return p+' ('+semExactCnt[p]+' exacto'+(semExactCnt[p]>1?'s':'')+')'});
-      lines.push('Exactos en Semis: '+semExStr.join(', ')+'. A 7 pts cada uno — aciertos que pueden subvertir la tabla completa.');
+    if(doneSem){
+      lines.push(_pick([
+        'SEMIFINALES COMPLETADAS. Argentina y España van a la Gran Final — el cruce soñado. Tomi Marchiano lidera con '+ldr.pts+' pts pero SIN bonuses disponibles: su techo es 270. Hay 8 jugadores que matematicamente pueden superarlo. La Final lo decide todo.',
+        'Semis cerradas. FINAL: Argentina vs España. La mejor noticia para el prode: el lider (Tomi, '+ldr.pts+' pts) no tiene bonuses. Su maximo es 270. Los que apostaron a Argentina o España en B1 todavia pueden ganar.',
+      ]));
+      if(semExactos.length>0){
+        var semExStr=semExactos.map(function(p){return p+' ('+semExactCnt[p]+' exacto'+(semExactCnt[p]>1?'s':'')+')'});
+        lines.push('Exactos en Semis: '+semExStr.join(', ')+'. A 7 pts cada uno — aciertos que remezclaron la tabla en el tramo final.');
+      }
+      lines.push('Con 9 jugadores con chance matematica (max > 270), la Final argentina-española es la mas decisiva de la historia del Prode Toros. Exacto en Final vale 10 pts, clasificado +2, goleada +5 — hasta 17 pts en un partido. El lider puede caer.');
+    } else {
+      lines.push('Semis en curso: '+phSem.length+'/2 jugados. Argentina y Francia juegan mañana. Los que apostaron a Argentina o España en bonuses todavia tienen todo para ganar.');
+      if(semExactos.length>0){
+        var semExStr2=semExactos.map(function(p){return p+' ('+semExactCnt[p]+' exacto'+(semExactCnt[p]>1?'s':'')+')'});
+        lines.push('Exactos en Semis hasta ahora: '+semExStr2.join(', ')+'. Cada exacto a 7 pts cambia el orden.');
+      }
     }
+  } else if(curPhase==='Final'||curPhase==='3er Puesto'){
+    lines.push('LA GRAN FINAL. Argentina vs España — el ultimo partido del Prode Toros 2026. Todo puede cambiar. Max disponible: 17 pts en la Final + 12 pts en 3er Puesto + bonuses. El ganador del prode se decide aqui.');
   } else {
-    lines.push('La final ya se jugo. El torneo cerro. Este relato resume el Prode Toros 2026 completo.');
+    lines.push('El torneo cerro. Este relato resume el Prode Toros 2026 completo.');
   }
   // Ranking actual
   var rk4=rk.slice(0,4).map(function(r){return r.name+' '+r.pts;}).join(' · ');
@@ -1042,10 +927,9 @@ function _genRelato(data){
     'Puesto '+n+': '+lst.name+' con '+lst.pts+' pts. La diferencia es '+gBot+'. El volumen de la recta final puede subvertir la tabla, pero hay que acertar exactos mientras los lideres fallan.',
   ]));
   // Cierre
-  var ptsRestantes=(curPhase==='Semis'||curPhase==='Final')?'Semis (3/7+2cls), 3er puesto (3/7+2cls), Final (5/10+2cls)':'Semis (3/7+2cls), 3er puesto (3/7+2cls), Final (5/10+2cls)';
   lines.push(_pick([
-    'Quedan 3 partidos: Semis x2 y Final. En total hasta 34 pts disponibles por un jugador con exactos. Los $400.000 se juegan en estos 3 cruces — el prode puede cambiar de dueno en la Final.',
-    'Semis y Final — los partidos mas valiosos del torneo. Exacto en Final vale 10 pts, clasificado +2. Un Toros que acierto poco en grupos puede cerrar la diferencia aqui. Esto no termino.',
+    'Quedan 2 partidos: 3er Puesto y Final. Max posible: 17 pts en Final + 12 en 3er Puesto + hasta 33 pts en bonuses. El prode Toros puede cambiar de dueño en 90 minutos.',
+    '3er Puesto y Final — los dos partidos que cierran el torneo. Exacto en Final vale 10 pts (+5 goleada, +2 cls). Con 9 jugadores matematicamente vivos, la distribucion de bonuses y un exacto pueden voltear la tabla completa.',
   ]));
   return lines;
 }
@@ -1204,21 +1088,28 @@ function renderBonus(data){
     return;
   }
 
+  // Alive predictions per bonus (normalized, accent-insensitive)
+  var _BONUS_ALIVE_MAP={
+    'B1':['argentina','espana'],'B2':['argentina','espana'],
+    'B3':['kane','mbappe','julian alvarez','messi'],
+    'B4':['espana','argentina','francia'],'B5':[],'B6':[]
+  };
+  function _bn(s){return(s||'').trim().toLowerCase().replace(/á/g,'a').replace(/é/g,'e').replace(/í/g,'i').replace(/ó/g,'o').replace(/ú/g,'u').replace(/ñ/g,'n');}
+  function _isAlive(bid,pred){var alive=_BONUS_ALIVE_MAP[bid]||[];return alive.length===0?false:alive.some(function(a){return _bn(pred)===a||_bn(pred).includes(a)||a.includes(_bn(pred).split(' ')[0]);});}
+
   // Totales por jugador
   var totals={};players.forEach(function(p){totals[p]=0;});
   bp.forEach(function(b){players.forEach(function(p){totals[p]+=(b.earned[p]||0);});});
   var maxPts=bp.reduce(function(s,b){return s+b.pts_value;},0);
 
-  // Ranking summary
-  var sorted=players.slice().sort(function(a,b){return totals[b]-totals[a];});
-  var posLabels=['p1','p2','p3'];
-  var html='<div class="bonus-intro">Predicciones realizadas antes de que comenzara el torneo. Puntos se acreditan cuando se confirme el resultado final &mdash; max. posible: <strong>'+maxPts+' pts</strong>.</div>';
+  var html='<div class="bonus-intro">Predicciones realizadas antes de que comenzara el torneo. Puntos se acreditan cuando se confirme el resultado final &mdash; max. posible: <strong>'+maxPts+' pts</strong>. <span style="color:var(--pink)">&#10060;</span> = prediccion eliminada.</div>';
 
   // Detalle por categoria
   html+='<div style="margin-top:36px">';
   var ICONS={'Campeon del Mundial':'&#127942;','Subcampeon':'&#129352;','Goleador del torneo':'&#9917;','Sel. mas goles a favor':'&#128293;','Sel. mas goles en contra':'&#129505;'};
   bp.forEach(function(b){
     var icon=ICONS[b.label]||'&#127381;';
+    var bid=b.id;
     // Agrupar jugadores por prediccion
     var groups={};
     players.forEach(function(p){
@@ -1237,12 +1128,15 @@ function renderBonus(data){
     html+='<div style="display:flex;flex-wrap:wrap;gap:10px 20px;padding:6px 0 4px">';
     sortedGroups.forEach(function(pred){
       var ps=groups[pred];
-      html+='<div style="min-width:120px"><div style="font-size:.7rem;font-weight:700;color:var(--text);margin-bottom:4px">'+pred+' <span style="color:var(--muted);font-weight:400">('+ps.length+')</span></div>';
+      var isGroupAlive=_isAlive(bid,pred);
+      var predColor=isGroupAlive?'var(--text)':'var(--muted)';
+      var predPrefix=isGroupAlive?'':'<span style="color:var(--pink);margin-right:2px">&#10060;</span>';
+      html+='<div style="min-width:120px;'+(isGroupAlive?'':'opacity:.55')+'" ><div style="font-size:.7rem;font-weight:700;color:'+predColor+';margin-bottom:4px">'+predPrefix+pred+' <span style="color:var(--muted);font-weight:400">('+ps.length+')</span></div>';
       html+='<div style="display:flex;flex-wrap:wrap;gap:3px">';
       ps.forEach(function(p){
         var c=colors[p]||'#ccc';
         var earned=(b.earned[p]||0)>0;
-        html+='<span class="bonus-chip" style="border-color:'+(earned?'var(--green)':'rgba(255,215,0,.25)')+';color:'+(earned?'var(--green)':c)+'">'+(earned?'&#10003; ':'')+p.split(' ')[0]+'</span>';
+        html+='<span class="bonus-chip" style="border-color:'+(earned?'var(--green)':isGroupAlive?'rgba(255,215,0,.25)':'rgba(255,64,129,.2)')+';color:'+(earned?'var(--green)':isGroupAlive?c:'rgba(255,64,129,.5)')+'">'+(earned?'&#10003; ':'')+p.split(' ')[0]+'</span>';
       });
       html+='</div></div>';
     });
@@ -1522,7 +1416,7 @@ fetch('./data.json?_=' + Date.now(), {cache: 'no-store'})
     renderRanking(data);
     renderChart(data);
     renderBracket(data);
-    renderSim(data);
+    renderCalcFinal(data);
     renderRelator(data);
     renderFases(data);
     renderBonus(data);

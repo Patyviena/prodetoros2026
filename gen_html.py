@@ -1413,16 +1413,16 @@ fetch('./data.json?_=' + Date.now(), {cache: 'no-store'})
       '<div class="leader-pts-row">'+ldr.pts+' puntos</div>'+
       '<div class="leader-gap">'+gapTxt+'</div>'+
       '<div class="leader-prize">&#129351;&nbsp;Premio: $400.000</div>';
-    renderRanking(data);
-    renderChart(data);
-    renderBracket(data);
-    renderCalcFinal(data);
-    renderRelator(data);
-    renderFases(data);
-    renderBonus(data);
-    renderBadges(data);
-    renderMatrix(data);
-    renderDifficulty(data);
+    try{renderRanking(data);}catch(e){console.error('renderRanking',e);}
+    try{renderChart(data);}catch(e){console.error('renderChart',e);}
+    try{renderBracket(data);}catch(e){console.error('renderBracket',e);}
+    try{renderCalcFinal(data);}catch(e){console.error('renderCalcFinal',e);}
+    try{renderRelator(data);}catch(e){console.error('renderRelator',e);}
+    try{renderFases(data);}catch(e){console.error('renderFases',e);}
+    try{renderBonus(data);}catch(e){console.error('renderBonus',e);}
+    try{renderBadges(data);}catch(e){console.error('renderBadges',e);}
+    try{renderMatrix(data);}catch(e){console.error('renderMatrix',e);}
+    try{renderDifficulty(data);}catch(e){console.error('renderDifficulty',e);}
     initNav();
   })
   .catch(function(err){document.getElementById('loading').innerHTML='<p style="color:var(--pink)">Error al cargar datos.<br><small>'+err.message+'</small></p>';});

@@ -61,8 +61,8 @@ MATCH_DATES = {
     "P101": "2026-07-14",  # Francia v Espana
     "P102": "2026-07-15",  # Argentina v Inglaterra (habilitado al cargar todas las preds)
     # 3er Puesto y Final — habilitar cuando lleguen las predicciones
-    "P103": "2026-07-19",  # 3er Puesto: Francia v Inglaterra
-    "P104": "2026-07-20",  # Final: Argentina v Espana
+    "P103": "2026-07-19",  # 3er Puesto: Inglaterra v Francia — resultado: 6-4 Inglaterra
+    "P104": "2026-07-19",  # Final: Argentina v Espana — hoy
 }
 
 BONUS_CATEGORIES = {
@@ -130,8 +130,8 @@ KNOCKOUT_BRACKET = [
     ("P100", "Cuartos",    "Gan. Oct. P7 vs P8"),
     ("P101", "Semis",      "Gan. Ctos. P1 vs P2"),
     ("P102", "Semis",      "Gan. Ctos. P3 vs P4"),
-    ("P103", "3er Puesto", "Perdedor Semi 1 vs Semi 2"),
-    ("P104", "Final",      "Gran Final"),
+    ("P103", "3er Puesto", "Inglaterra v Francia"),
+    ("P104", "Final",      "Argentina v España"),
 ]
 
 
@@ -240,15 +240,19 @@ def parse_data(csv_text: str) -> dict:
     for match_id, phase, placeholder_name in KNOCKOUT_BRACKET:
         actual = knockout_data.get(match_id)
         using_real_name = False
+        # Partidos jugados con 0 pts para todos (nadie acertó el ganador)
+        PLAYED_OVERRIDES = {"P103"}
         if actual:
             raw_name = actual["match_name"]
-            if " vs " in raw_name.lower() or " v " in raw_name:
+            _placeholder_keywords = ("perdedor", "gan.", "ganador", "3ros", "1ro ", "2do ")
+            _is_placeholder = any(k in raw_name.lower() for k in _placeholder_keywords)
+            if (not _is_placeholder) and (" vs " in raw_name.lower() or " v " in raw_name):
                 match_name = raw_name
                 using_real_name = True
             else:
                 match_name = placeholder_name   # nombre del sheet es solo label de fase
             player_data = actual["player_data"]
-            played      = actual["played"]
+            played      = actual["played"] or match_id in PLAYED_OVERRIDES
             has_preds   = actual["has_preds"]
         else:
             match_name  = placeholder_name

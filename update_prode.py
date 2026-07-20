@@ -76,7 +76,12 @@ BONUS_CATEGORIES = {
 # Resultados finales de bonus. B2 se deriva de B1 automaticamente (perdedor de Final).
 # Usar nombres normalizados sin acento (comparacion es accent-insensitive).
 # Ejemplo cuando se conozcan:  "B1": "Argentina",  "B3": "Mbappe",  "B4": "Espana"
-BONUS_RESULTS: dict = {}
+BONUS_RESULTS: dict = {
+    "B1": "España",   # Campeon: España ganó la Final (0-0 ET, ganó en alargue)
+    # B2 se deriva automáticamente de B1 (Argentina = subcampeón)
+    # "B3": "",       # Goleador: confirmar
+    # "B4": "",       # Sel. más goles: confirmar
+}
 
 COLOR_PALETTE = {
     "Tomi Samitier":  "#FF5733",
@@ -338,11 +343,15 @@ def parse_data(csv_text: str) -> dict:
 
     # Recomputar ranking incluyendo bonus ganados
     bonus_earned = {p: sum(b["earned"].get(p, 0) for b in bonus_preds) for p in players}
+    total_with_bonus = {p: final_pts[p] + bonus_earned[p] for p in players}
     if any(v > 0 for v in bonus_earned.values()):
-        total_with_bonus = {p: final_pts[p] + bonus_earned[p] for p in players}
-        sorted_players   = sorted(players, key=lambda p: -total_with_bonus[p])
-        ranking = [{"pos": i + 1, "name": p, "pts": total_with_bonus[p]} for i, p in enumerate(sorted_players)]
-        top3    = {r["name"]: r["pos"] for r in ranking if r["pos"] <= 3}
+        sorted_players = sorted(players, key=lambda p: -total_with_bonus[p])
+        ranking = [{"pos": i + 1, "name": p, "pts": total_with_bonus[p],
+                    "base_pts": final_pts[p], "bonus_pts": bonus_earned[p]}
+                   for i, p in enumerate(sorted_players)]
+        top3 = {r["name"]: r["pos"] for r in ranking if r["pos"] <= 3}
+    else:
+        ranking = [dict(r, base_pts=r["pts"], bonus_pts=0) for r in ranking]
 
     # Ko_preds: partidos eliminatorios jugados, formato equivalente a group_preds
     ko_preds = [

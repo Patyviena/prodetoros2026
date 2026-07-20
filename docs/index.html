@@ -372,7 +372,7 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
 .mob-btn.active{color:var(--gold);}
 /* Hide rank columns on mobile */
 .rk-hide-mob{}
-@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:20px 14px 28px;}.relator-body,.tool-body{padding:20px 14px 62px;}.tool-header{padding:20px 14px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;}.mobile-bnav::-webkit-scrollbar{display:none;}.mob-btn{min-width:54px;flex:0 0 auto;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:300px;padding:12px;}.chart-mobile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px 0;}.cml-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);}.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.rk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.rk-table-wrap::-webkit-scrollbar{height:4px;}.rk-table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}.rank-table{font-size:.75rem;min-width:520px;}.rank-table th,.rank-table td{padding:8px 8px;}.rk-pts{font-size:.88rem;}.rk-form{gap:2px;}.rk-form-dot{width:6px;height:6px;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}.phase-name{width:120px;}.bonus-name{width:120px;}.day-match-name{min-width:120px;}}
+@media(max-width:800px){body{display:block;height:auto;overflow:auto;}.sidebar{display:none;}.main-content,.sim-content,.relator-content,.tool-content{margin-left:0;height:auto;}.sim-body{flex-direction:column;}.sim-left{width:100%;border-right:none;border-bottom:1px solid var(--border);}.content-section{padding:20px 14px 28px;}.relator-body,.tool-body{padding:20px 14px 62px;}.tool-header{padding:20px 14px 16px;}.mobile-bnav{display:flex;overflow-x:auto;scrollbar-width:none;gap:0;}.mobile-bnav::-webkit-scrollbar{display:none;}.mob-btn{min-width:54px;flex:0 0 auto;}.main-content,.sim-content,.relator-content,.tool-content{padding-bottom:62px;}.s-dots{display:none;}.rk-hide-mob{display:none;}.chart-outer{height:300px;padding:12px;}.chart-mobile-legend{display:flex;flex-wrap:wrap;gap:6px 12px;padding:12px 4px 0;}.cml-item{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--muted);}.cml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}.rk-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}.rk-table-wrap::-webkit-scrollbar{height:4px;}.rk-table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}.rank-table{font-size:.75rem;min-width:620px;}.rank-table th,.rank-table td{padding:8px 8px;}.rk-pts{font-size:.88rem;}.rk-form{gap:2px;}.rk-form-dot{width:6px;height:6px;}.badges-grid{grid-template-columns:1fr 1fr;gap:10px;}.badge-card{padding:14px;}.dif-bar-cell{min-width:120px;}.phase-name{width:120px;}.bonus-name{width:120px;}.day-match-name{min-width:120px;}}
 </style>
 </head>
 <body>
@@ -466,7 +466,9 @@ tr.diff-med .matrix-match-name{color:var(--gold2);}
           <tr>
             <th style="text-align:center">#</th>
             <th style="text-align:left">Jugador</th>
-            <th>Pts</th>
+            <th title="Puntos de partidos, sin contar bonuses pre-torneo">Base</th>
+            <th title="Bonus pre-torneo ganados (B1 Campeon, B2 Subcampeon, B3 Goleador, B4 Mas goles)" style="color:var(--gold)">+Bonus</th>
+            <th title="Total final = Base + Bonus">Total</th>
             <th title="Simulacion Monte Carlo 6000 iteraciones. Asume rendimiento historico + clasificados 50/50.">% Win</th>
             <th>Prom.</th>
             <th title="Resultados exactos en grupos (5 pts)">Exactos</th>
@@ -684,7 +686,10 @@ function renderRanking(data){
     var prob=_winProbs?_winProbs[r.name]:null;
     var probStr=prob===null?'—':prob<0.005?'<1%':(prob*100).toFixed(1)+'%';
     var probCls='rk-win'+(prob>0.45?' rk-win-hi':prob>0.15?' rk-win-mid':prob<0.04?' rk-win-lo':'');
-    return'<tr><td class="rk-pos '+pc+'">'+r.pos+'</td><td><div class="rk-name"><span class="clr-dot" style="background:'+c+'"></span>'+r.name+'</div></td><td class="rk-pts '+pc+'">'+r.pts+'</td><td class="'+probCls+'">'+probStr+'</td><td class="rk-stat rk-hide-mob">'+avg+'</td><td class="rk-stat rk-hide-mob'+(exactos>0?' gold':'')+'">'+exactos+'</td><td class="rk-stat rk-hide-mob'+(exactosB>0?' gold2':'')+'">'+exactosB+'</td><td class="rk-stat">'+last5+'</td><td><div class="rk-form">'+dots+'</div></td></tr>';
+    var basePts=r.base_pts!==undefined?r.base_pts:r.pts;
+    var bonusPts=r.bonus_pts||0;
+    var bonusCell=bonusPts>0?'<span style="color:var(--gold);font-weight:700">+'+bonusPts+'</span>':'<span style="color:var(--muted)">—</span>';
+    return'<tr><td class="rk-pos '+pc+'">'+r.pos+'</td><td><div class="rk-name"><span class="clr-dot" style="background:'+c+'"></span>'+r.name+'</div></td><td class="rk-stat rk-hide-mob">'+basePts+'</td><td class="rk-stat">'+bonusCell+'</td><td class="rk-pts '+pc+'">'+r.pts+'</td><td class="'+probCls+'">'+probStr+'</td><td class="rk-stat rk-hide-mob">'+avg+'</td><td class="rk-stat rk-hide-mob'+(exactos>0?' gold':'')+'">'+exactos+'</td><td class="rk-stat rk-hide-mob'+(exactosB>0?' gold2':'')+'">'+exactosB+'</td><td class="rk-stat">'+last5+'</td><td><div class="rk-form">'+dots+'</div></td></tr>';
   }).join('');
   document.getElementById('ranking-desc').textContent=data.matches_played.length+' partidos de grupos jugados';
 }

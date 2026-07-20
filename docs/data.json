@@ -1,5 +1,5 @@
 {
-  "last_updated": "20/07/2026 10:10",
+  "last_updated": "20/07/2026 10:13",
   "players": [
     "Epe Roth",
     "Kovacic",
@@ -4708,93 +4708,93 @@
     {
       "pos": 1,
       "name": "Nico Conti",
-      "pts": 254,
+      "pts": 262,
       "base_pts": 242,
-      "bonus_pts": 12
+      "bonus_pts": 20
     },
     {
       "pos": 2,
       "name": "JZ",
-      "pts": 253,
+      "pts": 261,
       "base_pts": 233,
-      "bonus_pts": 20
+      "bonus_pts": 28
     },
     {
       "pos": 3,
+      "name": "Lucas Tkacz",
+      "pts": 250,
+      "base_pts": 230,
+      "bonus_pts": 20
+    },
+    {
+      "pos": 4,
       "name": "Tomi Samitier",
       "pts": 248,
       "base_pts": 228,
       "bonus_pts": 20
     },
     {
-      "pos": 4,
+      "pos": 5,
       "name": "Tomi Marchiano",
       "pts": 243,
       "base_pts": 243,
       "bonus_pts": 0
     },
     {
-      "pos": 5,
-      "name": "Lucas Tkacz",
-      "pts": 242,
-      "base_pts": 230,
-      "bonus_pts": 12
+      "pos": 6,
+      "name": "Nico Gianola",
+      "pts": 233,
+      "base_pts": 220,
+      "bonus_pts": 13
     },
     {
-      "pos": 6,
+      "pos": 7,
       "name": "Patru Maqui",
       "pts": 231,
       "base_pts": 231,
       "bonus_pts": 0
     },
     {
-      "pos": 7,
-      "name": "Nico Gianola",
-      "pts": 220,
-      "base_pts": 220,
-      "bonus_pts": 0
-    },
-    {
       "pos": 8,
       "name": "Fran Garoby",
-      "pts": 219,
+      "pts": 227,
       "base_pts": 219,
-      "bonus_pts": 0
+      "bonus_pts": 8
     },
     {
       "pos": 9,
+      "name": "Alejo Di Fiori",
+      "pts": 223,
+      "base_pts": 210,
+      "bonus_pts": 13
+    },
+    {
+      "pos": 10,
       "name": "Conrado",
       "pts": 213,
       "base_pts": 193,
       "bonus_pts": 20
     },
     {
-      "pos": 10,
-      "name": "Alejo Di Fiori",
-      "pts": 210,
-      "base_pts": 210,
-      "bonus_pts": 0
+      "pos": 11,
+      "name": "Kovacic",
+      "pts": 209,
+      "base_pts": 201,
+      "bonus_pts": 8
     },
     {
-      "pos": 11,
+      "pos": 12,
       "name": "Epe Roth",
       "pts": 205,
       "base_pts": 205,
       "bonus_pts": 0
     },
     {
-      "pos": 12,
-      "name": "Kovacic",
-      "pts": 201,
-      "base_pts": 201,
-      "bonus_pts": 0
-    },
-    {
       "pos": 13,
       "name": "Juan Leoni",
-      "pts": 195,
+      "pts": 200,
       "base_pts": 195,
-      "bonus_pts": 0
+      "bonus_pts": 5
     },
     {
       "pos": 14,
@@ -4821,7 +4821,7 @@
   "top3": {
     "Nico Conti": 1,
     "JZ": 2,
-    "Tomi Samitier": 3
+    "Lucas Tkacz": 3
   },
   "knockout_matches": [
     {
@@ -8335,15 +8335,15 @@
       },
       "earned": {
         "Epe Roth": 0,
-        "Kovacic": 0,
+        "Kovacic": 8,
         "Patru Maqui": 0,
-        "Lucas Tkacz": 0,
-        "Nico Conti": 0,
-        "Fran Garoby": 0,
+        "Lucas Tkacz": 8,
+        "Nico Conti": 8,
+        "Fran Garoby": 8,
         "Tomi Marchiano": 0,
-        "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
+        "JZ": 8,
+        "Alejo Di Fiori": 8,
+        "Nico Gianola": 8,
         "Tomi Samitier": 0,
         "Juan Leoni": 0,
         "Conrado": 0,
@@ -8383,10 +8383,10 @@
         "Fran Garoby": 0,
         "Tomi Marchiano": 0,
         "JZ": 0,
-        "Alejo Di Fiori": 0,
-        "Nico Gianola": 0,
+        "Alejo Di Fiori": 5,
+        "Nico Gianola": 5,
         "Tomi Samitier": 0,
-        "Juan Leoni": 0,
+        "Juan Leoni": 5,
         "Conrado": 0,
         "Pulpo": 0,
         "Fede Lacal": 0,

@@ -77,10 +77,10 @@ BONUS_CATEGORIES = {
 # Usar nombres normalizados sin acento (comparacion es accent-insensitive).
 # Ejemplo cuando se conozcan:  "B1": "Argentina",  "B3": "Mbappe",  "B4": "Espana"
 BONUS_RESULTS: dict = {
-    "B1": "España",   # Campeon: España ganó la Final (0-0 ET, ganó en alargue)
-    # B2 se deriva automáticamente de B1 (Argentina = subcampeón)
-    # "B3": "",       # Goleador: confirmar
-    # "B4": "",       # Sel. más goles: confirmar
+    "B1": "España",    # Campeón
+    # B2 = Argentina auto (subcampeón)
+    "B3": "Mbappe",   # Goleador del torneo
+    "B4": "Francia",  # Selección con más goles a favor
 }
 
 COLOR_PALETTE = {
